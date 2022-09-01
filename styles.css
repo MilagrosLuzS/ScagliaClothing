@@ -1,0 +1,53 @@
+body {
+    font-family:"Montserrat";
+}
+
+
+.menu {
+    display: flex;
+}
+
+.icons a{
+    text-decoration: none;
+    list-style-type:none;
+    margin: 1px;
+}
+
+.fa-regular{
+    color:white
+}
+
+.fa-solid{
+    color:white
+}
+.menu a {
+    font-family:"Montserrat";
+    font-weight: 030;
+    font-size: medium;
+    color: white;
+    text-decoration: none;
+    list-style-type:none;
+}
+
+
+header {
+    background-color:black;
+}
+
+footer{
+    background-color: black;
+    color: white;
+}
+
+.banner{
+    width: 75%;
+}
+
+footer a {
+    font-family:"Montserrat";
+    font-weight: 300;
+    font-size: medium;
+    color: white;
+    text-decoration: none;
+    list-style-type:none;
+}
