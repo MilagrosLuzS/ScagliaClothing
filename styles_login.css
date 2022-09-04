@@ -1,15 +1,19 @@
 body{
     font-family:"Montserrat";
-    margin 0; padding 0;
     background: url(Multimedia/Fotos/RemeraBasic2/DSC02467.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
+.login{
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
 .contenedor{
     width: 100%;
-    padding: 30px;
+    padding: 40px;
 }
 
 .formulario{
