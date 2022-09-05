@@ -7,9 +7,17 @@
 
 .general{
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     align-items: center;
-    justify-content:space-between;
+
+}
+
+.hdr-flex{
+    display: flex;
+    flex-flow: reverse-row;
+    align-items: center;
+    justify-content:space-around;
+    justify-items: right;
 }
 
 .icons a{
@@ -24,7 +32,8 @@
 }
 
 .logo{
-    padding-left: 25px;
+    margin-left: 40px;
+    margin-top: 10%;
 }
 
 .menu a{
