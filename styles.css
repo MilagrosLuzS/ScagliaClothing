@@ -1,53 +1,77 @@
-body {
+ body {
     font-family:"Montserrat";
-}
+    margin: 0;
+    padding: 0;
+    height: 100%;
+} 
 
-
-.menu {
+.general{
     display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content:space-between;
 }
 
 .icons a{
     text-decoration: none;
     list-style-type:none;
-    margin: 1px;
+    padding: 25px;
 }
 
-.fa-regular{
+
+.icon1{
     color:white
 }
 
-.fa-solid{
-    color:white
+.logo{
+    padding-left: 25px;
 }
-.menu a {
+
+.menu a{
     font-family:"Montserrat";
     font-weight: 030;
     font-size: medium;
     color: white;
     text-decoration: none;
     list-style-type:none;
+    display: inline-flex;
+    padding: 20px;
+}
+
+.menu ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.menu a:hover{
+    color: #99ff33;
+}
+    
+header{
+    background-color: black;
 }
 
 
-header {
-    background-color:black;
+p{
+    color:white; 
 }
 
 footer{
     background-color: black;
-    color: white;
 }
 
 .banner{
-    width: 75%;
+    width: 100%;
 }
 
-footer a {
+footer a{
     font-family:"Montserrat";
+    margin-top: 150px;
     font-weight: 300;
     font-size: medium;
     color: white;
     text-decoration: none;
     list-style-type:none;
-}
+} 
+

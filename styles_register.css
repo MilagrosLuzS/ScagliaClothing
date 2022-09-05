@@ -1,0 +1,92 @@
+body{
+    font-family:"Montserrat";
+    margin 0; padding 0;
+    background: url(Multimedia/Fotos/RemeraBasic2/DSC02467.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.contenedor{
+    width: 100%;
+    padding: 30px;
+}
+
+.formulario{
+    background-color: white;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    padding: 5px;
+}
+
+.switch{
+    color: black;
+}
+
+h1{
+    text-decoration: underline;
+    text-align: center;
+    font-size: 35px;
+}
+
+input[type="text"],
+input[type="password"]{
+    font-size: 20px;
+    width: 82%;
+    padding: 10px;
+    border:none;
+}
+
+.input_contenedor{
+    margin-bottom: 15px;
+    border: 1px solid #aaa;
+}
+
+.icon{
+    min-width: 50px;
+    text-align: center;
+}
+
+.button{
+    text-decoration: none;
+    border: none;
+    width: 100%;
+    color: white;
+    font-size:20px;
+    background: black;
+    padding: 15px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover{
+    background: #99ff33;
+}
+
+.contenedor p{
+    text-align: center;
+}
+
+a{
+    color: black;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+a:hover{
+    color: #99ff33;
+}
+
+@media(min-width:768px){
+    .formulario{
+        margin:auto;
+        width: 500px;
+        margin-top: 150px;
+        border-radius: 2%;
+    }
+}
+
+*{
+    box-sizing: border-box;
+}
+
