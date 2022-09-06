@@ -10,7 +10,7 @@
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    width: 95%;
+    width: 98%;
 
 }
 
@@ -27,7 +27,8 @@
     text-decoration: none;
     list-style-type:none;
     padding: 25px;
-    width: 10%;
+    width: 2%;
+
 }
 
 .icon1{
@@ -71,6 +72,7 @@ p{
 
 footer{
     background-color: black;
+    padding-top:2%;
 }
 
 .banner{
@@ -96,6 +98,9 @@ footer a{
 
 .flex-iso{
     margin-top: 6%;
+    margin-left: 8%;
+    margin-bottom: 9%;
+    margin-right: 4%;
 }
 
 .flex-categ ul{
@@ -103,11 +108,15 @@ footer a{
 }
 
 .flex-categ a{
-    margin: 3px;
+    margin: 1%;
 }
 
 .flex-categ a:hover{
     color: #99ff33;
+}
+
+.flex-conect{
+    margin-left: 9%;
 }
 
 .flex-conect li{
@@ -119,11 +128,20 @@ footer a{
 
 .flex-pagos{
     height: 30%;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content:space-around;
-    margin-right: 9%;
+    align-items: center;
+    margin-right: 6%;
+}
+
+.flex-pagos img{
+    display: inline-block;
+    width: 13%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+
 }
 
 
