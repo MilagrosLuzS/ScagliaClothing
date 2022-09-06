@@ -98,9 +98,9 @@ footer a{
 
 .flex-iso{
     margin-top: 6%;
-    margin-left: 8%;
-    margin-bottom: 9%;
-    margin-right: 4%;
+
+    margin-bottom: 6%;
+ 
 }
 
 .flex-categ ul{
@@ -115,32 +115,28 @@ footer a{
     color: #99ff33;
 }
 
-.flex-conect{
-    margin-left: 9%;
-}
 
 .flex-conect li{
     margin-top:20%;
     margin-bottom:20%;
-    margin-left: 22%;
+    margin-left:22%;
+ 
 
 }
 
 .flex-pagos{
     height: 30%;
     display: inline-flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content:space-around;
     align-items: center;
-    margin-right: 6%;
+
 }
 
 .flex-pagos img{
-    display: inline-block;
-    width: 13%;
-    margin-top: 1%;
-    margin-bottom: 1%;
+    width: 4%;
+    margin: 0.5%;
 
 }
 
