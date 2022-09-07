@@ -46,7 +46,7 @@
     font-size:small
 }
 
-p{
+.guia p{
     color:black;
     letter-spacing: 1px;
     text-align: left;
@@ -61,6 +61,14 @@ h4{
     text-align: left;
     font-size:small;
     font-weight: 900;
+}
+
+.env-camb {
+    color:black;
+    letter-spacing: 1px;
+    text-align: left;
+    font-size:small;
+    text-decoration: none;
 }
 
 .color{
@@ -157,3 +165,4 @@ h4{
     letter-spacing: 3px;
 
 }
+
