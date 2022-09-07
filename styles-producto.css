@@ -1,3 +1,27 @@
+.flex-prenda{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.imagenes{
+    width: 45%;
+    margin-left: 10%;
+}
+
+.prueba{
+    width: 70%;
+}
+
+.info{
+    width: 35%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
 .titulo{
     padding-top: 20px;
     padding-bottom: 20px;
@@ -18,7 +42,7 @@
 .descrip h3{
     color: black;
     letter-spacing: 3px;
-    text-align: center;
+    text-align: left;
     font-size:small
 }
 
@@ -37,4 +61,99 @@ h4{
     text-align: left;
     font-size:small;
     font-weight: 900;
+}
+
+.color{
+    display: inline-flex;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.color-input{
+    display: none;
+}
+
+.color-label{
+    padding-right:15px;
+    padding-left:15px;
+    padding-top: 4px;
+    padding-bottom:4px;
+    font-size: 12px;
+    font-family: Montserrat;
+    color:black;
+    background: rgb(247, 247, 247);
+    cursor: pointer;
+}
+
+.color-label:not(:last-of-type){
+    border-right: 1px solid grey;
+}
+
+.color-input:checked + .color-label{
+    background: black;
+    color:#99ff33;
+}
+
+.radio{
+    display: inline-flex;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.radio-input{
+    display: none;
+}
+
+.radio-label{
+    padding-right:15px;
+    padding-left:15px;
+    padding-top: 4px;
+    padding-bottom:4px;
+    font-size: 12px;
+    font-family: Montserrat;
+    color:black;
+    background: rgb(247, 247, 247);
+    cursor: pointer;
+}
+
+.radio-label:not(:last-of-type){
+    border-right: 1px solid grey;
+}
+
+.radio-input:checked + .radio-label{
+    background: black;
+    color:#99ff33;
+}
+
+.button{
+    text-decoration: none;
+    border: none;
+    color: black;
+    font-family: Montserrat;
+    font-size:12px;
+    background: rgb(247, 247, 247);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 3px;
+    margin:3px;
+}
+
+.flex-botones{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content:space-around;
+}
+
+.button:hover{
+    color: #99ff33;
+    background-color: black;
+}
+
+.guia a{
+    font-size: 11px;
+    color: black;
+    font-weight: 900;
+    letter-spacing: 3px;
+
 }

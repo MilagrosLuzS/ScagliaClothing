@@ -57,6 +57,7 @@
 
             <div class="flex-prenda">
                 <div class="imagenes">
+                    <img class="prueba" src="prueba.jpg">
                 </div>
 
                 <div class="info">
@@ -74,19 +75,30 @@
                     <section>
                         <form class="descrip">
                             <h3>COLOR</h3>
-                            <input name="talle" type="radio"/> Negro
-
+                            <section class="color">
+                            <input class="color-input" name="color" value="negro" type="radio" id="color1"/>
+                            <label class="color-label" for="color1">NEGRO</label>
+                            </section>
                             <h3>TALLE</h3>
-                            <input name="talle" type="radio"/> 1
-                            <input name="talle" type="radio"/> 2
-                            <input name="talle" type="radio"/> 3
+                            <section class="radio">
+                            <input class="radio-input" name="talle" value="opcion1" type="radio" id="radio1"/>
+                            <label class="radio-label" for="radio1">1</label>
+                            <input class="radio-input" name="talle" value="opcion2" type="radio" id="radio2"/>
+                            <label class="radio-label" for="radio2">2</label>
+                            <input class="radio-input" name="talle" value="opcion3" type="radio" id="radio3"/>
+                            <label class="radio-label" for="radio3">3</label>
+                            </section>
+                            
+                            <p class="guia"><a href="guia_de_talles.html">GUÍA DE TALLES</a></p>
 
-                            <p><a href="guia_de_talles.html">Guía de talles</a></p>
+                            <section class="flex-botones">
 
-                            <input type="submit" value="Añadir al carrito">
+                            <input class= "button" type="submit" value="AÑADIR AL CARRITO">
+                            <button class="button">AGREGAR A MI WISHLIST</button>
 
+                            </section>
                         </form>
-                        <button>Agregar a wishlist</button>
+ 
                         <h4>ENVÍOS</h4>
                         <p>El envio se realiza a través del correo Andreani, a domicilio o sucursal, o retiro en nuestros locales. Para más información consulta aquí</p>
                         <h4>CAMBIOS Y DEVOLUCIONES</h4>
