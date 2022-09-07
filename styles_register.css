@@ -28,9 +28,8 @@ body{
 }
 
 h1{
-    text-decoration: underline;
     text-align: center;
-    font-size: 35px;
+    font-size:180%;
 }
 
 input[type="text"],
@@ -72,12 +71,20 @@ input[type="password"]{
 }
 
 a{
+    color:white;
+}
+
+.contenedor a{
     color: black;
     text-decoration: underline;
     font-weight: 600;
 }
 
-a:hover{
+::placeholder{
+    font-size: small;
+}
+
+.contenedor a:hover{
     color: #99ff33;
 }
 

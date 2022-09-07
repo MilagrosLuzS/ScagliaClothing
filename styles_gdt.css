@@ -1,0 +1,64 @@
+p{
+    color:black;
+    font-size: x-small;
+    margin-left: 1%;
+}
+
+.tablas h2{
+    font-size: medium;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    color: black;
+    text-transform: capitalize;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.titulo{
+    font-size:small;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color:white;
+    color: black;
+    text-transform: capitalize;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+a{
+    color: white;
+}
+
+.Buzos{
+    padding-bottom: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.Remeras{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+table{
+	background-color: white;
+	text-align: left;
+	border-collapse: collapse;
+	width: 50%;
+    font-size: x-small;
+}
+
+th, td{
+	padding: 10px;
+    border-bottom: solid 1px;
+    border-color: #999;
+}
+
+thead{
+	background-color: black;
+    color: white;
+}
+
