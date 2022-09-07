@@ -1,0 +1,9 @@
+.titulo{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: black;
+    text-transform: capitalize;
+    letter-spacing: 3px;
+    text-align: center;
+    font-size: small;
+}
