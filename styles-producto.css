@@ -1,5 +1,5 @@
 .flex-prenda{
-    display:inline-flex;
+    display:flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content:space-around;
@@ -7,8 +7,12 @@
 }
 
 .imagenes{
-    width: 45%;
     margin-left: 10%;
+}
+
+.imagenes img{
+    width: 800px;
+    height: 1200px;
 }
 
 .prueba{
@@ -16,10 +20,10 @@
 }
 
 .info{
-    width: 35%;
+    width: 30%;
     margin-right: 10%;
     margin-bottom: 5%;
-    margin-top: 5%;
+    /* margin-top: 5%; */
 }
 
 .titulo{

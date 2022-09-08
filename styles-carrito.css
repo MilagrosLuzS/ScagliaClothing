@@ -1,9 +1,104 @@
 .titulo{
     padding-top: 20px;
-    padding-bottom: 20px;
     color: black;
     text-transform: capitalize;
     letter-spacing: 3px;
     text-align: center;
     font-size: small;
 }
+
+.gral{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 5% 5% 5% 5%;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 60%;
+    row-gap: 5%;
+    padding-bottom: 20%;
+}
+
+.contenedor{
+    padding-right: 30%;
+    padding-bottom: 20%;
+}
+
+.input_contenedor input{
+    width: 120%;
+}
+
+.input_genero{
+    margin-bottom: 15px;
+}
+
+.input_contenedor{
+    width: 180%;
+}
+
+.contenedor h2{
+    font-size: smaller;
+}
+
+.contenedor strong{
+    font-size: medium;
+}
+
+.producto_user img{
+    width: 200px;
+    height: 300px;
+}
+
+.pedido{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-left: solid 1px;
+    border-color: #999;
+}
+
+.data_product{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: solid 1px;
+    border-color: #999;
+}
+
+.envio{
+    padding: 5%;
+    border-bottom: solid 1px;
+    border-color: #999;
+}
+
+.submit{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button{
+    border-radius: 4px;
+    background-color: black;
+    border: none;
+    color:white;
+    text-align: center;
+    font-size:medium;
+    padding: 20px;
+    width: aut;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.submit a:hover .button{
+    background-color: #99ff33;
+}
+
+
