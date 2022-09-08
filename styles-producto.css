@@ -1,5 +1,5 @@
 .flex-prenda{
-    display: inline-flex;
+    display:inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content:space-around;
@@ -98,7 +98,7 @@ h4{
 }
 
 .color-input:checked + .color-label{
-    background: black;
+    background: rgb(247, 247, 247);
     color:#99ff33;
 }
 
@@ -129,7 +129,7 @@ h4{
 }
 
 .radio-input:checked + .radio-label{
-    background: black;
+    background: rgb(247, 247, 247);
     color:#99ff33;
 }
 
@@ -155,7 +155,7 @@ h4{
 
 .button:hover{
     color: #99ff33;
-    background-color: black;
+    background-color: rgb(247, 247, 247);
 }
 
 .guia a{

@@ -25,26 +25,23 @@
     padding-right: 50px;
     padding-left: 50px;
     padding-top: 50px;
-    padding-bottom: 50px;
     border: 1px;
     border-style: double;
+    border-radius: 5px;
     border-color: #999;
+    margin-bottom: 4%;
 }
 
 
 .contenido_grillas img{
-    width: 400px;
-    height: 600px;
+    width: 320px;
+    height: 480px;
     
 }
 
 .contenido_grillas a{
     color: black;
     text-decoration: none;
-}
-
-.contenido_grillas a:hover{
-    color: #9f3;
 }
 
 .nombre_precio{
@@ -65,11 +62,20 @@
 }
 
 .boton a{
+    padding-right:15px;
+    padding-left:15px;
+    padding-top: 4px;
+    padding-bottom:4px;
+    font-size: 13px;
+    font-family: Montserrat;
     color:black;
+    background: rgb(247, 247, 247);
+    cursor: pointer;
 }
 
 .boton a:hover{
     color: #9f3;
+    background-color: rgb(247, 247, 247);
 }
 
 
