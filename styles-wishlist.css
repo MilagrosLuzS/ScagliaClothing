@@ -1,9 +1,99 @@
-.titulo{
-    padding-top: 20px;
-    padding-bottom: 20px;
+.FR p{
+    color:black;
+    font-size: large;
+    margin-left: 1%;
+}
+
+.tablas h2{
+    font-size: large;
+    padding-top: 1%;
+    padding-bottom: 1%;
     color: black;
     text-transform: capitalize;
     letter-spacing: 3px;
     text-align: center;
-    font-size: small;
 }
+
+.titulo{
+    font-size:small;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    background-color:white;
+    color: black;
+    text-transform: capitalize;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+a{
+    color: white;
+}
+
+.Buzos{
+    padding-bottom: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.Remeras{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.botondis{
+    color: white;
+}
+
+table{
+	background-color: white;
+	text-align: left;
+	border-collapse: collapse;
+	width: 80%;
+    font-size: large;
+    margin-bottom: 5%;
+}
+
+.prenda{
+    width: 160px;
+    height: 240px;
+    margin-bottom: 1%;
+}
+
+
+.agregar{
+    border-radius: 5px;
+    background-color: black;
+    border: none;
+    color:white;
+    text-align: center;
+    font-size:medium;
+    font-family: Montserrat;
+    padding: 20px;
+    width: aut;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 1px;
+}
+
+.agregar:hover{
+    background-color: #99ff33;
+}
+
+th, td{
+
+    border-bottom: solid 1px;
+    border-color: #999;
+}
+
+thead{
+	background-color: white;
+    color: black;
+}
+
+
+
+
+
+

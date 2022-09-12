@@ -92,8 +92,8 @@ h4{
     padding-bottom:4px;
     font-size: 12px;
     font-family: Montserrat;
-    color:black;
-    background: rgb(247, 247, 247);
+    color:white;
+    background: black;
     cursor: pointer;
 }
 
@@ -102,7 +102,7 @@ h4{
 }
 
 .color-input:checked + .color-label{
-    background: rgb(247, 247, 247);
+    background: black;
     color:#99ff33;
 }
 
@@ -123,8 +123,8 @@ h4{
     padding-bottom:4px;
     font-size: 12px;
     font-family: Montserrat;
-    color:black;
-    background: rgb(247, 247, 247);
+    color:white;
+    background: black;
     cursor: pointer;
 }
 
@@ -133,17 +133,17 @@ h4{
 }
 
 .radio-input:checked + .radio-label{
-    background: rgb(247, 247, 247);
+    background: black;
     color:#99ff33;
 }
 
 .button{
     text-decoration: none;
     border: none;
-    color: black;
+    color: white;
     font-family: Montserrat;
     font-size:12px;
-    background: rgb(247, 247, 247);
+    background: black;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
@@ -159,7 +159,8 @@ h4{
 
 .button:hover{
     color: #99ff33;
-    background-color: rgb(247, 247, 247);
+    background-color: black;
+
 }
 
 .guia a{

@@ -7,3 +7,84 @@
     text-align: center;
     font-size: small;
 }
+
+.about-flex{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap-reverse;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.ramiro{
+    width: 50%;
+}
+
+.content{
+    width: 40%;
+    text-align: center;
+
+    /* margin-top: 5%; */
+}
+
+.content h2{
+    color: black;
+    letter-spacing: 3px;
+    text-align: center;
+    font-size:medium;
+    text-transform: uppercase;
+}
+
+.content h3{
+    color: black;
+    letter-spacing: 3px;
+    text-align: center;
+    text-align: left;
+    font-size:medium;
+    text-transform: uppercase;
+    
+}
+
+.imagen img{
+    width: 400px;
+    height: 600px;
+}
+
+.imagen h2{
+    color: black;
+    letter-spacing: 3px;
+    text-align: center;
+    font-size:medium;
+    text-transform: uppercase;
+    margin-bottom: 6%;
+}
+
+.imagen p{
+    color:black;
+    letter-spacing: 3px;
+    text-align: left;
+    font-size:medium;
+    text-decoration: none;
+    text-transform: uppercase;
+    
+}
+
+.button{
+    text-decoration: none;
+    border: none;
+    color: black;
+    font-family: Montserrat;
+    font-size:12px;
+    font-weight: bold;
+    background: rgb(247, 247, 247);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 3px;
+    margin:7px;
+}
+
+.button:hover{
+    color: #99ff33;
+    background-color: rgb(247, 247, 247);
+}
