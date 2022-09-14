@@ -27,7 +27,7 @@ h2{
     flex-wrap: wrap;
 }
 
-hr{
+.flex-sec1 hr{
     border: 0;
     clear:both;
     display:block;
