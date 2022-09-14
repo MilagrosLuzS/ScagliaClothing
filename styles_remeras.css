@@ -57,30 +57,26 @@
     padding-bottom: 15px;
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
 }
 
 .boton a{
-    text-decoration: none;
-    border: none;
-    color: white;
+
+    padding-right:15px;
+    padding-left:15px;
+    padding-top: 4px;
+    padding-bottom:4px;
+    font-size: 13px;
     font-family: Montserrat;
-    font-size:11px;
-    background: black;
-    padding: 10px 15px;
-    border-radius: 5px;
+    color:black;
+    background: rgb(247, 247, 247);
     cursor: pointer;
-    letter-spacing: 3px;
-    margin:3px;
-    width: 60%;
-    text-align: center;
 }
 
 .boton a:hover{
     color: #9f3;
-    background-color: black;
+    background-color: rgb(247, 247, 247);
 }
 
 

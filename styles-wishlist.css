@@ -4,6 +4,17 @@
     margin-left: 1%;
 }
 
+.tablas{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.Remeras{
+    width: 900px;
+}
+
+
 .tablas h2{
     font-size: large;
     padding-top: 1%;
@@ -61,8 +72,11 @@ table{
     margin-bottom: 1%;
 }
 
-
 .agregar{
+    text-align: center;
+}
+
+.agregar button{
     border-radius: 5px;
     background-color: black;
     border: none;
@@ -70,19 +84,18 @@ table{
     text-align: center;
     font-size:medium;
     font-family: Montserrat;
-    padding: 20px;
+    padding: 10px;
     width: aut;
     transition: all 0.5s;
     cursor: pointer;
     margin: 1px;
 }
 
-.agregar:hover{
+.agregar button:hover{
     background-color: #99ff33;
 }
 
 th, td{
-
     border-bottom: solid 1px;
     border-color: #999;
 }
