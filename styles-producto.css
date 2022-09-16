@@ -11,15 +11,20 @@
 }
 
 .imagenes img{
-    width: 600px;
-    height: 900px;
+    width: 480px;
+    height: 720px;
 }
 
 .prueba{
     width: 70%;
 }
 
+h1{
+    margin: 0;
+}
+
 .info{
+    margin-top: 3%;
     width: 30%;
     margin-right: 10%;
     margin-bottom: 5%;
