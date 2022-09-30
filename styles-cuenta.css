@@ -1,0 +1,105 @@
+.titulo{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: black;
+    text-transform: capitalize;
+    letter-spacing: 3px;
+    text-align: center;
+    font-size: small;
+}
+
+.about-flex{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    align-items: center;
+    margin-bottom: 4%;
+}
+
+.ramiro{
+    width: 50%;
+}
+
+.content{
+    width: 40%;
+    text-align: center;
+
+    /* margin-top: 5%; */
+}
+
+.content h2{
+    color: black;
+    letter-spacing: 3px;
+    text-align: center;
+    font-size:medium;
+    text-transform: uppercase;
+}
+
+.content h3{
+    color: black;
+    letter-spacing: 3px;
+    text-align: center;
+    text-align: left;
+    font-size:medium;
+    text-transform: uppercase;
+    
+}
+
+.content p span{
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.content p{
+    line-height: 30px;
+    font-size: medium;
+}
+
+.imagen li{
+    margin-top: 7%;
+    margin-bottom: 7%;
+    padding: 3%;
+    list-style-type: none;
+}
+
+.imagen a{
+    color: black;
+    letter-spacing: 3px;
+    text-align: center;
+    font-size:large;
+    text-transform: uppercase;
+    margin-bottom: 6%;
+    text-decoration: none;
+    
+}
+
+.imagen a:hover{
+    border-bottom: solid;
+    border-color: black;
+    border-width: 0.5px;
+}
+
+.content p{
+    color: black;
+}
+
+.button{
+    text-decoration: none;
+    border: none;
+    color: black;
+    font-family: Montserrat;
+    font-size:12px;
+    font-weight: bold;
+    background: rgb(247, 247, 247);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 3px;
+    margin:7px;
+}
+
+.button:hover{
+    color: #99ff33;
+    background-color: rgb(247, 247, 247);
+}
