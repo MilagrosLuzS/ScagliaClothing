@@ -86,7 +86,21 @@ table{
 th, td{
     border-bottom: solid 1px;
     border-color: #999;
+    padding: 10px;
 }
+
+@media (max-width:515px){
+    th,td{
+        padding:3px
+    }
+}
+
+@media (max-width:415px){
+    th,td{
+        padding:1px
+    }
+}
+
 
 thead{
 	background-color: white;

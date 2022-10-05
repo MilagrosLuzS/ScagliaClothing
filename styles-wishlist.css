@@ -4,6 +4,10 @@
     margin-left: 1%;
 }
 
+.about-flex{
+    flex-wrap: wrap;
+}
+
 .tablas{
     display: flex;
     justify-content: space-around;
@@ -46,7 +50,6 @@ a{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 600px;
 }
 
 .botondis{
@@ -60,6 +63,10 @@ table{
 	width: 100%;
     font-size: large;
     margin-bottom: 5%;
+}
+
+td,th{
+    padding:10px;
 }
 
 .prenda{
