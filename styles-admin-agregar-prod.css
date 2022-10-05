@@ -1,0 +1,189 @@
+.titulo{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: black;
+    text-transform: capitalize;
+    letter-spacing: 3px;
+    text-align: center;
+    font-size: small;
+}
+
+.about-flex{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    align-items: center;
+    margin-bottom: 4%;
+}
+
+.content .flex-dir{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.content .flex-dir h2{
+    margin-top: 0;
+    margin-bottom: 5%;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.content .flex-dir a{
+    margin-left: 3%;
+    text-decoration: underline;
+    color: black;
+}
+
+.ramiro{
+    width: 50%;
+}
+
+.content{
+    width: 40%;
+    text-align: left;
+
+    /* margin-top: 5%; */
+}
+
+
+.content .flex-dir h2{
+    color: black;
+    letter-spacing: 3px;
+    text-align: center;
+    text-align: left;
+    font-size:medium;
+    text-transform: uppercase;
+    margin-top:4%
+    
+}
+
+.content .formulario h2{
+    color: black;
+    font-size: small;
+    text-align: center;
+    text-align: left;
+    font-size:medium;
+}
+
+.content p span{
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.content p{
+    line-height: 30px;
+    font-size: medium;
+}
+
+.imagen li{
+    margin-top: 7%;
+    margin-bottom: 7%;
+    padding: 3%;
+    list-style-type: none;
+}
+
+.imagen a{
+    color: black;
+    letter-spacing: 3px;
+    text-align: center;
+    font-size:large;
+    text-transform: uppercase;
+    margin-bottom: 6%;
+    text-decoration: none;
+    
+}
+
+.imagen a:hover{
+    border-bottom: solid;
+    border-color: black;
+    border-width: 0.5px;
+}
+
+.content p{
+    color: black;
+}
+
+.button{
+    letter-spacing: 3px;
+    border-radius: 4px;
+    background-color: black;
+    border: none;
+    color:white;
+    text-align: center;
+    font-size:medium;
+    font-family: Montserrat;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: aut;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button:hover{
+    background-color: #99ff33;
+    color:white;
+}
+
+.formulario{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-auto-rows: 100px 100px;
+}
+
+@media (max-width:900px){
+    .formulario{
+    display: grid;
+    grid-template-columns: 83%;
+    grid-auto-rows: 80px;
+}
+}
+
+@media (max-width:900px){
+    .button{
+    letter-spacing: 3px;
+    border-radius: 4px;
+    background-color: black;
+    border: none;
+    color:white;
+    text-align: center;
+    font-size:small;
+    font-family: Montserrat;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: aut;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-top:30px;
+}
+}
+
+
+.formulario h2{
+    text-align: left;
+}
+
+.formulario input{
+    font-family: Montserrat;
+}
+
+.formulario select{
+    font-family: Montserrat;
+}
+
+textarea{
+    height: 30px;
+    width: 167px;
+}
+
+footer{
+    margin-top:3%;
+}
