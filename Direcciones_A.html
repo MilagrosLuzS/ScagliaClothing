@@ -6,10 +6,10 @@
             <meta name="description" content="Apasionados del diseño. Elevamos básicos al siguiente nivel, vistiendo distinto.">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <title>About</title>
+            <title>Agregar dirección</title>
 
             <link rel="stylesheet" type="text/css" href="styles.css">
-            <link rel="stylesheet" type="text/css" href="styles-cuenta.css">
+            <link rel="stylesheet" type="text/css" href="styles-cuenta-direc-a.css">
             <link rel="stylesheet" type="text/css" href="responsive.css"
 
             <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -57,27 +57,123 @@
 
             <div class="titulo">
                 <h1><strong>MI CUENTA</strong></h1>
+                <h2>DIRECCIÓN</h2>
             </div>
 
             <div class="about-flex">
 
                 <div class="imagen">
                     <ul>
-                        <li><a href="Mi_Cuenta.html">Escritorio</a></li>
-                        <li><a href="Pedidos.html">Pedidos</a></li>
-                        <li><a href="Direcciones.html">Dirección</a></li>
-                        <li><a href="Details.html">Detalles de la cuenta</a></li>
-                        <li><a href="Wishlist.html">Lista de deseos</a></li>
-                        <li><a>Salir</a></li>
+                    <li><a href="Mi_Cuenta.html">Escritorio</a></li>
+                    <li><a>Pedidos</a></li>
+                    <li><a>Dirección</a></li>
+                    <li><a>Detalles de la cuenta</a></li>
+                    <li><a href="Wishlist.html">Lista de deseos</a></li>
+                    <li><a>Salir</a></li>
                     </ul>
                 </div>
             <div class="content">
-                <p>Hola, Gonzalo <br>
-                   (¿no eres Gonzalo Soler? <span>Cerrar sesión</span>)<br>
-                   Desde el escritorio de tu cuenta puedes ver tus <span><a href="Pedidos.html">pedidos recientes</a></span>, <span><a href="Direcciones.html">gestionar tus direcciones de envío</a></span> y y los <span><a href="Details.html">detalles de tu cuenta</a></span>.</p>
+                <section class="flex-dir">
+                <h2>Dirección de envío</h2>
+                </section>    
 
-            </div>
+                <section> 
+                    
+                    <form  class="formulario" action="#" method="post" enctype="application/x-www-form-urlencoded">
+                        
+                        <section>
+                        <h2>Nombre</h2>
+                        <input type="text" name="Nombre" >
+                        </section>
+                        
 
+                        <section>
+                        <h2>Apellidos</h2>
+                        <input type="text" name="Apellidos">
+                        </section>
+
+                        <section>
+                        <h2>Email</h2>
+                        <input type="email" name="Email" >
+                        </section>
+
+
+                        <section>
+                        <h2>Telefono</h2>
+                        <input type="number" name="Telefono" >
+                        </section>
+
+                        <section>
+                        <h2>Calle</h2>
+                        <input type="text" name="Calle" >
+                        </section>
+
+
+
+                        <section>
+                        <h2>Altura</h2>
+                        <input type="number" name="Altura" >
+                        </section>
+
+
+
+                        <section>
+                        <h2>Piso/Depto</h2>
+                        <input type="text" name="Piso">
+                        </section>
+
+
+
+                        <section>
+                        <h2>Localidad</h2>
+                        <input type="text" name="Localidad" >
+                        </section>
+
+
+
+                        <section>
+                        <h2>Provincia</h2>
+                        <select name="Provincia">
+                            <option value="BuenosAires">Buenos Aires</option>
+                            <option value="CABA">CABA</option>
+                            <option value="Catamarca">Catamarca</option>
+                            <option value="Chaco">Chaco</option>
+                            <option value="Chubut">Chubut</option>
+                            <option value ="Cordoba">Córdoba</option>
+                            <option value ="Corrientes">Corrientes</option>
+                            <option value ="EntreRios">Entre Ríos</option>
+                            <option value="Formosa">Formosa</option>
+                            <option value ="Jujuy">Jujuy</option>
+                            <option value ="LaPampa">La Pampa</option>
+                            <option value ="LaRioja">La Rioja</option>
+                            <option value ="Mendoza">Mendoza</option>
+                            <option value ="Misiones">Misiones</option>
+                            <option value ="Neuquen">Neuquén</option>
+                            <option value ="RioNegro">Río Negro</option>
+                            <option value ="Salta">Salta</option>
+                            <option value ="SanJuan">San Juan</option>
+                            <option value="SanLuis">San Luis</option>
+                            <option value="SantaCruz">Santa Cruz</option>
+                            <option value ="TDF">Tierra Del Fuego</option>
+                            <option value="Tucuman">Tucuman</option>
+                        </select>
+                        </section>
+
+
+                        <section>
+                        <h2>Código postal</h2>
+                        <input type="number" name="CodPostal" >
+                        </section>
+
+                        <section >
+                        <input value="Guardar dirección" class="button" type="submit" name="Guardar" >
+                        </section>
+
+
+                    </form>
+
+                </section>
+              
             </div>
 
 

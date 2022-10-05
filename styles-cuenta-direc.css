@@ -17,13 +17,29 @@
     margin-bottom: 4%;
 }
 
+.content .flex-dir{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.content .flex-dir h2{
+    margin: 0;
+}
+
+.content .flex-dir a{
+    margin-left: 3%;
+    text-decoration: underline;
+    color: black;
+}
+
 .ramiro{
     width: 50%;
 }
 
 .content{
     width: 40%;
-    text-align: center;
+    text-align: left;
 
     /* margin-top: 5%; */
 }
@@ -49,12 +65,8 @@
 .content p span{
     text-decoration: underline;
     font-weight: 600;
-    color: black;
 }
 
-.content p span a{
-    color:black;
-}
 .content p{
     line-height: 30px;
     font-size: medium;
