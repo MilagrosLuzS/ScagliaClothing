@@ -49,24 +49,28 @@
         </div>
     </header>
     <section class="register">
-        <form class="formulario">
+        <form id="formulario">
             <h1>CREAR CUENTA</h1>
             <div class="contenedor">
                 <div class="input_contenedor">
                     <i class="fa-solid fa-user icon"></i>
-                    <input type="text" placeholder="Nombre Completo">
+                    <input id = "usuario" type="text" placeholder="Nombre Completo">
+                    <p></p>
                 </div>
                 <div class="input_contenedor">
                     <i class="fa-solid fa-envelope icon"></i>
-                    <input type="text" placeholder="E-Mail">
+                    <input id = "email" type="text" placeholder="E-Mail">
+                    <p></p>
                 </div>
                 <div class="input_contenedor">
                     <i class="fa-solid fa-lock icon"></i>
-                    <input type="password" placeholder="Contraseña">
+                    <input id = "password" type="password" placeholder="Contraseña">
+                    <p></p>
                 </div>
                 <div class="input_contenedor">
                     <i class="fa-solid fa-lock icon"></i>
-                    <input type="password" placeholder="Repetir contraseña">
+                    <input id = "passwordConfirm" type="password" placeholder="Repetir contraseña">
+                    <p></p>
                 </div>
                 <div class="submit">
                     <input type="submit" value="Registrate" class="button">
@@ -136,6 +140,7 @@
             <p>Copyright Scaglia - 2022. Todos los derechos reservados</p>
         </div>
     </footer>
+    <script src="Validacion_Register.js"></script>
 </body>
 </html>
 

@@ -51,16 +51,18 @@
         </header>
 
     <section class="login">
-        <form class="formulario">
+        <form id="formulario">
             <h1>INICIAR SESION</h1>
             <div class="contenedor">
                 <div class="input_contenedor">
                     <i class="fa-solid fa-envelope icon"></i>
-                    <input type="text" placeholder="E-Mail">
+                    <input id="email" type="text" placeholder="E-Mail">
+                    <p></p>
                 </div>
                 <div class="input_contenedor">
                     <i class="fa-solid fa-lock icon"></i>
-                    <input type="password" placeholder="Contraseña">
+                    <input id="password" type="password" placeholder="Contraseña">
+                    <p></p>
                 </div>
                 <div class="submit">
                     <input type="submit" value="Acceder" class="button">
@@ -127,5 +129,6 @@
             <p>Copyright Scaglia - 2022. Todos los derechos reservados</p>
         </div>
     </footer>
+    <script src="Validacion_login.js"></script>
 </body>
 </html>
