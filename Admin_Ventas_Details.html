@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Administrador - Ventas</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="styles_login.css">
+    <link rel="stylesheet" type="text/css" href="styles-administrador-ventas.css">
+    <link rel="stylesheet" type="text/css" href="styles-pedidos.css">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -50,28 +51,61 @@
         
         </header>
 
-    <section class="login">
-        <form id="formulario">
-            <h1>INICIAR SESION</h1>
-            <div class="contenedor">
-                <div class="input_contenedor">
-                    <i class="fa-solid fa-envelope icon"></i>
-                    <input id="email" type="text" placeholder="E-Mail">
-                    <p></p>
-                </div>
-                <div class="input_contenedor">
-                    <i class="fa-solid fa-lock icon"></i>
-                    <input id="password" type="password" placeholder="Contraseña">
-                    <p></p>
-                </div>
-                <div class="submit">
-                    <input type="submit" value="Acceder" class="button">
-                </div>
-                <p class="switch">¿No tienes una cuenta? <a href="Register.html">Registrarse</a></p>
+        <div class="titulo">
+            <h1><strong>ADMINISTRADOR</strong></h1>
+            <h2>VENTAS</h2>
+        </div>
+
+        <div class="about-flex">
+
+        <div class="content">
+
+            <ul>
+
+                <li>
+                    <h2>ORDEN #104</h2>
+              
+                    <div class="about-flex">
+
+                        <div class="tablas">
+                            <section class="Remeras">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Comprador</th>
+                                            <th>Artículos</th>
+                                            <th>Total</th>
+                                            <th>Pago</th>
+                                            <th>Envío</th>
+                                            <th>Estado</th>
+                                            <th>Contacto</th>
+                                        </tr>
+                                    </thead>
+                                    <tr>
+                                        <td>12/07/22</td>
+                                        <td>Pablo Lamela <br>lamelapablo@gmail.com<br>1154209827<br>Victor Martinez 281 4 <br> Caballito - CABA <br> 1406</td>
+                                        <td>Remera Alta X1 (1) <br> Remera Basic 1 X1 (1)</td>
+                                        <td>$9999</td>
+                                        <td>Confirmado - VISA</td>
+                                        <td>Retiro en sucursal</td>
+                                        <td>Para empaquetar</td>
+                                        <td><a href="mailto:lamelapablo@gmail.com?Subject=Scaglia%20Clothing">Contacto</a></td>
+                                    </tr>
+    
+                                </table>
+                            </section>
+                    </div>
+
+                    </div>
+                </li>
+
                 
-            </div>
-        </form>
-    </section>
+            </ul>
+        </div>
+
+        </div>
+
     <footer>
         <div class = "flex-footer">
 
@@ -129,6 +163,5 @@
             <p>Copyright Scaglia - 2022. Todos los derechos reservados</p>
         </div>
     </footer>
-    <script src="Validacion_login.js"></script>
 </body>
 </html>

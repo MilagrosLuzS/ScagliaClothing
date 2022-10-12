@@ -7,6 +7,9 @@
 }
 
 .imagenes{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-left: 10%;
 }
 
@@ -175,5 +178,33 @@ h4{
     font-weight: 900;
     letter-spacing: 3px;
 
+}
+
+.boton{
+    font-size: 30px;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 50%;
+    background-color: cyan;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255,255,255,.6);
+}
+
+.boton:hover{
+    cursor: pointer;
+    transform: scale(1.2,1.2);
+}
+
+#atras{
+    left:2%;
+    top: calc(50%-70px);
+}
+
+#adelante{
+    right:2%;
+    top: calc(50%-70px);
 }
 

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Administrador - Ventas</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="styles_login.css">
+    <link rel="stylesheet" type="text/css" href="styles-administrador-ventas.css">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -50,28 +50,97 @@
         
         </header>
 
-    <section class="login">
-        <form id="formulario">
-            <h1>INICIAR SESION</h1>
-            <div class="contenedor">
-                <div class="input_contenedor">
-                    <i class="fa-solid fa-envelope icon"></i>
-                    <input id="email" type="text" placeholder="E-Mail">
-                    <p></p>
-                </div>
-                <div class="input_contenedor">
-                    <i class="fa-solid fa-lock icon"></i>
-                    <input id="password" type="password" placeholder="Contraseña">
-                    <p></p>
-                </div>
-                <div class="submit">
-                    <input type="submit" value="Acceder" class="button">
-                </div>
-                <p class="switch">¿No tienes una cuenta? <a href="Register.html">Registrarse</a></p>
-                
+        <div class="titulo">
+            <h1><strong>ADMINISTRADOR</strong></h1>
+            <h2>VENTAS</h2>
+        </div>
+
+        <div class="about-flex">
+
+            <div class="imagen">
+                <ul>
+                    <li><a href="Admin_Inicio.html">Inicio</a></li>
+                    <li><a href="Admin_Productos.html">Productos</a></li>
+                    <li><a href="Admin_Ventas.html">Ventas</a></li>
             </div>
-        </form>
-    </section>
+        <div class="content">
+
+            <ul>
+
+                <li>
+                    <h2>ORDEN #104</h2>
+                    <div class="flex-prod">
+                            
+                            <div class="data">
+                            <section class="flex-data">
+                                <p>12/07/22</p>
+                            </section>
+                            <section class="flex-data">
+                                <h3>Compra por:</h3>
+                                <p>Pablo Lamela</p>
+                            </section>
+
+                            <section class="flex-data">
+                                <p>Remera Alta X1 (1)</p>
+                            </section>
+
+                            <section class="flex-data">
+                                <p>Remera Basic 1 X1 (1)</p>
+                            </section>
+
+                            <section class="flex-data">
+                                <h3>Total:</h3>
+                                <p>$9999</p>
+                            </section>
+                            </div>
+
+                            <div class="flex-btn">
+                            <button class="button">Ver<br>detalle</button>
+                            </div>
+                    </div>
+                </li>
+
+                <li>
+                    <h2>ORDEN #103</h2>
+                    <div class="flex-prod">
+                            
+                            <div class="data">
+                            <section class="flex-data">
+                                <p>12/07/22</p>
+                            </section>
+                            <section class="flex-data">
+                                <h3>Compra por:</h3>
+                                <p>Juan Pejinakis</p>
+                            </section>
+
+                            <section class="flex-data">
+                                <p>Hoodie Cargo X1 (1)</p>
+                            </section>
+
+                            <section class="flex-data">
+                                <p>Remera Basic 1 X1 (1)</p>
+                            </section>
+
+                            <section class="flex-data">
+                                <p>Remera Basic 2 X1 (1)</p>
+                            </section>
+
+                            <section class="flex-data">
+                                <h3>Total:</h3>
+                                <p>$299999</p>
+                            </section>
+                            </div>
+
+                            <div class="flex-btn">
+                            <button class="button">Ver<br>detalle</button>
+                            </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        </div>
+
     <footer>
         <div class = "flex-footer">
 
@@ -129,6 +198,5 @@
             <p>Copyright Scaglia - 2022. Todos los derechos reservados</p>
         </div>
     </footer>
-    <script src="Validacion_login.js"></script>
 </body>
 </html>

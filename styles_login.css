@@ -16,7 +16,7 @@ body{
     padding: 40px;
 }
 
-.formulario{
+#formulario{
     background-color: white;
     margin-top: 150px;
     margin-bottom: 150px;
@@ -37,6 +37,7 @@ input[type="password"]{
     font-size: 20px;
     width: 82%;
     padding: 10px;
+    margin-top: 5%;
     border:none;
 }
 
@@ -89,7 +90,7 @@ a{
 }
 
 @media(min-width:768px){
-    .formulario{
+    #formulario{
         margin:auto;
         width: 500px;
         margin-top: 150px;
@@ -99,4 +100,25 @@ a{
 
 *{
     box-sizing: border-box;
+}
+
+.input_contenedor.correcta input{
+    border: 0.1px solid;
+    border-color: lightgreen;
+}
+
+.input_contenedor.fallida input{
+    border: 0.1px solid;
+    border-color: #fe5f55;
+
+}
+
+.input_contenedor p {
+    visibility: hidden;
+    font-size: small;
+}
+
+.input_contenedor.fallida p {
+    visibility: visible;
+    color:#e73623;
 }
