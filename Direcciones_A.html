@@ -80,97 +80,82 @@
 
                 <section> 
                     
-                    <form  class="formulario" action="#" method="post" enctype="application/x-www-form-urlencoded">
-                        
-                        <section>
-                        <h2>Nombre</h2>
-                        <input type="text" name="Nombre" >
-                        </section>
-                        
-
-                        <section>
-                        <h2>Apellidos</h2>
-                        <input type="text" name="Apellidos">
-                        </section>
-
-                        <section>
-                        <h2>Email</h2>
-                        <input type="email" name="Email" >
-                        </section>
-
-
-                        <section>
-                        <h2>Telefono</h2>
-                        <input type="number" name="Telefono" >
-                        </section>
-
-                        <section>
-                        <h2>Calle</h2>
-                        <input type="text" name="Calle" >
-                        </section>
-
-
-
-                        <section>
-                        <h2>Altura</h2>
-                        <input type="number" name="Altura" >
-                        </section>
-
-
-
-                        <section>
-                        <h2>Piso/Depto</h2>
-                        <input type="text" name="Piso">
-                        </section>
-
-
-
-                        <section>
-                        <h2>Localidad</h2>
-                        <input type="text" name="Localidad" >
-                        </section>
-
-
-
-                        <section>
-                        <h2>Provincia</h2>
-                        <select name="Provincia">
-                            <option value="BuenosAires">Buenos Aires</option>
-                            <option value="CABA">CABA</option>
-                            <option value="Catamarca">Catamarca</option>
-                            <option value="Chaco">Chaco</option>
-                            <option value="Chubut">Chubut</option>
-                            <option value ="Cordoba">Córdoba</option>
-                            <option value ="Corrientes">Corrientes</option>
-                            <option value ="EntreRios">Entre Ríos</option>
-                            <option value="Formosa">Formosa</option>
-                            <option value ="Jujuy">Jujuy</option>
-                            <option value ="LaPampa">La Pampa</option>
-                            <option value ="LaRioja">La Rioja</option>
-                            <option value ="Mendoza">Mendoza</option>
-                            <option value ="Misiones">Misiones</option>
-                            <option value ="Neuquen">Neuquén</option>
-                            <option value ="RioNegro">Río Negro</option>
-                            <option value ="Salta">Salta</option>
-                            <option value ="SanJuan">San Juan</option>
-                            <option value="SanLuis">San Luis</option>
-                            <option value="SantaCruz">Santa Cruz</option>
-                            <option value ="TDF">Tierra Del Fuego</option>
-                            <option value="Tucuman">Tucuman</option>
-                        </select>
-                        </section>
-
-
-                        <section>
-                        <h2>Código postal</h2>
-                        <input type="number" name="CodPostal" >
-                        </section>
-
-                        <section >
-                        <input value="Guardar dirección" class="button" type="submit" name="Guardar" >
-                        </section>
-
-
+                    <form  id="formulario" action="#" method="post" enctype="application/x-www-form-urlencoded">
+                        <div class="input_contenedor">
+                            <h2>Nombres</h2>
+                            <input id="Nombre" type="text" name="Nombre" >
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Apellidos</h2>
+                            <input id="Apellidos" type="text" name="Apellidos">
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Email</h2>
+                            <input id="Email" type="email" name="Email" >
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Telefono</h2>
+                            <input id="Telefono" type="number" name="Telefono" >
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Calle</h2>
+                            <input id="Calle" type="text" name="Calle" >
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Altura</h2>
+                            <input id="Altura" type="number" name="Altura" >
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Piso/Depto</h2>
+                            <input id="Piso" type="text" name="Piso" placeholder="Ingrese '-' para omitir">
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Localidad</h2>
+                            <input id="Localidad" type="text" name="Localidad" >
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Provincia</h2>
+                            <select name="Provincia">
+                                <option value="BuenosAires">Buenos Aires</option>
+                                <option value="CABA">CABA</option>
+                                <option value="Catamarca">Catamarca</option>
+                                <option value="Chaco">Chaco</option>
+                                <option value="Chubut">Chubut</option>
+                                <option value ="Cordoba">Córdoba</option>
+                                <option value ="Corrientes">Corrientes</option>
+                                <option value ="EntreRios">Entre Ríos</option>
+                                <option value="Formosa">Formosa</option>
+                                <option value ="Jujuy">Jujuy</option>
+                                <option value ="LaPampa">La Pampa</option>
+                                <option value ="LaRioja">La Rioja</option>
+                                <option value ="Mendoza">Mendoza</option>
+                                <option value ="Misiones">Misiones</option>
+                                <option value ="Neuquen">Neuquén</option>
+                                <option value ="RioNegro">Río Negro</option>
+                                <option value ="Salta">Salta</option>
+                                <option value ="SanJuan">San Juan</option>
+                                <option value="SanLuis">San Luis</option>
+                                <option value="SantaCruz">Santa Cruz</option>
+                                <option value ="TDF">Tierra Del Fuego</option>
+                                <option value="Tucuman">Tucuman</option>
+                            </select>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Código postal</h2>
+                            <input id ="CodPostal" type="number" name="CodPostal" >
+                            <p></p>
+                        </div>
+                        <div class="submit">
+                            <input value="Guardar dirección" class="button" type="submit" name="Guardar" >
+                        </div>
                     </form>
 
                 </section>
@@ -241,5 +226,6 @@
 
                 
             </footer>
+            <script src="Validacion_Direccion.js"></script>
         </body>
     </html>

@@ -130,14 +130,14 @@
     color:white;
 }
 
-.formulario{
+#formulario{
     display: grid;
     grid-template-columns: 50% 50%;
     grid-auto-rows: 100px 100px;
 }
 
 @media (max-width:900px){
-    .formulario{
+    #formulario{
     display: grid;
     grid-template-columns: 83%;
     grid-auto-rows: 80px;
@@ -167,18 +167,39 @@
 }
 
 
-.formulario h2{
+#formulario h2{
     text-align: left;
 }
 
-.formulario input{
+#formulario input{
     font-family: Montserrat;
 }
 
-.formulario select{
+#formulario select{
     font-family: Montserrat;
 }
 
 footer{
     margin-top:3%;
+}
+
+.input_contenedor.correcta input{
+    border: 0.1px solid;
+    border-color: lightgreen;
+}
+
+.input_contenedor.fallida input{
+    border: 0.1px solid;
+    border-color: #fe5f55;
+
+}
+
+.input_contenedor p {
+    visibility: hidden;
+    font-size: small;
+}
+
+.input_contenedor.fallida p {
+    visibility: visible;
+    color:#e73623;
 }

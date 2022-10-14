@@ -1,4 +1,4 @@
-var contenido = ['Multimedia/Fotos_Producto/Buzo_Basic/C1.jpg','Multimedia/Fotos_Producto/Buzo_Basic/C2.jpg','Multimedia/Fotos_Producto/Buzo_Basic/C3.jpg','Multimedia/Fotos_Producto/Buzo_Basic/C4.jpg','Multimedia/Fotos_Producto/Buzo_Basic/C5.jpg'],
+var contenido = ['Multimedia/Fotos/alta1.jpg','Multimedia/Fotos/basic21.jpg','Multimedia/Fotos/bbasic1.jpg','Multimedia/Fotos/patch1.jpg'],
     cont = 0;
 
 const back = document.getElementById('atras');
