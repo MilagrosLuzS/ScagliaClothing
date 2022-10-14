@@ -76,80 +76,35 @@
             <div class="content">
                 <section class="flex-dir">
                 <h2>Mis datos</h2>
-                </section>    
-
-                <section> 
-                    
-                    <form  class="formulario" action="#" method="post" enctype="application/x-www-form-urlencoded">
-                        
-                        <section>
-                        <h2>Nombre</h2>
-                        <input type="text" name="Nombre" >
+                </section>   
+                    <form  id="formulario" action="#" method="post" enctype="application/x-www-form-urlencoded">
+                        <div class="input_contenedor">
+                            <h2>Nombre</h2>
+                            <input id="Nombre" type="text" name="Nombre">
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Apellido</h2>
+                            <input id="Apellidos" type="text" name="Apellidos">
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Nombre a mostrar</h2>
+                            <input id="NombreAMostrar" type="text" name="NombreAMostrar">
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Email</h2>
+                            <input id="Email" type="email" name="Email">
+                            <p></p>
+                        </div>
+                        <section class="submit">
+                            <input value="Actualizar" class="button" type="submit" name="Guardar">
                         </section>
-                        
-
-                        <section>
-                        <h2>Apellido</h2>
-                        <input type="text" name="Apellidos">
-                        </section>
-
-                        <section>
-                        <h2>Nombre a mostrar</h2>
-                        <input type="text" name="NombreAMostrar" >
-                        </section>
-
-
-                        <section>
-                        <h2>Email</h2>
-                        <input type="email" name="Email" >
-                        </section>
-
-
-                        <section >
-                        <input value="Actualizar" class="button" type="submit" name="Guardar" >
-                        </section>
-
-
+                        <div class="input_contenedor">
+                            <h2><a href="Cambio_Contraseña.html">Desea cambiar su contraseña?</a></h2>
+                        </div>
                     </form>
-
-                    <section class="flex-dir">
-                        <h2>Cambio de contraseña</h2>
-                    </section> 
-
-                    <form  class="formulario" action="#" method="post" enctype="application/x-www-form-urlencoded">
-                        
-                        <section>
-                        <h2>Actual contraseña</h2>
-                        <input type="password" name="PasActual" >
-                        </section>
-                        
-
-                        <section>
-                        <h2>Nueva <br> contraseña</h2>
-                        <input type="password" name="PasNueva">
-                        </section>
-
-                        <section>
-                        <h2>Confirmar <br> nueva contraseña</h2>
-                        <input type="password" name="PasConfirm" >
-                        </section>
-
-
-                        <section>
-                        <h2>DNI</h2>
-                        <input type="number" name="DNI" >
-                        </section>
-
-
-                        <section >
-                        <input value="Guardar" class="button" type="submit" name="Guardar" >
-                        </section>
-
-
-                    </form>
-
-                </section>
-              
             </div>
 
 
@@ -216,5 +171,6 @@
 
                 
             </footer>
+            <script src="Validacion_Details.js"></script>
         </body>
     </html>

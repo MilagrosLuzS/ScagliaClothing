@@ -77,54 +77,59 @@
 
                 <section> 
                     
-                    <form  class="formulario" action="#" method="post" enctype="application/x-www-form-urlencoded">
+                    <form  id="formulario" action="#" method="post" enctype="application/x-www-form-urlencoded">
                         
-                        <section>
-                        <h2>Nombre</h2>
-                        <input type="text" name="Nombre" >
+                        <section id="checks">
+                            <h2>Nombre</h2>
+                            <input id="Nombre" type="text" name="Nombre" >
+                            <p></p>
                         </section>
 
-                        <section>
+                        <section id="checks">
                             <h2>Precio</h2>
-                            <input type="number" name="Precio" >
+                            <input id="Precio" type="number" name="Precio" >
+                            <p></p>
                         </section>
     
         
-                        <section>
-                        <h2>Talles</h2>
-                        <label><input type="checkbox" value="Talle1" name="Talles">Talle 1</label>
-                        <label><input type="checkbox" value="Talle2" name="Talles">Talle 2</label>
-                        <label><input type="checkbox" value="Talle3" name="Talles">Talle 3</label>
+                        <section id="input_contenedor">
+                            <h2>Talles</h2>
+                            <label><input id="Talles" type="checkbox" value="Talle1" name="Talles">Talle 1</label>
+                            <label><input id="Talles" type="checkbox" value="Talle2" name="Talles">Talle 2</label>
+                            <label><input id="Talles"type="checkbox" value="Talle3" name="Talles">Talle 3</label>
+                            <p></p>
                         </section>
 
-                        <section>
+                        <section id="input_contenedor">
                         <h2>Colores</h2>
-                        <label><input type="checkbox" value="Color1" name="Negro">Negro</label>
-                        <label><input type="checkbox" value="Color2" name="Gris">Gris</label>
-                        <label><input type="checkbox" value="Color3" name="Blanco">Blanco</label>
+                            <label><input id="Colores" type="checkbox" value="Color1" name="Negro">Negro</label>
+                            <label><input id="Colores" type="checkbox" value="Color2" name="Gris">Gris</label>
+                            <label><input id="Colores" type="checkbox" value="Color3" name="Blanco">Blanco</label>
+                            <p></p>
                         </section>
 
-                        <section>
-                        <h2>Stock</h2>
-                        <input type="number" name="Stock" >
+                        <section id="input_contenedor">
+                            <h2>Stock</h2>
+                            <input id="Stock" type="number" name="Stock" >
+                            <p></p>
                         </section>
 
-                        <section>
+                        <section id="input_contenedor">
                             <h2>Descripción</h2>
                             <textarea id="freeform" name="freeform" rows="4" cols="50">
                             </textarea>
-                            </section>
+                        </section>
 
 
-                        <section>
-                        <h2>Imagen</h2>
-                        <input type="file" name="Imagen" >
+                        <section id="input_contenedor">
+                            <h2>Imagen</h2>
+                            <input id="Imagen" type="file" name="Imagen" >
                         </section>
 
                         <br>
                         
-                        <section>
-                        <input value="Guardar producto" class="button" type="submit" name="Guardar" >
+                        <section class="submit">
+                            <input value="Guardar producto" class="button" type="submit" name="Guardar" >
                         </section>
 
 
@@ -195,7 +200,7 @@
                     <p>Copyright Scaglia - 2022. Todos los derechos reservados</p>
                 </div>
     
-
+                <script src="Validacion_Agregar_Producto.js"></script>
                 
             </footer>
         </body>

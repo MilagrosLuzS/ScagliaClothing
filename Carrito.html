@@ -61,70 +61,83 @@
             <div class="gral">
                 <div class="contenedor">
                     <h2><strong>Datos de contacto y Entrega</strong></h2>
-                    <div class="grid">
+                    <form  id="formulario" action="#" method="post" enctype="application/x-www-form-urlencoded">
                         <div class="input_contenedor">
-                            <h2>Nombre</h2>
-                            <input type="text">
+                            <h2>Nombres</h2>
+                            <input id="Nombre" type="text" name="Nombre" >
+                            <p></p>
                         </div>
                         <div class="input_contenedor">
-                            <h2>Apellido</h2>
-                            <input type="text">
+                            <h2>Apellidos</h2>
+                            <input id="Apellidos" type="text" name="Apellidos">
+                            <p></p>
                         </div>
                         <div class="input_contenedor">
-                            <h2>Direccion de correo electronico</h2>
-                            <input type="text">
+                            <h2>Email</h2>
+                            <input id="Email" type="email" name="Email" >
+                            <p></p>
                         </div>
                         <div class="input_contenedor">
                             <h2>Telefono</h2>
-                            <input type="text">
+                            <input id="Telefono" type="text" name="Telefono" >
+                            <p></p>
                         </div>
                         <div class="input_contenedor">
                             <h2>Calle</h2>
-                            <input type="text">
+                            <input id="Calle" type="text" name="Calle" >
+                            <p></p>
                         </div>
                         <div class="input_contenedor">
                             <h2>Altura</h2>
-                            <input type="text">
+                            <input id="Altura" type="text" name="Altura" >
+                            <p></p>
                         </div>
                         <div class="input_contenedor">
-                            <h2>Piso/Departamento (opcional)</h2>
-                            <input type="text">
+                            <h2>Piso/Depto</h2>
+                            <input id="Piso" type="text" name="Piso" placeholder="Ingrese '-' para omitir">
+                            <p></p>
                         </div>
                         <div class="input_contenedor">
                             <h2>Localidad</h2>
-                            <input type="text">
+                            <input id="Localidad" type="text" name="Localidad" >
+                            <p></p>
                         </div>
                         <div class="input_contenedor">
                             <h2>Provincia</h2>
-                            <input type="text">
+                            <select name="Provincia">
+                                <option value="BuenosAires">Buenos Aires</option>
+                                <option value="CABA">CABA</option>
+                                <option value="Catamarca">Catamarca</option>
+                                <option value="Chaco">Chaco</option>
+                                <option value="Chubut">Chubut</option>
+                                <option value ="Cordoba">Córdoba</option>
+                                <option value ="Corrientes">Corrientes</option>
+                                <option value ="EntreRios">Entre Ríos</option>
+                                <option value="Formosa">Formosa</option>
+                                <option value ="Jujuy">Jujuy</option>
+                                <option value ="LaPampa">La Pampa</option>
+                                <option value ="LaRioja">La Rioja</option>
+                                <option value ="Mendoza">Mendoza</option>
+                                <option value ="Misiones">Misiones</option>
+                                <option value ="Neuquen">Neuquén</option>
+                                <option value ="RioNegro">Río Negro</option>
+                                <option value ="Salta">Salta</option>
+                                <option value ="SanJuan">San Juan</option>
+                                <option value="SanLuis">San Luis</option>
+                                <option value="SantaCruz">Santa Cruz</option>
+                                <option value ="TDF">Tierra Del Fuego</option>
+                                <option value="Tucuman">Tucuman</option>
+                            </select>
                         </div>
                         <div class="input_contenedor">
-                            <h2>Codigo Postal</h2>
-                            <input type="text">
+                            <h2>Código postal</h2>
+                            <input id ="CodPostal" type="number" name="CodPostal" >
+                            <p></p>
                         </div>
-                        <div class="input_contenedor">
-                            <h2>Documento</h2>
-                            <input type="text">
+                        <div class="submit">
+                            <input value="Guardar dirección" class="button" type="submit" name="Guardar" >
                         </div>
-                        <div class="input_contenedor">
-                            <h2>Fecha de nacimiento</h2>
-                            <input type="date" class="input-text " name="birth_date" id="birth_date" placeholder="dd/mm/yyyy" value="">
-                        </div>
-                        <div class="input_genero">
-                            <h2>Genero</h2>
-                            <div>
-                                <input name="genero" type="radio" value="Masculino"/>Masculino
-                            </div>
-                            <div>
-                                <input name="genero" type="radio" value="Femenino"/>Femenino
-                            </div>
-                            <div>
-                                <input name="genero" type="radio" value="Otro"/>Otro
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
+                    </form>
                 </div>
                 <section class="pedido">
                     <h2><strong>Tu pedido</strong></h2>
@@ -156,7 +169,6 @@
                     </div>
                 </section>
             </div>
-
             <footer>
                 <div class = "flex-footer">
  
@@ -220,5 +232,6 @@
 
                 
             </footer>
+            <script src="Validacion_CheckOut.js"></script>
         </body>
     </html>

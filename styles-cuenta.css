@@ -25,7 +25,7 @@
     width: 40%;
     text-align: center;
 
-    /* margin-top: 5%; */
+    margin-top: 5%;
 }
 
 .content h2{
@@ -68,7 +68,7 @@
     align-items: left;
 }
 
-@media (max-width: 560px) {
+/* @media (max-width: 560px) {
     .imagen{
         padding:0
         display: flex;
@@ -77,8 +77,7 @@
         text-align: center;
         align-items: center;
     }
-    
-}
+} */
 
 .imagen li{
     margin-top: 7%;
