@@ -44,6 +44,10 @@ input[type="password"]{
 .input_contenedor{
     margin-bottom: 15px;
     border: 1px solid #aaa;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .icon{
@@ -105,11 +109,19 @@ a{
 .input_contenedor.correcta input{
     border: 0.1px solid;
     border-color: lightgreen;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .input_contenedor.fallida input{
     border: 0.1px solid;
     border-color: #fe5f55;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 
 }
 

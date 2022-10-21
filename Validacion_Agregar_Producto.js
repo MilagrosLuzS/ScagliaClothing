@@ -47,6 +47,10 @@ window.addEventListener('load',()=>{
             ValidacionCorrecta(Stock);
         }
 
+        validarTalle();
+
+        validarColor();
+
     }
 
     function validacionFallida(input,mensaje){
@@ -63,7 +67,42 @@ window.addEventListener('load',()=>{
     }
 
     function validacionGeneral(general){
-        return /^([^0-9\s_.]+)+[a-zA-Z]*((\s?)*[a-zA-Z](\s?)*)*$/g.test(general);
+        // return /^([^0-9\s_.]+)+[a-zA-Z]*((\s?)*[a-zA-Z](\s?)*)*$/g.test(general);
+        return /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(general);
+    }
+
+    function validarTalle(){
+        var valid = false;
+        if(document.getElementById("Talle1").checked){
+            valid = true;
+        }
+        else if(document.getElementById("Talle2").checked){
+            valid = true;
+        }
+        else if(document.getElementById("Talle3").checked){
+            valid = true;
+        }
+        if(!valid){
+            alert("Seleccionar talles.");
+            return false;
+        }
+    }
+
+    function validarColor(){
+        var valid = false;
+        if(document.getElementById("Color1").checked){
+            valid = true;
+        }
+        else if(document.getElementById("Color2").checked){
+            valid = true;
+        }
+        else if(document.getElementById("Color3").checked){
+            valid = true;
+        }
+        if(!valid){
+            alert("Seleccionar colores.");
+            return false;
+        }
     }
 
 })

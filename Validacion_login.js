@@ -29,6 +29,12 @@ window.addEventListener('load',()=>{
         if(passwordValor===''){
             validacionFallida(password,'Campo vacio')
         }
+        else if(passwordValor.length < 8){
+            validacionFallida(password,'La contraseña debe tener al menos 8 caracteres.')
+        }
+        else if(!passwordValor.match(er)){
+            validacionFallida(password,'La contraseña debe tener al menos una mayuscula una minuscula y un numero.'); 
+        }
         else{
             ValidacionCorrect(password);
         }
