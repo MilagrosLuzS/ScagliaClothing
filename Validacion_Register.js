@@ -21,6 +21,8 @@ window.addEventListener('load',()=>{
 
         if(usuarioValor === ''){
             validacionFallida(usuario,'Campo vacio')
+        }else if(!validacionGeneral(usuarioValor)){
+            validacionFallida(usuario,'nombre y/o apellido no valido.')
         }
         else{
             ValidacionCorrecta(usuario)
@@ -80,6 +82,11 @@ window.addEventListener('load',()=>{
     function ValidacionCorrecta(input,mensaje){
         const formControl = input.parentElement
         formControl.className = 'input_contenedor correcta'
+    }
+
+    function validacionGeneral(general){
+        // return /^([^0-9\s_.]+)+[a-zA-Z]*((\s?)*[a-zA-Z](\s?)*)*$/g.test(general);
+        return /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(general);
     }
 
     function validaEmail(email){

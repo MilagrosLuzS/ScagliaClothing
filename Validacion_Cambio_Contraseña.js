@@ -37,7 +37,7 @@ window.addEventListener('load',()=>{
             validacionFallida(PasNueva,'La contraseña debe tener al menos 8 caracteres.')
         }
         else if(!PasNuevaValor.match(er)){
-            validacionFallida(PasNueva,'La contraseña debe tener al menos una mayuscula una minuscula y un numero.'); 
+            validacionFallida(PasNueva,'La contraseña debe tener una mayuscula una minuscula y un numero.'); 
         }
         else{
             ValidacionCorrecta(PasNueva);
