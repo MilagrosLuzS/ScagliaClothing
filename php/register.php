@@ -10,7 +10,7 @@ include_once('guest.php');
     <title>Register</title>
     <link rel="stylesheet" type="text/css" href="../styles_register.css">
     <link rel="stylesheet" type="text/css" href="../styles.css">
-    <script src="../Validacion_Register.js" async></script>
+    <script src="../js/Validacion_Register.js" async></script>
 </head>
 <body>
 
@@ -96,7 +96,7 @@ include_once('guest.php');
                 }
                 ?>
                 <div class="submit">
-                    <input type="submit" onclick="validarCampos_Register()" value="Registrate" class="button">
+                    <input type="submit" onclick="validarCampos()"value="Registrate" name="enviar" class="button">
                 </div>
                 <p class="switch">
                     Al registrarte, aceptas nuestras condiciones de uso y politica de privacidad.
@@ -163,6 +163,6 @@ include_once('guest.php');
             <p>Copyright Scaglia - 2022. Todos los derechos reservados</p>
         </div>
     </footer>
-    
+    <script src="../js/Validacion_Register.js" async></script>
 </body>
 </html>

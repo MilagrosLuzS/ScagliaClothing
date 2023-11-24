@@ -9,8 +9,8 @@ include_once('guest.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="../styles.css">
-    <link rel="stylesheet" type="text/css" href="../styles_login.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles_login.css">
 </head>
 <body>
     <header>
@@ -68,35 +68,34 @@ include_once('guest.php');
                     <p></p>
                 </div>
                 <?php
-                include_once('bd.php');
-                if ($_POST) {
-                    $conn = conectarBD();
-                    $query = 'SELECT * FROM user WHERE email = "' . $_POST["email"] . '" and password = "' . $_POST["password"] . '";';
-                    $respuesta = consultaSQL($conn, $query);
-                    if ($respuesta->num_rows > 0) {
-                        //fetch_assoc() devuelve una por una las filas de la consulta en un array asociativo
-                        while ($row = $respuesta->fetch_assoc()) {
-                            $_SESSION['user'] = $row['email'];
-                            $_SESSION["id"] = $row["id"];
-                            $_SESSION['id_user_role'] = $row['id_user_role'];
+                    include_once('bd.php');
+                    if ($_POST) {
+                        $conn = conectarBD();
+                        $query = 'SELECT * FROM user WHERE email = "' . $_POST["email"] . '" and password = "' . $_POST["password"] . '";';
+                        $respuesta = consultaSQL($conn, $query);
+                        if ($respuesta->num_rows > 0) {
+                            //fetch_assoc() devuelve una por una las filas de la consulta en un array asociativo
+                            while ($row = $respuesta->fetch_assoc()) {
+                                $_SESSION['user'] = $row['email'];
+                                $_SESSION["id"] = $row["id"];
+                                $_SESSION['id_user_role'] = $row['id_user_role'];
 
-                            desconectarBD($conn);
+                                desconectarBD($conn);
 
-                            if ($_SESSION['id_user_role'] == 2) {
-                                header('Location: index.php');
-                            } else {
-                                header('Location: Admin_inicio.php');
+                                if ($_SESSION['id_user_role'] == 2) {
+                                    header('Location: index.php');
+                                } else {
+                                    header('Location: Admin_inicio.php');
+                                }
                             }
+                        } else {
+                            print("Los datos ingresados son incorrectos.");
                         }
-                    } else {
-                        print("Los datos ingresados son incorrectos.");
+                        desconectarBD($conn);
                     }
-                    desconectarBD($conn);
-                }
-                
                 ?>
                 <div class="submit">
-                    <input type="submit" onclick="validarCampos_Login()" value="Acceder" name="enviar" class="button">
+                    <input type="submit" onclick="validarCampos()" value="Acceder" name="enviar" class="button">
                 </div>
                 <p class="switch">¿No tienes una cuenta? <a href="Register.php">Registrarse</a></p>
             </div>
@@ -159,6 +158,6 @@ include_once('guest.php');
             <p>Copyright Scaglia - 2022. Todos los derechos reservados</p>
         </div>
     </footer>
-    <script src="../Validacion_login.js"></script>
+    <script src="../js/Validacion_login.js"></script>
 </body>
 </html>

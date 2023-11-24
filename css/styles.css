@@ -1,0 +1,164 @@
+ body {
+    font-family:"Montserrat";
+    margin: 0;
+    padding: 0;
+    height: 100%;
+} 
+
+.general{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    width: 98%;
+
+}
+
+.hdr-flex{
+    display: flex;
+    flex-flow: reverse-row;
+    align-items: center;
+    justify-content:space-around;
+
+}
+
+.icons nav{
+    width: 100px;
+}
+
+.icons a{
+
+    text-decoration: none;
+    list-style-type:none;
+    padding: 15px;
+    width: 1%;
+
+}
+
+.icon1{
+    filter: invert(100%);
+    width: 45%;
+}
+
+.logo{
+    margin-left: 3%;
+    margin-top: 5%;
+}
+
+.menu a{
+    font-family:"Montserrat";
+    font-weight: 030;
+    font-size: medium;
+    color: white;
+    text-decoration: none;
+    list-style-type:none;
+    display: inline-flex;
+    padding: 20px;
+}
+
+.menu ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.menu a:hover{
+    color: #99ff33;
+}
+    
+header{
+    background-color: black;
+}
+
+
+p{
+    color:white; 
+}
+
+footer{
+    background-color: black;
+    padding-top:2%;
+}
+
+.banner{
+    width: 100%;
+}
+
+footer a{
+    font-family:"Montserrat";
+    margin-top: 150px;
+    font-weight: 300;
+    font-size: medium;
+    color: white;
+    text-decoration: none;
+    list-style-type:none;
+} 
+
+.flex-footer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-around;
+}
+
+.flex-iso{
+    margin-top: 6%;
+    margin-bottom: 6%;
+ 
+}
+
+.flex-categ ul{
+    padding-left: 0px;
+}
+
+.flex-categ a{
+    margin: 1%;
+}
+
+.flex-categ a:hover{
+    color: #99ff33;
+}
+
+.flex-conect a{
+    text-decoration: none;
+    list-style-type:none;
+    padding: 15px;
+    width: 1%;
+}
+
+.flex-conect nav{
+    width: 200px;
+}
+
+.flex-conect li{
+    margin-left: 50px;
+}
+
+.icons2{
+    filter: invert(100%);
+    width: 20%;
+}
+
+.flex-pagos{
+    height: 30%;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: center;
+
+}
+
+.flex-pagos img{
+    width: 3%;
+    margin: 0.5%;
+
+}
+
+
+.copyright{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
