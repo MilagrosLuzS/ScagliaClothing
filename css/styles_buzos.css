@@ -55,7 +55,7 @@
 .boton{
     padding-bottom: 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
 }
@@ -71,11 +71,13 @@
     color:black;
     background: rgb(247, 247, 247);
     cursor: pointer;
+    
 }
 
 .boton a:hover{
     color: #9f3;
     background-color: rgb(247, 247, 247);
+    
 }
 
 

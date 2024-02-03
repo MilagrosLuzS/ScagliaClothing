@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+<!DOCTYPE php>
     <html>  
-        <head></head>
+        <head>
             <meta charset="UTF-8"/>
             <meta name="keywords" content="buzos,indumentaria,negro,minimalismo,basicos">
             <meta name="description" content="Apasionados del diseño. Elevamos básicos al siguiente nivel, vistiendo distinto.">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <title>Agregar producto</title>
+            <title>About</title>
 
-            <link rel="stylesheet" type="text/css" href="../styles.css">
-            <link rel="stylesheet" type="text/css" href="../styles-cuenta.css">
-            <link rel="stylesheet" type="text/css" href="../styles-admin-agregar-prod.css">
-            <link rel="stylesheet" type="text/css" href="../responsive.css">
+            <link rel="stylesheet" type="text/css" href="css/styles.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-index.css">
+            <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
         </head>
 
         <body>
@@ -19,7 +19,7 @@
             <div class="hdr-flex">
                 <div class="general">
                         <section class="logo">
-                            <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
+                            <a href="index.php"><img src="Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
                         </section>
     
                         <section>
@@ -53,86 +53,27 @@
             </header>
 
             <div class="titulo">
-                <h1><strong>ADMINISTRADOR</strong></h1>
-                <h2>AGREGAR PRODUCTO</h2>
+                <h1><strong>ABOUT</strong></h1>
             </div>
 
             <div class="about-flex">
 
                 <div class="imagen">
-                    <ul>
-                        <li><a href="Admin_Inicio.php">Inicio</a></li>
-                        <li><a href="Admin_Productos.php">Productos</a></li>
-                        <li><a href="Admin_Ventas.php">Ventas</a></li>
-                    </ul>
+                    <img class="ramiro" src="Multimedia\Fotos\ramiro.jpg">
+                    <h2>Ramiro Scaglia, <br> fundador.</h2>
                 </div>
             <div class="content">
-                <section class="flex-dir">
-                <h2>AGREGAR NUEVO PRODUCTO</h2>
-                </section>    
-
-                <section> 
+                <h2> Hecho a mano por apasionados del diseño, pensado para apasionados del diseño. <br><br>
                     
-                    <form  id="formulario" action="#" method="post" enctype="application/x-www-form-urlencoded">
-                        
-                        <section id="checks">
-                            <h2>Nombre</h2>
-                            <input id="Nombre" type="text" name="Nombre" >
-                            <p></p>
-                        </section>
-
-                        <section id="checks">
-                            <h2>Precio</h2>
-                            <input id="Precio" type="number" name="Precio" >
-                            <p></p>
-                        </section>
+                    El usuario de Scaglia es muy perceptible a las distintas manifestaciones
+                    artísticas. No es experto, simplemente disfruta contemplandolas,
+                    teniendo en cuenta un común denominador: el color negro.</h2>
     
-        
-                        <section id="input_contenedor">
-                            <h2>Talles</h2>
-                            <label><input id="Talle1" type="checkbox" value="Talle1" name="Talles">Talle 1</label>
-                            <label><input id="Talle2" type="checkbox" value="Talle2" name="Talles">Talle 2</label>
-                            <label><input id="Talle3"type="checkbox" value="Talle3" name="Talles">Talle 3</label>
-                            <p></p>
-                        </section>
+                    <h2><strong>No somos básicos,somos prendas minimalistas con un diseño exclusivo, somos Scaglia Clothing.</strong></h2>
 
-                        <section id="input_contenedor">
-                        <h2>Colores</h2>
-                            <label><input id="Color1" type="checkbox" value="Color1" name="Negro">Negro</label>
-                            <label><input id="Color2" type="checkbox" value="Color2" name="Gris">Gris</label>
-                            <label><input id="Color3" type="checkbox" value="Color3" name="Blanco">Blanco</label>
-                            <p></p>
-                        </section>
+                    <button class="button">COMPRAR AHORA</button>
+            </div>
 
-                        <section id="input_contenedor">
-                            <h2>Stock</h2>
-                            <input id="Stock" type="number" name="Stock" >
-                            <p></p>
-                        </section>
-
-                        <section id="input_contenedor">
-                            <h2>Descripción</h2>
-                            <textarea id="freeform" name="freeform" rows="4" cols="50">
-                            </textarea>
-                        </section>
-
-
-                        <section id="input_contenedor">
-                            <h2>Imagen</h2>
-                            <input id="Imagen" type="file" name="Imagen" >
-                        </section>
-
-                        <br>
-                        
-                        <section class="submit">
-                            <input value="Guardar producto" class="button" type="submit" name="Guardar" >
-                        </section>
-
-
-                    </form>
-
-                </section>
-              
             </div>
 
 
@@ -140,7 +81,7 @@
                 <div class = "flex-footer">
  
                         <section class="flex-iso">
-                            <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
+                            <a href="index.php"><img src="Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
                         </section>
 
                         <section class="flex-categ">
@@ -179,13 +120,13 @@
                         <section class="flex-pagos">
                             <hr style="width:100%" color="white" >
                             <p>MÉTODOS DE PAGO</p>
-                                <img src="../Multimedia\Tarjetas\americam.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\banconaranjax.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\cabalcredito.png" alt="loading..."> 
-                                <img src="../Multimedia\Tarjetas\maestro.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\mercadopago.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\visa.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\master.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\americam.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\banconaranjax.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\cabalcredito.png" alt="loading..."> 
+                                <img src="Multimedia\Tarjetas\maestro.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\mercadopago.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\visa.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\master.png" alt="loading...">
 
                         </section>
 
@@ -196,7 +137,7 @@
                     <p>Copyright Scaglia - 2022. Todos los derechos reservados</p>
                 </div>
     
-                <script src="Validacion_Agregar_Producto.js"></script>
+
                 
             </footer>
         </body>

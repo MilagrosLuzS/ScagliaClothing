@@ -9,11 +9,11 @@ session_start();
             <meta name="description" content="Apasionados del diseño. Elevamos básicos al siguiente nivel, vistiendo distinto.">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <title>Scaglia Clothing</title>
+            <title>CARRITO</title>
 
-            <link rel="stylesheet" type="text/css" href="../styles.css">
-            <link rel="stylesheet" type="text/css" href="../styles-index.css">
-            <link rel="stylesheet" type="text/css" href="../responsive.css">
+            <link rel="stylesheet" type="text/css" href="css/styles.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-carrito.css">
+            <link rel="stylesheet" type="text/css" href="css/responsive.css">
         </head>
 
         <body>
@@ -43,7 +43,7 @@ session_start();
                 <section class="icons">
                     <nav>
                         <ul>
-                            <?php if (!empty($_SESSION['user'])) { ?>
+                        <?php if (!empty($_SESSION['user'])) { ?>
                                 <a href="Mi_cuenta.php"><li><svg class="icon1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 112c-48.6 0-88 39.4-88 88C168 248.6 207.4 288 256 288s88-39.4 88-88C344 151.4 304.6 112 256 112zM256 240c-22.06 0-40-17.95-40-40C216 177.9 233.9 160 256 160s40 17.94 40 40C296 222.1 278.1 240 256 240zM256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 464c-46.73 0-89.76-15.68-124.5-41.79C148.8 389 182.4 368 220.2 368h71.69c37.75 0 71.31 21.01 88.68 54.21C345.8 448.3 302.7 464 256 464zM416.2 388.5C389.2 346.3 343.2 320 291.8 320H220.2c-51.36 0-97.35 26.25-124.4 68.48C65.96 352.5 48 306.3 48 256c0-114.7 93.31-208 208-208s208 93.31 208 208C464 306.3 446 352.5 416.2 388.5z"/></svg></li></a>
                                 <a href="carrito.php"><li><svg class="icon1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M253.3 35.1c6.1-11.8 1.5-26.3-10.2-32.4s-26.3-1.5-32.4 10.2L117.6 192H32c-17.7 0-32 14.3-32 32s14.3 32 32 32L83.9 463.5C91 492 116.6 512 146 512H430c29.4 0 55-20 62.1-48.5L544 256c17.7 0 32-14.3 32-32s-14.3-32-32-32H458.4L365.3 12.9C359.2 1.2 344.7-3.4 332.9 2.7s-16.3 20.6-10.2 32.4L404.3 192H171.7L253.3 35.1zM192 304v96c0 8.8-7.2 16-16 16s-16-7.2-16-16V304c0-8.8 7.2-16 16-16s16 7.2 16 16zm96-16c8.8 0 16 7.2 16 16v96c0 8.8-7.2 16-16 16s-16-7.2-16-16V304c0-8.8 7.2-16 16-16zm128 16v96c0 8.8-7.2 16-16 16s-16-7.2-16-16V304c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg></li></a>
                                 <a href="wishlist.php"><li><svg class="icon1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M244 84L255.1 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 0 232.4 0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84C243.1 84 244 84.01 244 84L244 84zM255.1 163.9L210.1 117.1C188.4 96.28 157.6 86.4 127.3 91.44C81.55 99.07 48 138.7 48 185.1V190.9C48 219.1 59.71 246.1 80.34 265.3L256 429.3L431.7 265.3C452.3 246.1 464 219.1 464 190.9V185.1C464 138.7 430.4 99.07 384.7 91.44C354.4 86.4 323.6 96.28 301.9 117.1L255.1 163.9z"/></svg></li></a>
@@ -57,44 +57,53 @@ session_start();
                     </nav>
                 </section>
             </div>
+            
             </header>
 
-            <h1 class="titulo">#DROP 1</h1>
-            <div class="flex-sec1">
-                <section class="flexdflex">
-                <h2>Calidad. Minimalismo. <br> Diseños exclusivos.</h2>
-                <hr>
-                <a href="Buzos.php"><button>Shop Buzos</button></a>
+            <div class="titulo">
+                <h1><strong>CHECK-OUT</strong></h1>
+            </div>
+            <div class="gral">
+                <div class="contenedor">
+                    <h2><strong><span class="under"><a class="enlace" href="Login.html">Ingresa</a></span> a tu cuenta para seguir con tu compra.</strong></h2>
+                    <h2><strong>¿No tienes una cuenta? <span class="under"><a class="enlace" href="Register.html">Registrarse</a></span></strong></h2>
+                    </div>
+
+                <section class="pedido">
+                    <h2><strong>Tu pedido</strong></h2>
+                    <div class="producto_user">
+                        <img src="Multimedia/Fotos/bbasic1.jpg"/>
+                        <div class="data_product">
+                            <h3>Buzo Basic 1</h3>
+                            <h4>$9999</h4>
+                        </div>
+                    </div>
+                    <div class="subtotal">
+                        <h3>Subtotal</h3>
+                        <h4>$9999</h4>
+                    </div>
+                    <div class="envio">
+                        <div>
+                            <input name="envio" type="radio" value="Domicilio"/>Envio a domicilio
+                        </div>
+                        <div>
+                            <input name="envio" type="radio" value="Sucursal"/>Envio a sucurcial
+                        </div>
+                    </div>
+                    <div class="total">
+                        <h3>Total</h3>
+                        <h4>$9999</h4>
+                    </div>
+                    <div class="submit">
+                        <a href="#"><input type="submit" value="Finalizar Compra" class="button"></a>
+                    </div>
                 </section>
-                <img class="img" src="../Multimedia\Fotos\index1.jpg">
             </div>
-
-            <div class="universe">
-                <h2>Conocé más sobre el universo scaglia</h2>
-                <a href="About.php"><img class="img" src="../Multimedia\Recursos\Version negativo\Recurso 14.png"></a>
-            </div>
-
-            <img width="100%" src="../Multimedia\Fotos\banner1.jpg">
-
-            <div class="universe">
-                <h2>Conocé más sobre el universo scaglia</h2>
-                <a href="About.php"><img class="img" src="../Multimedia\Recursos\Version negativo\Recurso 14.png"></a>
-            </div>
-
-            <div class="flex-sec1">
-                <img class="img" src="../Multimedia\Fotos\index2.jpg">
-                <section class="flexdflex">
-                <h2>Buenos aires <br> F/W 2022</h2>
-                <hr>
-                <a href="Remeras.php"><button>Shop Remeras</button></a>
-                </section>
-            </div>
-
             <footer>
                 <div class = "flex-footer">
  
                         <section class="flex-iso">
-                            <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
+                            <a href="index.php"><img src="Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
                         </section>
 
                         <section class="flex-categ">
@@ -133,13 +142,13 @@ session_start();
                         <section class="flex-pagos">
                             <hr style="width:100%" color="white" >
                             <p>MÉTODOS DE PAGO</p>
-                                <img src="../Multimedia\Tarjetas\americam.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\banconaranjax.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\cabalcredito.png" alt="loading..."> 
-                                <img src="../Multimedia\Tarjetas\maestro.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\mercadopago.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\visa.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\master.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\americam.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\banconaranjax.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\cabalcredito.png" alt="loading..."> 
+                                <img src="Multimedia\Tarjetas\maestro.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\mercadopago.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\visa.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\master.png" alt="loading...">
 
                         </section>
 
@@ -153,5 +162,6 @@ session_start();
 
                 
             </footer>
+            <script src="js/Validacion_CheckOut.js"></script>
         </body>
     </html>

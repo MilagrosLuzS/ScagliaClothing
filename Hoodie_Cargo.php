@@ -6,11 +6,11 @@
             <meta name="description" content="Apasionados del diseño. Elevamos básicos al siguiente nivel, vistiendo distinto.">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <title>Hoodie Patch</title>
+            <title>Hoodie Cargo</title>
 
-            <link rel="stylesheet" type="text/css" href="../styles.css">
-            <link rel="stylesheet" type="text/css" href="../styles-producto.css">
-            <link rel="stylesheet" type="text/css" href="../responsive.css">
+            <link rel="stylesheet" type="text/css" href="css/styles.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-producto.css">
+            <link rel="stylesheet" type="text/css" href="css/responsive.css">
         </head>
 
         <body>
@@ -18,7 +18,7 @@
             <div class="hdr-flex">
                 <div class="general">
                         <section class="logo">
-                            <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
+                            <a href="index.php"><img src="Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
                         </section>
     
                         <section>
@@ -56,25 +56,25 @@
                     <div class="boton" id="atras">
                         &#60
                     </div>
-                    <img id="imagen" src="../Multimedia\Fotos\patch1.jpg">
+                    <img id="imagen" src="Multimedia\Fotos\bbasic1.jpg">
                     <div class="boton" id="adelante">
                         &#62
                     </div>
                     
                 </div>
-                <script src="../Carrousel_HP.js"></script>
+                <script src="js/Carrousel_HC.js"></script>
                 <!-- <div class="imagenes">
-                    <img class="prueba" src="Multimedia\Fotos\patch1.jpg">
+                    <img class="prueba" src="Multimedia\Fotos\cargo1.jpg">
                 </div> -->
 
                 <div class="info">
                     <section class="titulo">
-                        <h1><strong>HOODIE PATCH</strong></h1>
+                        <h1><strong>HOODIE CARGO</strong></h1>
                     </section>
                     <section class="descrip">
                         <h2>Buzo con bolsillo canguro y capucha. <br>
                             – Calce oversized <br>
-                            – Parche de gabardina <br><br>
+                            – Tres bolsillos sin fuelle <br><br>
                             100% algodón rústico.<br><br>
                             $9999
                         </h2>
@@ -118,7 +118,7 @@
                 <div class = "flex-footer">
  
                         <section class="flex-iso">
-                            <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
+                            <a href="index.php"><img src="Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
                         </section>
 
                         <section class="flex-categ">
@@ -157,13 +157,13 @@
                         <section class="flex-pagos">
                             <hr style="width:100%" color="white" >
                             <p>MÉTODOS DE PAGO</p>
-                                <img src="../Multimedia\Tarjetas\americam.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\banconaranjax.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\cabalcredito.png" alt="loading..."> 
-                                <img src="../Multimedia\Tarjetas\maestro.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\mercadopago.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\visa.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\master.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\americam.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\banconaranjax.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\cabalcredito.png" alt="loading..."> 
+                                <img src="Multimedia\Tarjetas\maestro.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\mercadopago.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\visa.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\master.png" alt="loading...">
 
                         </section>
 

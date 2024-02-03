@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador - Ventas</title>
-    <link rel="stylesheet" type="text/css" href="../styles.css">
-    <link rel="stylesheet" type="text/css" href="../styles-administrador-ventas.css">
-    <link rel="stylesheet" type="text/css" href="../styles-pedidos.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/styles-administrador-ventas.css">
+
 </head>
 <body>
     <header>
         <div class="hdr-flex">
             <div class="general">
                     <section class="logo">
-                        <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
+                        <a href="index.php"><img src="Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
                     </section>
 
                     <section>
@@ -54,49 +54,85 @@
 
         <div class="about-flex">
 
+            <div class="imagen">
+                <ul>
+                    <li><a href="Admin_Inicio.php">Inicio</a></li>
+                    <li><a href="Admin_Productos.php">Productos</a></li>
+                    <li><a href="Admin_Ventas.php">Ventas</a></li>
+            </div>
         <div class="content">
 
             <ul>
 
                 <li>
                     <h2>ORDEN #104</h2>
-              
-                    <div class="about-flex">
-
-                        <div class="tablas">
-                            <section class="Remeras">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Fecha</th>
-                                            <th>Comprador</th>
-                                            <th>Artículos</th>
-                                            <th>Total</th>
-                                            <th>Pago</th>
-                                            <th>Envío</th>
-                                            <th>Estado</th>
-                                            <th>Contacto</th>
-                                        </tr>
-                                    </thead>
-                                    <tr>
-                                        <td>12/07/22</td>
-                                        <td>Pablo Lamela <br>lamelapablo@gmail.com<br>1154209827<br>Victor Martinez 281 4 <br> Caballito - CABA <br> 1406</td>
-                                        <td>Remera Alta X1 (1) <br> Remera Basic 1 X1 (1)</td>
-                                        <td>$9999</td>
-                                        <td>Confirmado - VISA</td>
-                                        <td>Retiro en sucursal</td>
-                                        <td>Para empaquetar</td>
-                                        <td><a href="mailto:lamelapablo@gmail.com?Subject=Scaglia%20Clothing">Contacto</a></td>
-                                    </tr>
-    
-                                </table>
+                    <div class="flex-prod">
+                            
+                            <div class="data">
+                            <section class="flex-data">
+                                <p>12/07/22</p>
                             </section>
-                    </div>
+                            <section class="flex-data">
+                                <h3>Compra por:</h3>
+                                <p>Pablo Lamela</p>
+                            </section>
 
+                            <section class="flex-data">
+                                <p>Remera Alta X1 (1)</p>
+                            </section>
+
+                            <section class="flex-data">
+                                <p>Remera Basic 1 X1 (1)</p>
+                            </section>
+
+                            <section class="flex-data">
+                                <h3>Total:</h3>
+                                <p>$9999</p>
+                            </section>
+                            </div>
+
+                            <div class="flex-btn">
+                            <button class="button">Ver<br>detalle</button>
+                            </div>
                     </div>
                 </li>
 
-                
+                <li>
+                    <h2>ORDEN #103</h2>
+                    <div class="flex-prod">
+                            
+                            <div class="data">
+                            <section class="flex-data">
+                                <p>12/07/22</p>
+                            </section>
+                            <section class="flex-data">
+                                <h3>Compra por:</h3>
+                                <p>Juan Pejinakis</p>
+                            </section>
+
+                            <section class="flex-data">
+                                <p>Hoodie Cargo X1 (1)</p>
+                            </section>
+
+                            <section class="flex-data">
+                                <p>Remera Basic 1 X1 (1)</p>
+                            </section>
+
+                            <section class="flex-data">
+                                <p>Remera Basic 2 X1 (1)</p>
+                            </section>
+
+                            <section class="flex-data">
+                                <h3>Total:</h3>
+                                <p>$299999</p>
+                            </section>
+                            </div>
+
+                            <div class="flex-btn">
+                            <button class="button">Ver<br>detalle</button>
+                            </div>
+                    </div>
+                </li>
             </ul>
         </div>
 
@@ -106,7 +142,7 @@
         <div class = "flex-footer">
 
                 <section class="flex-iso">
-                    <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
+                    <a href="index.php"><img src="Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
                 </section>
 
                 <section class="flex-categ">
@@ -145,13 +181,13 @@
                 <section class="flex-pagos">
                     <hr style="width:100%" color="white" >
                     <p>MÉTODOS DE PAGO</p>
-                        <img src="../Multimedia\Tarjetas\americam.png" alt="loading...">
-                        <img src="../Multimedia\Tarjetas\banconaranjax.png" alt="loading...">
-                        <img src="../Multimedia\Tarjetas\cabalcredito.png" alt="loading..."> 
-                        <img src="../Multimedia\Tarjetas\maestro.png" alt="loading...">
-                        <img src="../Multimedia\Tarjetas\mercadopago.png" alt="loading...">
-                        <img src="../Multimedia\Tarjetas\visa.png" alt="loading...">
-                        <img src="../Multimedia\Tarjetas\master.png" alt="loading...">
+                        <img src="Multimedia\Tarjetas\americam.png" alt="loading...">
+                        <img src="Multimedia\Tarjetas\banconaranjax.png" alt="loading...">
+                        <img src="Multimedia\Tarjetas\cabalcredito.png" alt="loading..."> 
+                        <img src="Multimedia\Tarjetas\maestro.png" alt="loading...">
+                        <img src="Multimedia\Tarjetas\mercadopago.png" alt="loading...">
+                        <img src="Multimedia\Tarjetas\visa.png" alt="loading...">
+                        <img src="Multimedia\Tarjetas\master.png" alt="loading...">
                 </section>
         </div>
         <div class="copyright">

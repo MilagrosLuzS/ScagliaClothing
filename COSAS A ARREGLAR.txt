@@ -1,0 +1,4 @@
+arreglar los carrousells en producto.php
+CSS ABOUT
+adaptar el header a todas las paginas con las sessions
+crear un usuario en la base de datos para poner el nombre

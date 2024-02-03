@@ -1,21 +1,19 @@
-<!DOCTYPE html>
+<!DOCTYPE php>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remeras</title>
-    <link rel="stylesheet" type="text/css" href="../styles_remeras.css">
-    
-    <link rel="stylesheet" type="text/css" href="../styles.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <title>GUIA DE TALLES</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/styles_gdt.css">
 </head>
 <body>
     <header>
-        <div class="hdr-flex">
+    <div class="hdr-flex">
             <div class="general">
                     <section class="logo">
-                        <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
+                        <a href="index.php"><img src="Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
                     </section>
 
                     <section>
@@ -27,7 +25,7 @@
                                 <li>
                                     <a href="Remeras.php">REMERAS</a>
                                 </li>
-                                <li><a href="Guia_de_Talles.php">GUÍA DE TALLES</a></li>
+                                <li><a href="Guia de talles.php">GUÍA DE TALLES</a></li>
                                 <li><a href="About.php">ABOUT</a></li>
                             </ul>
                         </nav>
@@ -46,54 +44,85 @@
             </section>
         </div>
     </header>
-    <section class="presentacion">
-        <a href="index.php"><img src="../Multimedia\Fotos\remera-banner.jpg" /></a>
-    </section>
-    <section class="remeras_general">
-        <div class="titulo">
-            <h1><strong>REMERAS</strong></h1>
-        </div>
-        <div class="contenido_grillas">
-            <section class="remeras">
-                <a href="Remera_Alta.php"><img src="../Multimedia\Fotos\alta1.jpg" /></a>
-                <div class="nombre_precio">
-                    <h2><a href="Remera_Alta.php">REMERA ALTA</a></h2>
-                    <h3>$9999</h3>
-                </div>
-                <div class="boton">
-                    <a href="Remera_Alta.php" style="">COMPRAR</a>
-                    <a href="#" style="">AÑADIR A LA WISHLIST</a>
-                </div>
-            </section>
-            <section class="remeras">
-                <a href="Remera_Basic_1.php"><img src="../Multimedia\Fotos\basic1.jpg" /></a>
-                <div class="nombre_precio">
-                    <h2><a href="Remera_Basic_1.php">REMERA BASIC</a></h2>
-                    <h3>$9999</h3>
-                </div>
-                <div class="boton">
-                    <a href="Remera_Basic_1.php" style="">COMPRAR</a>
-                    <a href="#" style="">AÑADIR A LA WISHLIST</a>
-                </div>
-            </section>
-            <section class="remeras">
-                <a href="Remera_Basic_2.php"><img src="../Multimedia\Fotos\basic21.jpg" /></a>
-                <div class="nombre_precio">
-                    <h2><a href="Remera_Basic_2.php">REMERA BASIC 2</a></h2>
-                    <h3>$9999</h3>
-                </div>
-                <div class="boton">
-                    <a href="Remera_Basic_2.php" style="">COMPRAR</a>
-                    <a href="#" style="">AÑADIR A LA WISHLIST</a>
-                </div>
-            </section>
-        </div>
-    </section>
-    <<footer>
+
+    <div class="titulo">
+        <h1>GUIA DE TALLES</h1>
+    </div>
+    <div class="tablas">
+        <h2>REMERAS</h2>
+        <section class="Remeras">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Talle</th>
+                        <th>Pecho</th>
+                        <th>Cintura</th>
+                        <th>Largo</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>1</td>
+                    <td>50</td>
+                    <td>60</td>
+                    <td>61</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>54</td>
+                    <td>65</td>
+                    <td>68</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>58</td>
+                    <td>70</td>
+                    <td>74</td>
+                </tr>
+            </table>
+        </section>
+        <h2>BUZOS</h2>
+        <section class="Buzos">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Talle</th>
+                        <th>Pecho</th>
+                        <th>Cintura</th>
+                        <th>Largo</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>1</td>
+                    <td>57</td>
+                    <td>62</td>
+                    <td>70</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>60</td>
+                    <td>67</td>
+                    <td>73</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>73</td>
+                    <td>72</td>
+                    <td>76</td>
+                </tr>
+            </table>
+        </section>
+        <section class="FR">
+            <p>*Todas las medidas estan expresadas en cm.</p>
+        </section>
+    </div>
+
+    <footer>
         <div class = "flex-footer">
 
                 <section class="flex-iso">
-                    <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
+                    <a href="index.php"><img src="Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
                 </section>
 
                 <section class="flex-categ">
@@ -132,13 +161,13 @@
                 <section class="flex-pagos">
                     <hr style="width:100%" color="white" >
                     <p>MÉTODOS DE PAGO</p>
-                        <img src="../Multimedia\Tarjetas\americam.png" alt="loading...">
-                        <img src="../Multimedia\Tarjetas\banconaranjax.png" alt="loading...">
-                        <img src="../Multimedia\Tarjetas\cabalcredito.png" alt="loading..."> 
-                        <img src="../Multimedia\Tarjetas\maestro.png" alt="loading...">
-                        <img src="../Multimedia\Tarjetas\mercadopago.png" alt="loading...">
-                        <img src="../Multimedia\Tarjetas\visa.png" alt="loading...">
-                        <img src="../Multimedia\Tarjetas\master.png" alt="loading...">
+                        <img src="Multimedia\Tarjetas\americam.png" alt="loading...">
+                        <img src="Multimedia\Tarjetas\banconaranjax.png" alt="loading...">
+                        <img src="Multimedia\Tarjetas\cabalcredito.png" alt="loading..."> 
+                        <img src="Multimedia\Tarjetas\maestro.png" alt="loading...">
+                        <img src="Multimedia\Tarjetas\mercadopago.png" alt="loading...">
+                        <img src="Multimedia\Tarjetas\visa.png" alt="loading...">
+                        <img src="Multimedia\Tarjetas\master.png" alt="loading...">
                 </section>
         </div>
         <div class="copyright">

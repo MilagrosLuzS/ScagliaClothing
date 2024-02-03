@@ -8,9 +8,9 @@
 
             <title>Remera Basic 2</title>
 
-            <link rel="stylesheet" type="text/css" href="../styles.css">
-            <link rel="stylesheet" type="text/css" href="../styles-producto.css">
-            <link rel="stylesheet" type="text/css" href="../responsive.css">
+            <link rel="stylesheet" type="text/css" href="../css/styles.css">
+            <link rel="stylesheet" type="text/css" href="../css/styles-producto.css">
+            <link rel="stylesheet" type="text/css" href="../css/responsive.css">
         </head>
 
         <body>
@@ -18,7 +18,7 @@
             <div class="hdr-flex">
                 <div class="general">
                         <section class="logo">
-                            <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
+                            <a href="index.php"><img src="Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
                         </section>
     
                         <section>
@@ -57,13 +57,13 @@
                     <div class="boton" id="atras">
                         &#60
                     </div>
-                    <img id="imagen" src="../Multimedia\Fotos\basic21.jpg">
+                    <img id="imagen" src="Multimedia\Fotos\basic21.jpg">
                     <div class="boton" id="adelante">
                         &#62
                     </div>
                     
                 </div>
-                <script src="../Carrousel_RB2.js"></script>
+                <script src="js/Carrousel_RB2.js"></script>
                 <!-- <div class="imagenes">
                     <img class="prueba" src="Multimedia\Fotos\basic21.jpg">
                 </div> -->
@@ -119,7 +119,7 @@
                 <div class = "flex-footer">
  
                         <section class="flex-iso">
-                            <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
+                            <a href="index.php"><img src="Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
                         </section>
 
                         <section class="flex-categ">
@@ -157,13 +157,13 @@
                         <section class="flex-pagos">
                             <hr style="width:100%" color="white" >
                             <p>MÉTODOS DE PAGO</p>
-                                <img src="../Multimedia\Tarjetas\americam.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\banconaranjax.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\cabalcredito.png" alt="loading..."> 
-                                <img src="../Multimedia\Tarjetas\maestro.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\mercadopago.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\visa.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\master.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\americam.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\banconaranjax.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\cabalcredito.png" alt="loading..."> 
+                                <img src="Multimedia\Tarjetas\maestro.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\mercadopago.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\visa.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\master.png" alt="loading...">
 
                         </section>
 

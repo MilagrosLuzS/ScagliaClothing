@@ -1,16 +1,17 @@
 <!DOCTYPE html>
     <html>  
-        <head>
+        <head></head>
             <meta charset="UTF-8"/>
             <meta name="keywords" content="buzos,indumentaria,negro,minimalismo,basicos">
             <meta name="description" content="Apasionados del diseño. Elevamos básicos al siguiente nivel, vistiendo distinto.">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <title>Buzo Basic</title>
+            <title>Agregar producto</title>
 
-            <link rel="stylesheet" type="text/css" href="../styles.css">
-            <link rel="stylesheet" type="text/css" href="../styles-producto.css">
-            <link rel="stylesheet" type="text/css" href="../responsive.css">
+            <link rel="stylesheet" type="text/css" href="css/styles.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-cuenta.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-admin-agregar-prod.css">
+            <link rel="stylesheet" type="text/css" href="css/responsive.css">
         </head>
 
         <body>
@@ -18,7 +19,7 @@
             <div class="hdr-flex">
                 <div class="general">
                         <section class="logo">
-                            <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
+                            <a href="index.php"><img src="Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
                         </section>
     
                         <section>
@@ -51,70 +52,95 @@
             
             </header>
 
-            <div class="flex-prenda">
-                <div class="imagenes">
-                    <div class="boton" id="atras">
-                        &#60
-                    </div>
-                    <img id="imagen" src="../Multimedia\Fotos\bbasic1.jpg">
-                    <div class="boton" id="adelante">
-                        &#62
-                    </div>
+            <div class="titulo">
+                <h1><strong>ADMINISTRADOR</strong></h1>
+                <h2>AGREGAR PRODUCTO</h2>
+            </div>
+
+            <div class="about-flex">
+
+                <div class="imagen">
+                    <ul>
+                        <li><a href="Admin_Inicio.php">Inicio</a></li>
+                        <li><a href="Admin_Productos.php">Productos</a></li>
+                        <li><a href="Admin_Ventas.php">Ventas</a></li>
+                    </ul>
+                </div>
+            <div class="content">
+                <section class="flex-dir">
+                <h2>AGREGAR NUEVO PRODUCTO</h2>
+                </section>    
+
+                <section> 
                     
-                </div>
-                <script src="../Carrousel_BB.js"></script>
-                <div class="info">
-                    <section class="titulo">
-                        <h1><strong>BUZO BASIC</strong></h1>
-                    </section>
-                    <section class="descrip">
-                        <h2>Buzo básico escote redondo cerrado. <br>
-                            – Calce oversized <br>
-                            – Bordado delantero <br><br>
-                            100% algodón rústico.<br><br>
-                            $9999
-                        </h2>
-                    </section>
+                    <form  id="formulario" action="#" method="post" enctype="application/x-www-form-urlencoded">
+                        
+                        <section id="checks">
+                            <h2>Nombre</h2>
+                            <input id="Nombre" type="text" name="Nombre" >
+                            <p></p>
+                        </section>
 
-                    <section>
-                        <form class="descrip">
-                            <h3>COLOR</h3>
-                            <section class="color">
-                            <input class="color-input" name="color" value="negro" type="radio" id="color1"/>
-                            <label class="color-label" for="color1">NEGRO</label>
-                            </section>
-                            <h3>TALLE</h3>
-                            <section class="radio">
-                            <input class="radio-input" name="talle" value="opcion1" type="radio" id="radio1"/>
-                            <label class="radio-label" for="radio1">1</label>
-                            <input class="radio-input" name="talle" value="opcion2" type="radio" id="radio2"/>
-                            <label class="radio-label" for="radio2">2</label>
-                            <input class="radio-input" name="talle" value="opcion3" type="radio" id="radio3"/>
-                            <label class="radio-label" for="radio3">3</label>
-                            </section>
-                            
-                            <p class="guia"><a href="guia_de_talles.php">GUÍA DE TALLES</a></p>
+                        <section id="checks">
+                            <h2>Precio</h2>
+                            <input id="Precio" type="number" name="Precio" >
+                            <p></p>
+                        </section>
+    
+        
+                        <section id="input_contenedor">
+                            <h2>Talles</h2>
+                            <label><input id="Talle1" type="checkbox" value="Talle1" name="Talles">Talle 1</label>
+                            <label><input id="Talle2" type="checkbox" value="Talle2" name="Talles">Talle 2</label>
+                            <label><input id="Talle3"type="checkbox" value="Talle3" name="Talles">Talle 3</label>
+                            <p></p>
+                        </section>
 
-                            <section class="flex-botones">
+                        <section id="input_contenedor">
+                        <h2>Colores</h2>
+                            <label><input id="Color1" type="checkbox" value="Color1" name="Negro">Negro</label>
+                            <label><input id="Color2" type="checkbox" value="Color2" name="Gris">Gris</label>
+                            <label><input id="Color3" type="checkbox" value="Color3" name="Blanco">Blanco</label>
+                            <p></p>
+                        </section>
 
-                            <input class= "button" type="submit" value="AÑADIR AL CARRITO">
-                            <button class="button">AGREGAR A MI WISHLIST</button>
+                        <section id="input_contenedor">
+                            <h2>Stock</h2>
+                            <input id="Stock" type="number" name="Stock" >
+                            <p></p>
+                        </section>
 
-                            </section>
-                        </form>
- 
-                        <h4>ENVÍOS</h4>
-                        <p class="env-camb">El envio se realiza a través del correo Andreani, a domicilio o sucursal, o retiro en nuestros locales. Para más información consulta aquí</p>
-                        <h4>CAMBIOS Y DEVOLUCIONES</h4>
-                        <p class="env-camb">Podrás realizar un cambio hasta 30 días después de haber recibido tu compra. Los productos deberán encontrarse en el mismo estado en que fueron remitidos, sin haber sido utilizados, y con el embalaje y etiquetas originales en buen estado. Para más información hacé click acá.</p>
-                    </section>
-                </div>
+                        <section id="input_contenedor">
+                            <h2>Descripción</h2>
+                            <textarea id="freeform" name="freeform" rows="4" cols="50">
+                            </textarea>
+                        </section>
+
+
+                        <section id="input_contenedor">
+                            <h2>Imagen</h2>
+                            <input id="Imagen" type="file" name="Imagen" >
+                        </section>
+
+                        <br>
+                        
+                        <section class="submit">
+                            <input value="Guardar producto" class="button" type="submit" name="Guardar" >
+                        </section>
+
+
+                    </form>
+
+                </section>
+              
+            </div>
+
 
             <footer>
                 <div class = "flex-footer">
  
                         <section class="flex-iso">
-                            <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
+                            <a href="index.php"><img src="Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
                         </section>
 
                         <section class="flex-categ">
@@ -153,13 +179,13 @@
                         <section class="flex-pagos">
                             <hr style="width:100%" color="white" >
                             <p>MÉTODOS DE PAGO</p>
-                                <img src="../Multimedia\Tarjetas\americam.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\banconaranjax.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\cabalcredito.png" alt="loading..."> 
-                                <img src="../Multimedia\Tarjetas\maestro.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\mercadopago.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\visa.png" alt="loading...">
-                                <img src="../Multimedia\Tarjetas\master.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\americam.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\banconaranjax.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\cabalcredito.png" alt="loading..."> 
+                                <img src="Multimedia\Tarjetas\maestro.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\mercadopago.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\visa.png" alt="loading...">
+                                <img src="Multimedia\Tarjetas\master.png" alt="loading...">
 
                         </section>
 
@@ -170,8 +196,8 @@
                     <p>Copyright Scaglia - 2022. Todos los derechos reservados</p>
                 </div>
     
-
+                <script src="Validacion_Agregar_Producto.js"></script>
                 
             </footer>
         </body>
-    </html>
+</html>

@@ -1,4 +1,4 @@
-<!DOCTYPE php>
+<!DOCTYPE html>
     <html>  
         <head>
             <meta charset="UTF-8"/>
@@ -6,12 +6,11 @@
             <meta name="description" content="Apasionados del diseño. Elevamos básicos al siguiente nivel, vistiendo distinto.">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <title>About</title>
+            <title>Hoodie Patch</title>
 
-            <link rel="stylesheet" type="text/css" href="../styles.css">
-            <link rel="stylesheet" type="text/css" href="../styles-about.css">
-            <link rel="stylesheet" type="text/css" href="../responsive.css"
-
+            <link rel="stylesheet" type="text/css" href="css/styles.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-producto.css">
+            <link rel="stylesheet" type="text/css" href="css/responsive.css">
         </head>
 
         <body>
@@ -19,7 +18,7 @@
             <div class="hdr-flex">
                 <div class="general">
                         <section class="logo">
-                            <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
+                            <a href="index.php"><img src="Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
                         </section>
     
                         <section>
@@ -52,36 +51,74 @@
             
             </header>
 
-            <div class="titulo">
-                <h1><strong>ABOUT</strong></h1>
-            </div>
-
-            <div class="about-flex">
-
-                <div class="imagen">
-                    <img class="ramiro" src="../Multimedia\Fotos\ramiro.jpg">
-                    <h2>Ramiro Scaglia, <br> fundador.</h2>
-                </div>
-            <div class="content">
-                <h2> Hecho a mano por apasionados del diseño, pensado para apasionados del diseño. <br><br>
+            <div class="flex-prenda">
+                <div class="imagenes">
+                    <div class="boton" id="atras">
+                        &#60
+                    </div>
+                    <img id="imagen" src="Multimedia\Fotos\patch1.jpg">
+                    <div class="boton" id="adelante">
+                        &#62
+                    </div>
                     
-                    El usuario de Scaglia es muy perceptible a las distintas manifestaciones
-                    artísticas. No es experto, simplemente disfruta contemplandolas,
-                    teniendo en cuenta un común denominador: el color negro.</h2>
-    
-                    <h2><strong>No somos básicos,somos prendas minimalistas con un diseño exclusivo, somos Scaglia Clothing.</strong></h2>
+                </div>
+                <script src="js/Carrousel_HP.js"></script>
+                <!-- <div class="imagenes">
+                    <img class="prueba" src="Multimedia\Fotos\patch1.jpg">
+                </div> -->
 
-                    <button class="button">COMPRAR AHORA</button>
-            </div>
+                <div class="info">
+                    <section class="titulo">
+                        <h1><strong>HOODIE PATCH</strong></h1>
+                    </section>
+                    <section class="descrip">
+                        <h2>Buzo con bolsillo canguro y capucha. <br>
+                            – Calce oversized <br>
+                            – Parche de gabardina <br><br>
+                            100% algodón rústico.<br><br>
+                            $9999
+                        </h2>
+                    </section>
 
-            </div>
+                    <section>
+                        <form class="descrip">
+                            <h3>COLOR</h3>
+                            <section class="color">
+                            <input class="color-input" name="color" value="negro" type="radio" id="color1"/>
+                            <label class="color-label" for="color1">NEGRO</label>
+                            </section>
+                            <h3>TALLE</h3>
+                            <section class="radio">
+                            <input class="radio-input" name="talle" value="opcion1" type="radio" id="radio1"/>
+                            <label class="radio-label" for="radio1">1</label>
+                            <input class="radio-input" name="talle" value="opcion2" type="radio" id="radio2"/>
+                            <label class="radio-label" for="radio2">2</label>
+                            <input class="radio-input" name="talle" value="opcion3" type="radio" id="radio3"/>
+                            <label class="radio-label" for="radio3">3</label>
+                            </section>
+                            
+                            <p class="guia"><a href="guia_de_talles.php">GUÍA DE TALLES</a></p>
 
+                            <section class="flex-botones">
+
+                            <input class= "button" type="submit" value="AÑADIR AL CARRITO">
+                            <button class="button">AGREGAR A MI WISHLIST</button>
+
+                            </section>
+                        </form>
+ 
+                        <h4>ENVÍOS</h4>
+                        <p class="env-camb">El envio se realiza a través del correo Andreani, a domicilio o sucursal, o retiro en nuestros locales. Para más información consulta aquí</p>
+                        <h4>CAMBIOS Y DEVOLUCIONES</h4>
+                        <p class="env-camb">Podrás realizar un cambio hasta 30 días después de haber recibido tu compra. Los productos deberán encontrarse en el mismo estado en que fueron remitidos, sin haber sido utilizados, y con el embalaje y etiquetas originales en buen estado. Para más información hacé click acá.</p>
+                    </section>
+                </div>
 
             <footer>
                 <div class = "flex-footer">
  
                         <section class="flex-iso">
-                            <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
+                            <a href="index.php"><img src="Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
                         </section>
 
                         <section class="flex-categ">
@@ -141,4 +178,4 @@
                 
             </footer>
         </body>
-</html>
+    </html>

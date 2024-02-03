@@ -1,4 +1,4 @@
-var contenido = ['Multimedia/Fotos_Producto/Fotos_C/RA_1.jpg','Multimedia/Fotos_Producto/Fotos_C/RA_2.jpg','Multimedia/Fotos_Producto/Fotos_C/RA_3.jpg','Multimedia/Fotos_Producto/Fotos_C/RA_4.jpg','Multimedia/Fotos_Producto/Fotos_C/RA_5.jpg']
+var contenido = ['../Multimedia/Fotos_Producto/Fotos_C/RA_1.jpg','../Multimedia/Fotos_Producto/Fotos_C/RA_2.jpg','../Multimedia/Fotos_Producto/Fotos_C/RA_3.jpg','../Multimedia/Fotos_Producto/Fotos_C/RA_4.jpg','../Multimedia/Fotos_Producto/Fotos_C/RA_5.jpg']
     cont = 0;
 
 const back = document.getElementById('atras');
