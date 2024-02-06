@@ -1,6 +1,4 @@
-var contenido = ['Multimedia/Fotos/alta1.jpg','Multimedia/Fotos/basic21.jpg','Multimedia/Fotos/bbasic1.jpg','Multimedia/Fotos/patch1.jpg'],
-    cont = 0;
-
+var cont = 0;
 const back = document.getElementById('atras');
 const img = document.getElementById('imagen');
 const foward = document.getElementById('adelante');

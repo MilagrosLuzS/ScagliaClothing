@@ -72,18 +72,29 @@ session_start();
             $arr = array();
             $producto = $result->fetch_assoc();
             $arr[]=$producto["size"];
+
+            //imagenes
+            $query_img = "SELECT image FROM product_images WHERE product_images.product_id = $id_producto";
+            $result_img = consultaSQL($conn,$query_img);
+            $imagenes = array();
+            while($imagen = $result_img->fetch_assoc()){
+                $imagenes[] = $imagen["image"];
+            }
+            //convierto el array en un objeto de js para poder usarlo en js
+            $imagenes_json = json_encode($imagenes);
             echo('
                 <div class="flex-prenda">
                 <div class="imagenes">
                     <div class="boton" id="atras">
                         &#60
                     </div>
-                    <img id="imagen" src="'.$producto["img"].'">
+                    <img id="imagen" src="'.$imagenes[0].'">
                     <div class="boton" id="adelante">
                         &#62
                     </div>
                 </div>
-                <script src="js/Carrousel_RA.js"></script>
+                <script> var contenido = '.$imagenes_json.'; </script>
+                <script src="js/Carrousel.js"></script>
                 <div class="info">
                 <section class="titulo">
                     <h1><strong>'.$producto["product_name"].'</strong></h1>
