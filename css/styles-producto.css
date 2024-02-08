@@ -208,3 +208,18 @@ h4{
     top: calc(50%-70px);
 }
 
+#alerta{
+    color:white;
+    font-family: Montserrat;
+    text-decoration: none;
+    font-size:12px;
+    background: black;
+    padding: 10px 15px;
+    border-radius: 5px;
+    letter-spacing: 3px;
+    margin:15%;
+}
+
+.alerta-AC{
+    display:none;
+}

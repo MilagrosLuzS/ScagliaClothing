@@ -13,6 +13,7 @@ session_start();
         <link rel="stylesheet" type="text/css" href="css/styles.css">
         <link rel="stylesheet" type="text/css" href="css/styles-producto.css">
         <link rel="stylesheet" type="text/css" href="css/responsive.css">
+        <script src="js/Producto.js"></script>
     </head>
 
     <body>
@@ -67,6 +68,7 @@ session_start();
             include('bd.php');
             $conn = conectarBD();
             $id_producto = $_GET['id'];
+            echo ('<script>id_producto='.$id_producto.' </script>');
             $query = "SELECT * FROM product WHERE product.product_id = $id_producto";
             $result = consultaSQL($conn,$query);
             $arr = array();
@@ -121,7 +123,7 @@ session_start();
                         <section class="radio">
                 ');
             foreach($arr as $talle){
-                echo('<input class="radio-input" name="talle" value="opcion'.$talle.'" type="radio" id="radio'.$talle.'"/>
+                echo('<input class="radio-input" name="talle" value="'.$talle.'" type="radio" id="radio'.$talle.'"/>
                 <label class="radio-label" for="radio'.$talle.'">'.$talle.'</label>');
             }
             echo('
@@ -129,12 +131,18 @@ session_start();
                         <p class="guia"><a href="guia_de_talles.php">GUÍA DE TALLES</a></p>
             ');
             if(!empty($_SESSION['user'])){
+                
                 echo('
-                    <section class="flex-botones">
-                            <input class= "button" type="submit" value="AÑADIR AL CARRITO">
-                            </section>
-                        </form>
-                    </section>
+                                <section class="flex-botones">
+                                    <a onclick="agregarProducto()" class= "button" >AÑADIR AL CARRITO [<span id="cantidad"></span>]</a>
+                                    <a onclick="mas()" class="button"> + </a>
+                                    <a onclick="menos()" class="button"> - </a>
+                                </section>
+                            </form>
+                        </section>
+                        <div id="alerta" class="alerta-AC" >
+                                    Agregado correctamente al carrito
+                        </div>
                     </div>
                 ');
             }
@@ -149,67 +157,7 @@ session_start();
                 ');
             };
         ?>
-
-        <!-- <div class="flex-prenda">
-            <div class="imagenes">
-                <div class="boton" id="atras">
-                    &#60
-                </div>
-                <img id="imagen" src="Multimedia\Fotos\alta1.jpg">
-                <div class="boton" id="adelante">
-                    &#62
-                </div>
-                
-            </div>
-            <script src="js/Carrousel_RA.js"></script>
-
-            <div class="info">
-                <section class="titulo">
-                    <h1><strong>REMERA ALTA</strong></h1>
-                </section>
-                <section class="descrip">
-                    <h2>Remera de jersey de algodón con cuello alto. <br>
-                        – Calce oversized <br>
-                        – Bordado delantero <br><br>
-                        100% algodón pima 40/1.<br><br>
-                        $9999
-                    </h2>
-                </section>
-
-                <section>
-                    <form class="descrip">
-                        <h3>COLOR</h3>
-                        <section class="color">
-                        <input class="color-input" name="color" value="negro" type="radio" id="color1"/>
-                        <label class="color-label" for="color1">NEGRO</label>
-                        </section>
-                        <h3>TALLE</h3>
-                        <section class="radio">
-                        <input class="radio-input" name="talle" value="opcion1" type="radio" id="radio1"/>
-                        <label class="radio-label" for="radio1">1</label>
-                        <input class="radio-input" name="talle" value="opcion2" type="radio" id="radio2"/>
-                        <label class="radio-label" for="radio2">2</label>
-                        <input class="radio-input" name="talle" value="opcion3" type="radio" id="radio3"/>
-                        <label class="radio-label" for="radio3">3</label>
-                        </section>
-                        
-                        <p class="guia"><a href="guia_de_talles.php">GUÍA DE TALLES</a></p>
-
-                        <section class="flex-botones">
-
-                        <input class= "button" type="submit" value="AÑADIR AL CARRITO">
-                        <button class="button">AGREGAR A MI WISHLIST</button>
-
-                        </section>
-                    </form>
-
-                    <h4>ENVÍOS</h4>
-                    <p class="env-camb">El envio se realiza a través del correo Andreani, a domicilio o sucursal, o retiro en nuestros locales. Para más información consulta aquí</p>
-                    <h4>CAMBIOS Y DEVOLUCIONES</h4>
-                    <p class="env-camb">Podrás realizar un cambio hasta 30 días después de haber recibido tu compra. Los productos deberán encontrarse en el mismo estado en que fueron remitidos, sin haber sido utilizados, y con el embalaje y etiquetas originales en buen estado. Para más información hacé click acá.</p>
-                </section>
-            </div>   -->
-
+        <script>actualizarCantidad()</script>
         <footer>
             <div class = "flex-footer">
 
