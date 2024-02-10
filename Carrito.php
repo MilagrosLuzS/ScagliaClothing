@@ -1,5 +1,70 @@
-<?php 
-session_start();
+<?php
+    function traerCarrito($email,$conn){
+        $query = "SELECT cart.*,user.email FROM cart JOIN user ON cart.user_id = user.id WHERE user.email = '$email'";
+        $res = consultaSQL($conn,$query);
+        if($res->num_rows < 1){
+            $res = null;
+        }
+        return $res;
+    }
+
+    function traerProductosCarrito($id_carrito,$conn){
+        $query = "SELECT cart_products.*,product.product_name as title, product.price as precio, 
+        (SELECT image FROM product_images WHERE product_images.product_id = cart_products.product_id LIMIT 1) as src 
+        FROM cart_products JOIN product ON cart_products.product_id = product.product_id AND cart_products.talle = product.size WHERE cart_id = $id_carrito;";
+        $res = consultaSQL($conn,$query);
+        if($res->num_rows < 1){
+            $res = NULL;
+        }
+        return $res;
+    }
+    session_start();
+    if($_SERVER['REQUEST_METHOD']==='POST'){
+        include_once('bd.php');
+        $conn = conectarBD();
+        //me fijo si hay que eliminar un producto del carrito
+        if(isset($_POST["id_eliminar"])){
+            $id_eliminar = $_POST["id_eliminar"];
+            $query = "DELETE FROM cart_products WHERE id = $id_eliminar";
+            consultaSQL($conn,$query);
+        }
+        else{
+            $id_producto = $_POST["id_product"];
+            $cantidad = $_POST["quantity"];
+            $talle = $_POST["talle"];
+            $email = $_SESSION["user"];
+            $result = traerCarrito($email,$conn);
+            $carrito = NULL;
+            // Si no existe el carrito, lo creo
+            if($result->num_rows==0){
+                $query = "INSERT INTO cart(user_id,fecha) VALUES ((SELECT id FROM user WHERE email = '$email'),CURRENT_TIMESTAMP)";
+                $result2 = consultaSQL($conn,$query);
+                // una vez creado, lo traigo
+                $result3 = traerCarrito($email,$conn);
+                $carrito = $result3->fetch_assoc();
+            }
+            else{
+                $carrito = $result->fetch_assoc();
+            }
+            if($carrito){
+                $id_carrito = $carrito["id"];
+                echo($id_carrito);
+                //una vez que tengo el carrito me fijo si ya existe el mismo producto con mismo talle
+                $query = "SELECT id FROM cart_products WHERE cart_id = $id_carrito AND product_id = $id_producto AND talle = $talle";
+                $result = consultaSQL($conn,$query);
+                if($result->num_rows == 0){
+                    //si no existe agrego la cantidad dada por el cliente
+                    $query = "INSERT INTO cart_products(cart_id,product_id,talle,quantity) VALUES ($id_carrito,$id_producto,$talle,$cantidad)";
+                    consultaSQL($conn,$query);
+                }
+                else{
+                    //si existe cambio la cantidad a lo que me dieron en el post
+                    $query = "UPDATE cart_products SET quantity = $cantidad WHERE cart_id = $id_carrito AND product_id = $id_producto AND talle = $talle";
+                    consultaSQL($conn,$query);
+                }
+            }
+        }
+    }
 ?>
 <!DOCTYPE html>
     <html>  
@@ -14,6 +79,7 @@ session_start();
             <link rel="stylesheet" type="text/css" href="css/styles.css">
             <link rel="stylesheet" type="text/css" href="css/styles-carrito.css">
             <link rel="stylesheet" type="text/css" href="css/responsive.css">
+            <script src="js/carrito.js"></script>
         </head>
 
         <body>
@@ -21,7 +87,7 @@ session_start();
             <div class="hdr-flex">
                 <div class="general">
                         <section class="logo">
-                            <a href="index.php"><img src="../Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
+                            <a href="index.php"><img src="Multimedia\Recursos\Version negativo\recurso13.png" alt="loading.."></a>
                         </section>
     
                         <section>
@@ -61,44 +127,127 @@ session_start();
             </header>
 
             <div class="titulo">
-                <h1><strong>CHECK-OUT</strong></h1>
+                <h1><strong>TU CARRITO</strong></h1>
             </div>
-            <div class="gral">
-                <div class="contenedor">
-                    <h2><strong><span class="under"><a class="enlace" href="Login.html">Ingresa</a></span> a tu cuenta para seguir con tu compra.</strong></h2>
-                    <h2><strong>¿No tienes una cuenta? <span class="under"><a class="enlace" href="Register.html">Registrarse</a></span></strong></h2>
-                    </div>
-
-                <section class="pedido">
-                    <h2><strong>Tu pedido</strong></h2>
-                    <div class="producto_user">
-                        <img src="Multimedia/Fotos/bbasic1.jpg"/>
-                        <div class="data_product">
-                            <h3>Buzo Basic 1</h3>
+            
+                    <?php
+                        include_once("bd.php");
+                        $conn = conectarBD();
+                        $carrito = traerCarrito($_SESSION["user"],$conn);
+                        if(!empty($carrito)){
+                            $carrito = $carrito->fetch_assoc();
+                            $carrito_productos = traerProductosCarrito($carrito["id"],$conn);
+                        }
+                        else{
+                            $carrito_productos = null;
+                        }
+                        if(!empty($carrito) && !empty($carrito_productos)){
+                            $subtotal = 0;
+                            echo('
+                                <div class="gral">
+                                <div class="contenedor">
+                            ');
+                            while($carrito_producto = $carrito_productos->fetch_assoc()){
+                                echo('
+                                <section class="pedido">
+                                    <div class="producto_user">
+                                        <img src="'.$carrito_producto["src"].'"/>
+                                        <div class="data_product">
+                                            <h3>'.$carrito_producto["title"].'</h3>
+                                            <h4>$'.$carrito_producto["precio"].'</h4>
+                                            <h3>Cantidad = '. $carrito_producto["quantity"].'</h3>
+                                        </div>
+                                    </div>
+                                    <div class="subtotal">
+                                        <div class = "precio-unitario">
+                                            <h3>Subtotal</h3>
+                                            <h4>$'.$carrito_producto["precio"]*$carrito_producto["quantity"].'</h4>
+                                        </div>
+                                        <div class="bot-elim">
+                                            <button class="eliminar" onclick="eliminarPorductoCarrito('.$carrito_producto["id"].')">Eliminar</button>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </section>');
+                                $subtotal+=$carrito_producto["precio"]*$carrito_producto["quantity"];
+                            }
+                            echo('</div>
+                            </div>');
+                            echo('<div class="fijo">
+                                <div class="total">
+                                    <h3>Total</h3>
+                                    <h4>$'.$subtotal.'</h4>
+                                </div>
+                                <div class="submit">
+                                    <a href="#"><input type="submit" value="Finalizar Compra" class="button"></a>
+                                </div>
+                            </div>');
+                        }
+                        else{
+                            echo("<div class='no-prod'>
+                                    <h3>No hay productos en tu carrito.</h3>
+                                </div>");
+                        }
+                        echo('</div>
+                        </div>');
+                    ?>
+                    <!-- <section class="pedido">
+                        <div class="producto_user">
+                            <img src="Multimedia/Fotos/bbasic1.jpg"/>
+                            <div class="data_product">
+                                <h3>Buzo Basic 1</h3>
+                                <h4>$9999</h4>
+                            </div>
+                        </div>
+                        <div class="subtotal">
+                            <h3>Subtotal</h3>
                             <h4>$9999</h4>
                         </div>
-                    </div>
-                    <div class="subtotal">
-                        <h3>Subtotal</h3>
-                        <h4>$9999</h4>
-                    </div>
-                    <div class="envio">
-                        <div>
-                            <input name="envio" type="radio" value="Domicilio"/>Envio a domicilio
+                        <div class="envio">
+                            <div>
+                                <input name="envio" type="radio" value="Domicilio"/>Envio a domicilio
+                            </div>
+                            <div>
+                                <input name="envio" type="radio" value="Sucursal"/>Envio a sucurcial
+                            </div>
                         </div>
-                        <div>
-                            <input name="envio" type="radio" value="Sucursal"/>Envio a sucurcial
+                        
+                    </section>
+                    <section class="pedido">
+                        <div class="producto_user">
+                            <img src="Multimedia/Fotos_Producto/alta1.jpg"/>
+                            <div class="data_product">
+                                <h3>Buzo Basic 2</h3>
+                                <h4>$9999</h4>
+                            </div>
                         </div>
-                    </div>
+                        <div class="subtotal">
+                            <h3>Subtotal</h3>
+                            <h4>$9999</h4>
+                        </div>
+                        <div class="envio">
+                            <div>
+                                <input name="envio" type="radio" value="Domicilio"/>Envio a domicilio
+                            </div>
+                            <div>
+                                <input name="envio" type="radio" value="Sucursal"/>Envio a sucurcial
+                            </div>
+                        </div>
+                    </section> 
+                    
+                </div>
+            </div>
+            <div class="fijo">
                     <div class="total">
-                        <h3>Total</h3>
-                        <h4>$9999</h4>
+                                <h3>Total</h3>
+                                <h4>$9999</h4>
                     </div>
                     <div class="submit">
                         <a href="#"><input type="submit" value="Finalizar Compra" class="button"></a>
                     </div>
-                </section>
-            </div>
+                </div>
+                            -->
             <footer>
                 <div class = "flex-footer">
  

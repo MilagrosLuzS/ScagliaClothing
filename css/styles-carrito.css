@@ -17,11 +17,11 @@
 
 .gral{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     margin: 5% 0% 5% 5%;
     justify-content: center;
-}
+} 
 
 #formulario{
     display: grid;
@@ -33,9 +33,10 @@
 }
 
 .contenedor{
-    padding-right: 30%;
-    padding-bottom: 20%;
-    margin-bottom: 10%;
+    display:flex;
+    flex-wrap: wrap;
+    max-width: 48%; 
+    width: 100%;
 }
 
 .input_contenedor input{
@@ -65,20 +66,11 @@
 }
 
 .pedido{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     padding-left: 5%;
     padding-right: 5%;
-    border-left: solid 1px;
-    border-color: #999;
 }
 
 .data_product{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
     border-bottom: solid 1px;
     border-color: #999;
 }
@@ -92,7 +84,8 @@
 .submit{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content:center;
+    margin-top: 1%;
 }
 
 .button{
@@ -157,4 +150,52 @@
 .input_contenedor.fallida p {
     visibility: visible;
     color:#e73623;
+}
+
+.fijo{
+    background-color: gray;
+    display:flex;
+    justify-content: end;
+}
+
+
+
+.total{
+    margin-right: 7%;
+    justify-content: center;
+}
+
+.eliminar{
+    border-radius: 4px;
+    background-color: black;
+    border: none;
+    color:white;
+    text-align: center;
+    font-size:medium;
+    font-family: Montserrat;
+    padding: 20px;
+    width: aut;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.eliminar:hover{
+    color:#99ff33;
+}
+
+.bot-elim{
+    display: flex;
+    justify-content: center;
+}
+
+.no-prod{
+    color: black;
+    letter-spacing: 3px;
+    text-align: center;
+    font-size:medium;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    margin: 20%;
 }

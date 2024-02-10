@@ -1,4 +1,4 @@
-var id_producto,cantidad = 1, cantidad_max,talle;
+var id_producto,cantidad = 1,cantidad_max,talle;
 
 function obtenerTalle() {
     var talleSeleccionado = document.querySelector('input[name="talle"]:checked');
@@ -14,8 +14,8 @@ function obtenerTalle() {
 
 function agregarProducto(){
     var data = new FormData();
-    data.append("id_producto",id_producto);
-    data.append("cantidad",cantidad);
+    data.append("id_product",id_producto);
+    data.append("quantity",cantidad);
     talle = obtenerTalle();
     while(talle==null){
         mostrarAlertaTalle();
@@ -32,7 +32,7 @@ function agregarProducto(){
         }
     });
 
-    xhr.open("POST","carrito.php");
+    xhr.open("POST","Carrito.php");
 
     xhr.send(data);
 
