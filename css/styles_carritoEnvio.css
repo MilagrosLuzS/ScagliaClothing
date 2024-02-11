@@ -1,0 +1,169 @@
+body{
+    font-family:"Montserrat";
+    background: url(Multimedia/Fotos/RemeraBasic2/DSC02467.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.register{
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+.contenedor{
+    width: 100%;
+    padding: 30px;
+}
+
+#formulario{
+    background-color: white;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    padding: 5px;
+}
+
+.switch{
+    color: black;
+}
+
+h1{
+    text-align: center;
+    font-size:180%;
+}
+
+input[type="text"],
+input[type="password"]{
+    font-size: 20px;
+    width: 82%;
+    padding: 10px;
+    margin-top: 5%;
+    border:none;
+}
+
+.input_contenedor{
+    margin-bottom: 15px;
+    border: 1px solid #aaa;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon{
+    min-width: 50px;
+    text-align: center;
+}
+
+.button{
+    text-decoration: none;
+    border: none;
+    width: 100%;
+    color: white;
+    font-size:20px;
+    background: black;
+    padding: 15px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover{
+    background: #99ff33;
+}
+
+.contenedor p{
+    text-align: center;
+}
+
+a{
+    color:white;
+}
+
+.contenedor a{
+    color: black;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+::placeholder{
+    font-size: small;
+}
+
+.contenedor a:hover{
+    color: #99ff33;
+}
+
+@media(min-width:768px){
+    #formulario{
+        margin:auto;
+        width: 500px;
+        border-radius: 2%;
+    }
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.input_contenedor.correcta input{
+    border: 0.1px solid;
+    border-color: lightgreen;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input_contenedor.fallida input{
+    border: 0.1px solid;
+    border-color: #fe5f55;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.input_contenedor p {
+    visibility: hidden;
+    font-size: small;
+}
+
+.input_contenedor.fallida p {
+    visibility: visible;
+    color:#e73623;
+}
+
+.Entregas{
+    display:flex;
+    justify-content: center;
+}
+
+.radio{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.radio-input{
+    display: none;
+}
+
+.radio-label{
+    padding: 10%;
+    font-size: 17px;
+    font-family: Montserrat;
+    color:white;
+    background: black;
+    cursor: pointer;
+}
+
+.radio-label:not(:last-of-type){
+    border-right: 1px solid grey;
+}
+
+.radio-input:checked + .radio-label{
+    background: black;
+    color:#99ff33;
+}
