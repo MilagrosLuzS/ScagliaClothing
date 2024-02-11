@@ -61,13 +61,35 @@
                     <li><a href="Admin_Ventas.php">Ventas</a></li>
             </div>
         <div class="content">
+            
+        <?php
+            include_once('bd.php');
+            $conn = conectarBD();
+            $query = "SELECT SUM(total_price) AS balance FROM orders";
+            $respuesta = consultaSQL($conn, $query);
+            $result = mysqli_query($conn, $query);  
+            
+            // Inicializar la variable balance
+            $balance = 0;
+
+            // Verificar si la consulta fue exitosa
+            if ($result) {
+            // Obtener el resultado como un array asociativo
+            $balance = mysqli_fetch_assoc($result)['balance'];
+
+            } else {
+            // Manejar el error
+            echo 'Error en la consulta: ' . mysqli_error($conn);
+            }
+
+            // Cerrar la conexión a la base de datos
+            desconectarBD($conn);
+            ?>
+
             <div class="box-venta">
             <h3>CONOCE EL ESTADO DE TU CUENTA</h3>
-            <a><button class="button">HOY</button></a>
-            <a><button class="button">AYER</button></a>
-            <a><button class="button">HISTORIAL</button></a>
             <h3>Ventas</h3>
-            <p>$9999.99 
+            <p>$<?= number_format($balance, 2) ?>
                 <br>
                 <a href="Admin_Ventas.php"><span>*Ver detalle</span></a>
             </p>

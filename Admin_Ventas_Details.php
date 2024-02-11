@@ -57,9 +57,24 @@
         <div class="content">
 
             <ul>
+            <?php
+        include_once('bd.php');
+        $conn = conectarBD();
+        $query = "SELECT o.id AS order_id, o.date_time, u.id,u.user_name,u.email, o.total_price, i.id_product,a.street,a.st_number,a.city,a.zip 
+        FROM orders o
+        JOIN user u ON o.id_user = u.id
+        JOIN order_items i ON i.id_order = o.id
+        JOIN adress a ON o.id_adress = a.id
+        GROUP BY o.id";
+        $respuesta = consultaSQL($conn, $query);
+        $result = mysqli_query($conn, $query);  
 
+        if (mysqli_num_rows($result) > 0) {
+            // Iterar sobre los resultados y generar un <li> para cada registro
+            while ($row = mysqli_fetch_assoc($result)) {
+    ?>
                 <li>
-                    <h2>ORDEN #104</h2>
+                    <h2>ORDEN #<?= $row['order_id'] ?></h2>
               
                     <div class="about-flex">
 
@@ -72,21 +87,59 @@
                                             <th>Comprador</th>
                                             <th>Artículos</th>
                                             <th>Total</th>
-                                            <th>Pago</th>
                                             <th>Envío</th>
                                             <th>Estado</th>
                                             <th>Contacto</th>
                                         </tr>
                                     </thead>
                                     <tr>
-                                        <td>12/07/22</td>
-                                        <td>Pablo Lamela <br>lamelapablo@gmail.com<br>1154209827<br>Victor Martinez 281 4 <br> Caballito - CABA <br> 1406</td>
-                                        <td>Remera Alta X1 (1) <br> Remera Basic 1 X1 (1)</td>
-                                        <td>$9999</td>
-                                        <td>Confirmado - VISA</td>
-                                        <td>Retiro en sucursal</td>
-                                        <td>Para empaquetar</td>
-                                        <td><a href="mailto:lamelapablo@gmail.com?Subject=Scaglia%20Clothing">Contacto</a></td>
+                                        <td><?= $row['date_time'] ?></td>
+                                        <td><?= $row['user_name'] ?><br><?= $row['email'] ?><br><?= $row['street'] ?><?=' '. $row['st_number'] ?><br> <?= $row['city'] ?><br><?= $row['zip'] ?></td>
+                                        
+                                        <?php
+                            // Consulta para obtener los productos asociados a esta orden
+                            $order_id = $row['order_id'];
+
+                            $query_products = "SELECT p.product_name, oi.quantity, p.size
+                            FROM order_items oi
+                            JOIN product p ON oi.id_product = p.id
+                            WHERE oi.id_order = $order_id";
+                            $result_products = mysqli_query($conn, $query_products);
+                            
+                            
+                            // Iterar sobre los productos y mostrar cada uno como un elemento de lista
+                            echo('<td>');
+                            while ($product_row = mysqli_fetch_assoc($result_products)) {
+                                echo ''. $product_row['product_name'] . ' x ' . $product_row['quantity'] .  ' (' . $product_row['size'].')'.'<br>';
+                            }
+
+                            echo('</td>');
+                            ?>
+                                        
+                                        
+                            <td>$<?= $row['total_price'] ?></td>
+                            
+
+                            <?php
+                            $order_id = $row['order_id'];
+
+                            $query_envio = "SELECT s.description AS shipd, st.description
+                            FROM orders o
+                            JOIN shipping s ON o.id_shipping = s.id
+                            JOIN status st ON o.id_status = st.id";
+                            $result_envio = mysqli_query($conn, $query_envio);
+
+                            if ($result_envio && mysqli_num_rows($result_envio) > 0) {
+                                $envio_row = mysqli_fetch_assoc($result_envio);
+                                echo '<td>' . $envio_row['shipd'] . '</td>';
+                                echo '<td>' . $envio_row['description'] . '</td>';
+                            } else {
+                                echo '<td>Error al obtener información de envío</td>';
+                                echo '<td>Error al obtener información de estado</td>';
+                            }
+                            
+                            ?>
+                            <td><a href="mailto:<?= $row['email'] ?>?Subject=Scaglia%20Clothing"><p>Contactar</p></a></td>
                                     </tr>
     
                                 </table>
@@ -95,7 +148,17 @@
 
                     </div>
                 </li>
+    
+    <?php
+            }
+        } else {
+            // Si no hay registros en la tabla
+            echo "No se encontraron registros en la tabla.";
+        }
 
+        // Cerrar la conexión a la base de datos
+        desconectarBD($conn);
+    ?>
                 
             </ul>
         </div>

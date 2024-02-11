@@ -62,78 +62,74 @@
             </div>
         <div class="content">
 
-            <ul>
+        <ul>
+    <?php
+        include_once('bd.php');
+        $conn = conectarBD();
+        $query = "SELECT o.id AS order_id, o.date_time, u.id,u.user_name, o.total_price, i.id_product 
+        FROM orders o
+        JOIN user u ON o.id_user = u.id
+        JOIN order_items i ON i.id_order = o.id 
+        GROUP BY o.id";
+        $respuesta = consultaSQL($conn, $query);
+        $result = mysqli_query($conn, $query);  
 
+        if (mysqli_num_rows($result) > 0) {
+            // Iterar sobre los resultados y generar un <li> para cada registro
+            while ($row = mysqli_fetch_assoc($result)) {
+    ?>
                 <li>
-                    <h2>ORDEN #104</h2>
+                    <h2>ORDEN # <?= $row['order_id'] ?></h2>
                     <div class="flex-prod">
-                            
-                            <div class="data">
+
+                        <div class="data">
                             <section class="flex-data">
-                                <p>12/07/22</p>
+                            <h3>Fecha y hora: </h3>
+                                <p><?= $row['date_time'] ?></p>
                             </section>
                             <section class="flex-data">
                                 <h3>Compra por:</h3>
-                                <p>Pablo Lamela</p>
+                                <p><?= $row['user_name'] ?></p>
                             </section>
 
-                            <section class="flex-data">
-                                <p>Remera Alta X1 (1)</p>
-                            </section>
+                            <?php
+                            // Consulta para obtener los productos asociados a esta orden
+                            $order_id = $row['order_id'];
 
-                            <section class="flex-data">
-                                <p>Remera Basic 1 X1 (1)</p>
-                            </section>
+                            $query_products = "SELECT p.product_name, oi.quantity, p.size
+                            FROM order_items oi
+                            JOIN product p ON oi.id_product = p.id
+                            WHERE oi.id_order = $order_id";
+                            $result_products = mysqli_query($conn, $query_products);
+                            echo '<section class="flex-data">';
+                            echo '<h3>Items: </h3>';
+                            echo '</section>';
+                            // Iterar sobre los productos y mostrar cada uno como un elemento de lista
+                            while ($product_row = mysqli_fetch_assoc($result_products)) {
+                                echo '<section class="flex-data">';
+                                echo '<p>' . $product_row['product_name'] . ' x ' . $product_row['quantity'] .  ' (' . $product_row['size'].')'. '</p>';
+                                echo '</section>';
+                                }
+                            ?>
 
-                            <section class="flex-data">
-                                <h3>Total:</h3>
-                                <p>$9999</p>
-                            </section>
-                            </div>
+                        </div>
 
-                            <div class="flex-btn">
-                            <button class="button">Ver<br>detalle</button>
-                            </div>
+                        <div class="flex-btn">
+                            <a href="Admin_Ventas_Details.php"><button class="button">Ver<br>detalle</button></a>
+                        </div>
                     </div>
                 </li>
+    <?php
+            }
+        } else {
+            // Si no hay registros en la tabla
+            echo "No se encontraron registros en la tabla.";
+        }
 
-                <li>
-                    <h2>ORDEN #103</h2>
-                    <div class="flex-prod">
-                            
-                            <div class="data">
-                            <section class="flex-data">
-                                <p>12/07/22</p>
-                            </section>
-                            <section class="flex-data">
-                                <h3>Compra por:</h3>
-                                <p>Juan Pejinakis</p>
-                            </section>
-
-                            <section class="flex-data">
-                                <p>Hoodie Cargo X1 (1)</p>
-                            </section>
-
-                            <section class="flex-data">
-                                <p>Remera Basic 1 X1 (1)</p>
-                            </section>
-
-                            <section class="flex-data">
-                                <p>Remera Basic 2 X1 (1)</p>
-                            </section>
-
-                            <section class="flex-data">
-                                <h3>Total:</h3>
-                                <p>$299999</p>
-                            </section>
-                            </div>
-
-                            <div class="flex-btn">
-                            <button class="button">Ver<br>detalle</button>
-                            </div>
-                    </div>
-                </li>
-            </ul>
+        // Cerrar la conexión a la base de datos
+        desconectarBD($conn);
+    ?>
+</ul>
         </div>
 
         </div>

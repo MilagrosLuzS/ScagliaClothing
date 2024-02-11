@@ -50,6 +50,10 @@
         <div class="titulo">
             <h1><strong>ADMINISTRADOR</strong></h1>
             <h2>PRODUCTOS</h2>
+            <div>
+                <a href="Agregar_Producto.php"><button class="button">Agregar nuevo producto</button></a>
+                
+        </div>
         </div>
 
         <div class="about-flex">
@@ -61,8 +65,60 @@
                     <li><a href="Admin_Ventas.php">Ventas</a></li>
             </div>
         <div class="content">
-
+        
             <ul>
+                
+    <?php
+        include_once('bd.php');
+        $conn = conectarBD();
+        $query = "SELECT product_name,color,size,stock,price,img
+        FROM product
+        ";
+        $respuesta = consultaSQL($conn, $query);
+        $result = mysqli_query($conn, $query);  
+
+        if (mysqli_num_rows($result) > 0) {
+            // Iterar sobre los resultados y generar un <li> para cada registro
+            while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+                <li>
+                    <h2><?= $row['product_name'] ?></h2>
+                    <div class="flex-prod">
+                            <img class="img-prod" src="<?= $row['img'] ?>">
+                            
+                            <div class="data">
+                            <section class="flex-data">
+                                <h3>Talle:</h3>
+                                <p><?= $row['size'] ?></p>
+                            </section>
+                            <section class="flex-data">
+                                <h3>Stock:</h3>
+                                <p><?= $row['stock'] ?></p>
+                            </section>
+                            <section class="flex-data">
+                                <h3>Precio:</h3>
+                                <p>$<?= $row['price'] ?></p>
+                            </section>
+                            </div>
+
+                            <div class="flex-btn">
+                            <button class="button">Editar</button>
+                            </div>
+                            <div class="flex-btn">
+                            <button class="button">Eliminar</button>
+                            </div>
+                    </div>
+                </li>
+    <?php
+            }
+        } else {
+            // Si no hay registros en la tabla
+            echo "No se encontraron registros en la tabla.";
+        }
+
+        // Cerrar la conexión a la base de datos
+        desconectarBD($conn);
+    ?>
                 <li>
                     <h2>REMERA BASIC 1</h2>
                     <div class="flex-prod">
@@ -86,39 +142,14 @@
                             <div class="flex-btn">
                             <button class="button">Editar</button>
                             </div>
-                    </div>
-                </li>
-
-                <li>
-                    <h2>REMERA ALTA</h2>
-                    <div class="flex-prod">
-                            <img class="img-prod" src="Multimedia\Fotos\alta1.jpg">
-                            
-                            <div class="data">
-                            <section class="flex-data">
-                                <h3>Variantes:</h3>
-                                <p>1</p>
-                            </section>
-                            <section class="flex-data">
-                                <h3>Stock:</h3>
-                                <p>50</p>
-                            </section>
-                            <section class="flex-data">
-                                <h3>Precio:</h3>
-                                <p>$9999</p>
-                            </section>
-                            </div>
-
                             <div class="flex-btn">
-                            <button class="button">Editar</button>
+                            <button class="button">Eliminar</button>
                             </div>
                     </div>
                 </li>
+
             </ul>
 
-            <div>
-                <a href="Agregar_Producto.php"><button class="button">Agregar nuevo producto</button></a>
-            </div>
 
         </div>
 

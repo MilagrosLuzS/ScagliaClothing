@@ -72,66 +72,98 @@
                 </section>    
 
                 <section> 
-                    
-                    <form  id="formulario" action="#" method="post" enctype="application/x-www-form-urlencoded">
-                        
-                        <section id="checks">
-                            <h2>Nombre</h2>
-                            <input id="Nombre" type="text" name="Nombre" >
-                            <p></p>
-                        </section>
+    <form id="formulario" action="#" method="post" enctype="multipart/form-data">
+        <section id="checks">
+            <h2>Nombre</h2>
+            <input id="Nombre" type="text" name="Nombre">
+        </section>
 
-                        <section id="checks">
-                            <h2>Precio</h2>
-                            <input id="Precio" type="number" name="Precio" >
-                            <p></p>
-                        </section>
-    
+        <section id="checks">
+            <h2>Tipo de producto</h2>
+            <select id="opcion" name="Tipo">
+                <option value="Remera">Remera</option>
+                <option value="Buzo">Buzo</option>
+                <option value="Otro">Otro</option>
+            </select>
+        </section>
+
+        <section id="checks">
+            <h2>Precio</h2>
+            <input id="Precio" type="number" name="Precio">
+        </section>
+
+        <section id="input_contenedor">
+            <h2>Talle</h2>
+            <input id="Talle" type="text" name="Talles[]">
+        </section>
+
+        <section id="input_contenedor">
+            <h2>Colores</h2>
+            <label><input type="checkbox" value="Negro" name="Colores[]">Negro</label>
+            <label><input type="checkbox" value="Gris" name="Colores[]">Gris</label>
+            <label><input type="checkbox" value="Blanco" name="Colores[]">Blanco</label>
+        </section>
+
+        <section id="input_contenedor">
+            <h2>Stock</h2>
+            <input id="Stock" type="number" name="Stock">
+        </section>
+
+        <section id="input_contenedor">
+            <h2>Descripción</h2>
+            <textarea id="freeform" name="Descripcion" rows="4" cols="50"></textarea>
+        </section>
+
+        <section id="input_contenedor">
+            <h2>Imagen</h2>
+            <input type="file" id="imagen" name="Imagen">
+        </section>
+
+        <br>
+
+        <section class="submit">
+            <input value="Guardar producto" class="button" type="submit" name="Guardar">
+        </section>
+    </form>
+</section>
+
+
+<?php
+include_once('bd.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Verifica si se han recibido todos los campos necesarios del formulario
+    if (isset($_POST['Nombre'], $_POST['Tipo'], $_POST['Precio'], $_POST['Talles'], $_POST['Colores'], $_POST['Descripcion'], $_FILES['Imagen'])) {
+        $conn = conectarBD();
+
+        $nombre = $_POST['Nombre'];
+        $tipo = $_POST['Tipo'];
+        $precio = $_POST['Precio'];
+        $talles = !empty($_POST['Talles']) ? implode(",", $_POST['Talles']) : "";
+        $colores = !empty($_POST['Colores']) ? implode(",", $_POST['Colores']) : "";
+        $stock = isset($_POST['Stock']) ? $_POST['Stock'] : 0;
+        $descripcion = $_POST['Descripcion'];
+
+        // Procesar la imagen
+        $imagen_nombre = $_FILES['Imagen']['name'];
+        $imagen_destino = "Multimedia/Fotos_Producto/Fotos_C" . $imagen_nombre;
+        move_uploaded_file($_FILES['Imagen']['tmp_name'], $imagen_destino);
+
+        $query = "INSERT INTO product (product_name, type, color, size, stock, description, img, price) 
+                  VALUES ('$nombre', '$tipo', '$colores', '$talles', '$stock', '$descripcion', '$imagen_destino', '$precio')";
+
+        if (mysqli_query($conn, $query)) {
+            echo "<h2>Producto agregado correctamente</h2>";
+        } else {
+            echo "Error al agregar el producto: " . mysqli_error($conn);
+        }
         
-                        <section id="input_contenedor">
-                            <h2>Talles</h2>
-                            <label><input id="Talle1" type="checkbox" value="Talle1" name="Talles">Talle 1</label>
-                            <label><input id="Talle2" type="checkbox" value="Talle2" name="Talles">Talle 2</label>
-                            <label><input id="Talle3"type="checkbox" value="Talle3" name="Talles">Talle 3</label>
-                            <p></p>
-                        </section>
-
-                        <section id="input_contenedor">
-                        <h2>Colores</h2>
-                            <label><input id="Color1" type="checkbox" value="Color1" name="Negro">Negro</label>
-                            <label><input id="Color2" type="checkbox" value="Color2" name="Gris">Gris</label>
-                            <label><input id="Color3" type="checkbox" value="Color3" name="Blanco">Blanco</label>
-                            <p></p>
-                        </section>
-
-                        <section id="input_contenedor">
-                            <h2>Stock</h2>
-                            <input id="Stock" type="number" name="Stock" >
-                            <p></p>
-                        </section>
-
-                        <section id="input_contenedor">
-                            <h2>Descripción</h2>
-                            <textarea id="freeform" name="freeform" rows="4" cols="50">
-                            </textarea>
-                        </section>
-
-
-                        <section id="input_contenedor">
-                            <h2>Imagen</h2>
-                            <input id="Imagen" type="file" name="Imagen" >
-                        </section>
-
-                        <br>
-                        
-                        <section class="submit">
-                            <input value="Guardar producto" class="button" type="submit" name="Guardar" >
-                        </section>
-
-
-                    </form>
-
-                </section>
+        desconectarBD($conn);
+    } else {
+        echo "No se han recibido todos los campos necesarios del formulario";
+    }
+}
+?>
               
             </div>
 
