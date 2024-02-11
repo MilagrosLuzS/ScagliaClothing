@@ -145,11 +145,11 @@
                             $subtotal = 0;
                             echo('
                                 <div class="gral">
-                                <div class="contenedor">
+                                <div class="contenedor" id="productos">
                             ');
                             while($carrito_producto = $carrito_productos->fetch_assoc()){
                                 echo('
-                                <section class="pedido">
+                                <section class="pedido" id="carrito_producto_'.$carrito_producto["id"].'" precio="'.$carrito_producto["precio"]*$carrito_producto["quantity"].'">
                                     <div class="producto_user">
                                         <img src="'.$carrito_producto["src"].'"/>
                                         <div class="data_product">
@@ -159,15 +159,13 @@
                                         </div>
                                     </div>
                                     <div class="subtotal">
-                                        <div class = "precio-unitario">
+                                        <div class = "precio-unitario" >
                                             <h3>Subtotal</h3>
                                             <h4>$'.$carrito_producto["precio"]*$carrito_producto["quantity"].'</h4>
                                         </div>
                                         <div class="bot-elim">
-                                            <button class="eliminar" onclick="eliminarPorductoCarrito('.$carrito_producto["id"].')">Eliminar</button>
+                                            <button class="eliminar" onclick="eliminarProductoCarrito('.$carrito_producto["id"].')">Eliminar</button>
                                         </div>
-                                        
-                                        
                                     </div>
                                 </section>');
                                 $subtotal+=$carrito_producto["precio"]*$carrito_producto["quantity"];
@@ -175,9 +173,9 @@
                             echo('</div>
                             </div>');
                             echo('<div class="fijo">
-                                <div class="total">
+                                <div class="total" >
                                     <h3>Total</h3>
-                                    <h4>$'.$subtotal.'</h4>
+                                    <h4 id="precioTotal" precio="'.$subtotal.'">$'.$subtotal.'</h4>
                                 </div>
                                 <div class="submit">
                                     <a href="#"><input type="submit" value="Finalizar Compra" class="button"></a>
