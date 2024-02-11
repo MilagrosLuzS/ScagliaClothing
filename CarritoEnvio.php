@@ -1,71 +1,20 @@
-<?php
-    function traerCarrito($email,$conn){
-        $query = "SELECT cart.*,user.email FROM cart JOIN user ON cart.user_id = user.id WHERE user.email = '$email'";
-        $res = consultaSQL($conn,$query);
-        if($res->num_rows < 1){
-            $res = null;
-        }
-        return $res;
-    }
-
-    function traerProductosCarrito($id_carrito,$conn){
-        $query = "SELECT cart_products.*,product.product_name as title, product.price as precio, 
-        (SELECT image FROM product_images WHERE product_images.product_id = cart_products.product_id LIMIT 1) as src 
-        FROM cart_products JOIN product ON cart_products.product_id = product.product_id AND cart_products.talle = product.size WHERE cart_id = $id_carrito;";
-        $res = consultaSQL($conn,$query);
-        if($res->num_rows < 1){
-            $res = NULL;
-        }
-        return $res;
-    }
+<?php 
     session_start();
-    if($_SERVER['REQUEST_METHOD']==='POST'){
-        include_once('bd.php');
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+        include_once("bd.php");
         $conn = conectarBD();
-        //me fijo si hay que eliminar un producto del carrito
-        if(isset($_POST["id_eliminar"])){
-            $id_eliminar = $_POST["id_eliminar"];
-            $query = "DELETE FROM cart_products WHERE id = $id_eliminar";
-            consultaSQL($conn,$query);
-        }
-        else{
-            $id_producto = $_POST["id_product"];
-            $cantidad = $_POST["quantity"];
-            $talle = $_POST["talle"];
-            $email = $_SESSION["user"];
-            $result = traerCarrito($email,$conn);
-            $carrito = NULL;
-            // Si no existe el carrito, lo creo
-            if($result->num_rows==0){
-                $query = "INSERT INTO cart(user_id,fecha) VALUES ((SELECT id FROM user WHERE email = '$email'),CURRENT_TIMESTAMP)";
-                $result2 = consultaSQL($conn,$query);
-                // una vez creado, lo traigo
-                $result3 = traerCarrito($email,$conn);
-                $carrito = $result3->fetch_assoc();
-            }
-            else{
-                $carrito = $result->fetch_assoc();
-            }
-            if($carrito){
-                $id_carrito = $carrito["id"];
-                echo($id_carrito);
-                //una vez que tengo el carrito me fijo si ya existe el mismo producto con mismo talle
-                $query = "SELECT id FROM cart_products WHERE cart_id = $id_carrito AND product_id = $id_producto AND talle = $talle";
-                $result = consultaSQL($conn,$query);
-                if($result->num_rows == 0){
-                    //si no existe agrego la cantidad dada por el cliente
-                    $query = "INSERT INTO cart_products(cart_id,product_id,talle,quantity) VALUES ($id_carrito,$id_producto,$talle,$cantidad)";
-                    consultaSQL($conn,$query);
-                }
-                else{
-                    //si existe cambio la cantidad a lo que me dieron en el post
-                    $query = "UPDATE cart_products SET quantity = $cantidad WHERE cart_id = $id_carrito AND product_id = $id_producto AND talle = $talle";
-                    consultaSQL($conn,$query);
-                }
-            }
-        }
+        $nombre = $_POST["Nombre"];
+        $direccion = $_POST["Direccion"];
+        $telefono = $_POST["Telefono"];
+        $dni = $_POST["DNI"];
+        $envio = $_POST["Envio"];
+        $usuario = $_SESSION["id"];
+        $query = "UPDATE cart SET nombre = '$nombre', direccion = '$direccion', telefono = '$telefono', dni = '$dni', envio = '$envio' WHERE user_id = '$usuario'";
+        consultaSQL($conn,$query);
+        desconectarBD($conn);
+        header('Location: CarritoPago.php');
     }
-?>
+?> 
 <!DOCTYPE html>
     <html>  
         <head>
@@ -74,12 +23,12 @@
             <meta name="description" content="Apasionados del diseño. Elevamos básicos al siguiente nivel, vistiendo distinto.">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <title>CARRITO</title>
+            <title>ENVIO_CARRITO</title>
 
             <link rel="stylesheet" type="text/css" href="css/styles.css">
-            <link rel="stylesheet" type="text/css" href="css/styles-carrito.css">
+            <link rel="stylesheet" type="text/css" href="css/styles_carritoEnvio.css">
             <link rel="stylesheet" type="text/css" href="css/responsive.css">
-            <script src="js/carrito.js"></script>
+            <script src="js/ValidacionCarritoEnvio.js"></script>
         </head>
 
         <body>
@@ -125,127 +74,44 @@
             </div>
             
             </header>
-
-            <div class="titulo">
-                <h1><strong>TU CARRITO</strong></h1>
-            </div>
+            <div class="general_Envio">
+                <section class="register">
+                    <form id="formulario" method="POST" action="">
+                        <div class="titulo">
+                            <h1><strong>¿Como entregamos tu compra?</strong></h1>
+                        </div>
+                        <div id="radio" class="Entregas">
+                            <input class="radio-input" name="Envio" value="1" type="radio" id="radio1"/>
+                            <label class="radio-label" for="radio1">Retiro en puntos de entrega</label>
+                            <input class="radio-input" name="Envio" value="2" type="radio" id="radio2"/>
+                            <label class="radio-label" for="radio2">Envio a domicilio</label>
+                        </div>
+                        <h1>Datos de envio</h1>
+                        <div class="contenedor">
+                            <div class="input_contenedor">
+                                <input id="Nombre"  name="Nombre" type="text" placeholder="Nombre Completo">
+                                <p></p>
+                            </div>
+                            <div class="input_contenedor">
+                                <input id="Direccion" name="Direccion" type="text" placeholder="Direccion">
+                                <p></p>
+                            </div>
+                            <div class="input_contenedor">
+                                <input id="Telefono" name="Telefono" type="text" placeholder="Telefono">
+                                <p></p>
+                            </div>
+                            <div class="input_contenedor">
+                                <input id="DNI" name="DNI" type="text" placeholder="Documento">
+                                <p></p>
+                            </div>
+                            <div class="submit">
+                                <input type="submit" onclick="validarCampos()" value="Proceder al pago" name="enviar" class="button">
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>                    
             
-                    <?php
-                        include_once("bd.php");
-                        $conn = conectarBD();
-                        $carrito = traerCarrito($_SESSION["user"],$conn);
-                        if(!empty($carrito)){
-                            $carrito = $carrito->fetch_assoc();
-                            $carrito_productos = traerProductosCarrito($carrito["id"],$conn);
-                        }
-                        else{
-                            $carrito_productos = null;
-                        }
-                        if(!empty($carrito) && !empty($carrito_productos)){
-                            $subtotal = 0;
-                            echo('
-                                <div class="gral">
-                                <div class="contenedor" id="productos">
-                            ');
-                            while($carrito_producto = $carrito_productos->fetch_assoc()){
-                                echo('
-                                <section class="pedido" id="carrito_producto_'.$carrito_producto["id"].'" precio="'.$carrito_producto["precio"]*$carrito_producto["quantity"].'">
-                                    <div class="producto_user">
-                                        <img src="'.$carrito_producto["src"].'"/>
-                                        <div class="data_product">
-                                            <h3>'.$carrito_producto["title"].'</h3>
-                                            <h4>$'.$carrito_producto["precio"].'</h4>
-                                            <h3>Cantidad = '. $carrito_producto["quantity"].'</h3>
-                                        </div>
-                                    </div>
-                                    <div class="subtotal">
-                                        <div class = "precio-unitario" >
-                                            <h3>Subtotal</h3>
-                                            <h4>$'.$carrito_producto["precio"]*$carrito_producto["quantity"].'</h4>
-                                        </div>
-                                        <div class="bot-elim">
-                                            <button class="eliminar" onclick="eliminarProductoCarrito('.$carrito_producto["id"].')">Eliminar</button>
-                                        </div>
-                                    </div>
-                                </section>');
-                                $subtotal+=$carrito_producto["precio"]*$carrito_producto["quantity"];
-                            }
-                            echo('</div>
-                            </div>');
-                            echo('<div class="fijo">
-                                <div class="total" >
-                                    <h3>Total</h3>
-                                    <h4 id="precioTotal" precio="'.$subtotal.'">$'.$subtotal.'</h4>
-                                </div>
-                                <div class="submit">
-                                    <a href="CarritoEnvio.php"><input type="submit" value="Finalizar Compra" class="button"></a>
-                                </div>
-                            </div>');
-                        }
-                        else{
-                            echo("<div class='no-prod'>
-                                    <h3>No hay productos en tu carrito.</h3>
-                                </div>");
-                        }
-                        echo('</div>
-                        </div>');
-                    ?>
-                    <!-- <section class="pedido">
-                        <div class="producto_user">
-                            <img src="Multimedia/Fotos/bbasic1.jpg"/>
-                            <div class="data_product">
-                                <h3>Buzo Basic 1</h3>
-                                <h4>$9999</h4>
-                            </div>
-                        </div>
-                        <div class="subtotal">
-                            <h3>Subtotal</h3>
-                            <h4>$9999</h4>
-                        </div>
-                        <div class="envio">
-                            <div>
-                                <input name="envio" type="radio" value="Domicilio"/>Envio a domicilio
-                            </div>
-                            <div>
-                                <input name="envio" type="radio" value="Sucursal"/>Envio a sucurcial
-                            </div>
-                        </div>
-                        
-                    </section>
-                    <section class="pedido">
-                        <div class="producto_user">
-                            <img src="Multimedia/Fotos_Producto/alta1.jpg"/>
-                            <div class="data_product">
-                                <h3>Buzo Basic 2</h3>
-                                <h4>$9999</h4>
-                            </div>
-                        </div>
-                        <div class="subtotal">
-                            <h3>Subtotal</h3>
-                            <h4>$9999</h4>
-                        </div>
-                        <div class="envio">
-                            <div>
-                                <input name="envio" type="radio" value="Domicilio"/>Envio a domicilio
-                            </div>
-                            <div>
-                                <input name="envio" type="radio" value="Sucursal"/>Envio a sucurcial
-                            </div>
-                        </div>
-                    </section> 
-                    
-                </div>
-            </div>
-            <div class="fijo">
-                    <div class="total">
-                                <h3>Total</h3>
-                                <h4>$9999</h4>
-                    </div>
-                    <div class="submit">
-                        <a href="#"><input type="submit" value="Finalizar Compra" class="button"></a>
-                    </div>
-                </div>
-                            -->
             <footer>
                 <div class = "flex-footer">
  
