@@ -22,10 +22,10 @@
         $result = consultaSQL($conn,$query);
         $carrito = $result->fetch_assoc();
         $id_carrito = $carrito["id"];
-        $nombre = $carrito["nombre"];
-        $direccion = $carrito["telefono"];
-        $dni = $carrito["dni"];
-        $envio = $carrito["envio"];
+        //consigo la direccion
+        $query = "SELECT id_adress FROM user_adress WHERE id_user = $usuario";
+        $result = consultaSQL($conn,$query);
+        $id_direccion = ($result->fetch_assoc())["id"];
         //consigo el importe
         $importe = 0;
         $carrito_productos = traer_Productos_Carrito($id_carrito,$conn);
@@ -33,6 +33,36 @@
             $importe += $carrito_producto["precio"]*$carrito_producto["cantidad"];
         }
         //hago el pedido
+        $query = "INSERT INTO orders(id_user,date_time,id_status,total_price,id_adress,id_shipping,cardholder,card,expiration,cvc) 
+        VALUES($usuario,CURRENT_TIMESTAMP,1,$importe,$id_direccion,2,'$titular','$tarjeta','$expiracion',$cvc)";
+        consultaSQL($conn,$query);
+        $id_pedido = $conn->insert_id;
+        //hago los pedidos de los productos
+        $query = "INSERT INTO order_items(product_id,quantity,id_order,unit_price,total_price) 
+                  SELECT $id_pedido as id_order, cart_products.product_id, cart_products.quantity, (product.price) as unit_price, (product.price*cart_products.quantity) as total_price 
+                  FROM cart_products 
+                  JOIN product ON product.product_id = cart_products.product_id
+                  WHERE cart_id = $id_carrito;";
+        consultaSQL($conn,$query);
+        //bajo el stock
+        $query = "SELECT * FROM cart_products WHERE cart_id = $id_carrito";
+        $result = consultaSQL($conn,$query);
+        while($row = $result->fetch_assoc()){
+            $id_producto = $row["product_id"];
+            $cantidad = $row["quantity"];
+            $conn2 = conectarBD();
+            $query2 = "UPDATE product SET stock = (product.stock - ".intval($cantidad).") WHERE product.id = $id_producto";
+            consultaSQL($conn2,$query2);
+            desconectarBD($conn2); 
+        }
+        // elimino el carrito y los productos del carrito
+        $query = "DELETE FROM cart_products WHERE cart_id = $id_carrito";
+        consultaSQL($conn,$query);
+        $query = "DELETE FROM cart WHERE id = $id_carrito";
+        consultaSQL($conn,$query);
+
+        desconectarBD($conn);
+        header("Location: Pedido.php?id=$id_pedido");
     }
 ?>
 
