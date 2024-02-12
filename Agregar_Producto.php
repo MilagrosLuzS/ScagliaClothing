@@ -127,7 +127,6 @@
     </form>
 </section>
 
-
 <?php
 include_once('bd.php');
 
@@ -146,16 +145,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Procesar la imagen
         $imagen_nombre = $_FILES['Imagen']['name'];
-        $imagen_destino = "Multimedia/Fotos_Producto/Fotos_C" . $imagen_nombre;
+        $imagen_destino = "Multimedia/Fotos_Producto/Fotos_C/" . $imagen_nombre;
         move_uploaded_file($_FILES['Imagen']['tmp_name'], $imagen_destino);
 
-        $query = "INSERT INTO product (product_name, type, color, size, stock, description, img, price) 
-                  VALUES ('$nombre', '$tipo', '$colores', '$talles', '$stock', '$descripcion', '$imagen_destino', '$precio')";
+        // Busco el product id
+        $product_id = null;
+
+        // Buscar si existe un producto con el mismo nombre
+        $query_search = "SELECT product_id FROM product WHERE product_name = '[$nombre]'";
+        $result_search = mysqli_query($conn, $query_search);
+
+        if (mysqli_num_rows($result_search) > 0) {
+            // Si existe un producto con el mismo nombre, obtener su product_id
+            $row = mysqli_fetch_assoc($result_search);
+            $product_id = $row['product_id'];
+        } else {
+            // Si no existe un producto con el mismo nombre, encontrar el máximo product_id y sumarle uno
+            $query_max = "SELECT MAX(product_id) AS max_id FROM product";
+            $result_max = mysqli_query($conn, $query_max);
+            $row_max = mysqli_fetch_assoc($result_max);
+            $product_id = $row_max['max_id'] + 1;
+        }
+
+        $query = "INSERT INTO product (product_name, type, color, size, stock, description, img, price, product_id) 
+                  VALUES ('[$nombre]', '$tipo', '[$colores]', '$talles', '$stock', '$descripcion', '$imagen_destino', '$precio', '$product_id')";
 
         if (mysqli_query($conn, $query)) {
-            echo "<h2>Producto agregado correctamente</h2>";
+            echo "<script>alert('Producto agregado correctamente.'); window.location = 'Agregar_Producto.php';</script>";
         } else {
-            echo "Error al agregar el producto: " . mysqli_error($conn);
+            echo "<script>alert('Error al agregar el producto: ".mysqli_error($conn)."'); window.location = 'Agregar_Producto.php';</script>";
         }
         
         desconectarBD($conn);
@@ -164,7 +182,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-              
+   
             </div>
 
 

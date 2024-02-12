@@ -7,6 +7,14 @@
     <title>Administrador - Productos</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/styles-administrador-productos.css">
+    <script>
+        function confirmarEliminacion() {
+            // Mostrar un cuadro de diálogo de confirmación al usuario
+            var confirmacion = confirm("¿Estás seguro de que quieres eliminar este producto?");       
+            return confirmacion;
+            
+        }
+    </script>
 
 </head>
 <body>
@@ -71,7 +79,7 @@
     <?php
         include_once('bd.php');
         $conn = conectarBD();
-        $query = "SELECT product_name,color,size,stock,price,img
+        $query = "SELECT id,product_name,color,size,stock,price,img
         FROM product
         ";
         $respuesta = consultaSQL($conn, $query);
@@ -102,11 +110,43 @@
                             </div>
 
                             <div class="flex-btn">
-                            <button class="button">Editar</button>
+                            <a href="editar_producto.php?id=<?= $row['id'] ?>"><button class="button">Editar</button></a>
                             </div>
                             <div class="flex-btn">
-                            <button class="button">Eliminar</button>
-                            </div>
+                            <form id="form_eliminar_producto" action="#" method="post" onsubmit="return confirmarEliminacion()">
+
+                                <!-- Campo oculto para almacenar el ID del producto -->
+                                <input type="hidden" id="id_producto" name="id" value="<?= $row['id'] ?>">
+                                
+                                <!-- Botón para eliminar el producto -->
+                                <button class ="button" type="submit" name="eliminar_producto"">Eliminar producto</button>
+                                
+                            </form>
+                            <div>
+                            <?php
+                            // Verificar si se ha enviado el formulario para eliminar el producto
+                            if (isset($_POST['eliminar_producto'])) {
+                                
+                                // Obtener el ID del producto a eliminar desde el formulario
+                                $id_producto = $_POST['id'];
+
+                                // Construir la consulta SQL para eliminar el producto con el ID proporcionado
+                                $query = "DELETE FROM product WHERE id = '$id_producto'";
+
+                                // Ejecutar la consulta
+                                if (mysqli_query($conn, $query)) {
+                                    // La eliminación fue exitosa
+                                    echo "<script>alert('Producto eliminado correctamente.');; window.location = 'Admin_Productos.php';</script>";
+                                    exit(); // Detener la ejecución del script para evitar cualquier otro contenido que pueda causar problemas
+                                } else {
+                                    // Ocurrió un error durante la eliminación
+                                    echo "<script>alert('Error al eliminar el producto':".mysqli_error($conn).");; window.location = 'Admin_Productos.php';</script>";
+                                    exit(); // Detener la ejecución del script para evitar cualquier otro contenido que pueda causar problemas
+                                }
+
+                            } 
+                            ?>
+
                     </div>
                 </li>
     <?php
@@ -119,34 +159,6 @@
         // Cerrar la conexión a la base de datos
         desconectarBD($conn);
     ?>
-                <li>
-                    <h2>REMERA BASIC 1</h2>
-                    <div class="flex-prod">
-                            <img class="img-prod" src="Multimedia\Fotos\basic1.jpg">
-                            
-                            <div class="data">
-                            <section class="flex-data">
-                                <h3>Variantes:</h3>
-                                <p>2</p>
-                            </section>
-                            <section class="flex-data">
-                                <h3>Stock:</h3>
-                                <p>50</p>
-                            </section>
-                            <section class="flex-data">
-                                <h3>Precio:</h3>
-                                <p>$9999</p>
-                            </section>
-                            </div>
-
-                            <div class="flex-btn">
-                            <button class="button">Editar</button>
-                            </div>
-                            <div class="flex-btn">
-                            <button class="button">Eliminar</button>
-                            </div>
-                    </div>
-                </li>
 
             </ul>
 
@@ -154,6 +166,8 @@
         </div>
 
         </div>
+
+    
 
     <footer>
         <div class = "flex-footer">
