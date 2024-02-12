@@ -2,20 +2,28 @@ function validarCampos(){
     event.preventDefault();
     const form = document.getElementById('formulario');
     const nombre = document.getElementById('Nombre');
-    const direccion = document.getElementById('Direccion');
+    const ciudad = document.getElementById('Ciudad');
+    const provincia = document.getElementById('Provincia');
+    const calle = document.getElementById('Calle');
+    const numero = document.getElementById('Numero');
+    const codigo_postal = document.getElementById('Codigo_Postal');
     const telefono = document.getElementById('Telefono');
     const documento = document.getElementById('DNI');
     let contador = 0;
     // Primero guardo los datos ingresados por el usuario
     const nombreValor = nombre.value.trim();
-    const direccionValor = direccion.value.trim();
+    const ciudadValor = ciudad.value.trim();
+    const provinciaValor = provincia.value.trim();
+    const calleValor = calle.value.trim();
+    const numeroValor = numero.value.trim();
+    const codigo_postalValor = codigo_postal.value.trim();
     const telefonoValor = telefono.value.trim();
     const documentoValor = documento.value.trim();
 
     //validacion nombre
 
     if(nombreValor === ''){
-        validacionFallida(usuario,'Campo vacio')
+        validacionFallida(nombre,'Campo vacio')
     }else if(!validacionGeneral(nombreValor)){
         validacionFallida(nombre,'nombre y/o apellido no valido.')
     }
@@ -24,13 +32,56 @@ function validarCampos(){
         contador += 1;
     }
 
-    //validacion direccion
+    //validacion Ciudad
 
-    if(direccionValor === ''){
-        validacionFallida(direccion,'Campo vacio')
+    if(ciudadValor === ''){
+        validacionFallida(ciudad,'Campo vacio')
     }
     else{
-        ValidacionCorrecta(direccion)
+        ValidacionCorrecta(ciudad)
+        contador += 1;
+    }
+
+    //validacion Provincia
+    
+    if(provinciaValor === ''){
+        validacionFallida(provincia,'Campo vacio')
+    }
+    // else if(!validarProvincia(provinciaValor)){
+    //     validacionFallida(provincia,'Provincia invalida')
+    // }
+    else{
+        ValidacionCorrecta(provincia)
+        contador += 1;
+    }
+
+    //validacion Calle
+
+       if(calleValor === ''){
+        validacionFallida(calle,'Campo vacio')
+    }
+    else{
+        ValidacionCorrecta(calle)
+        contador += 1;
+    }
+    
+    //validacion Numero
+
+    if(numeroValor === ''){
+        validacionFallida(numero,'Campo vacio')
+    }
+    else{
+        ValidacionCorrecta(numero)
+        contador += 1;
+    }
+
+    //validacion Codigo Postal
+
+       if(codigo_postalValor === ''){
+        validacionFallida(codigo_postal,'Campo vacio')
+    }
+    else{
+        ValidacionCorrecta(codigo_postal)
         contador += 1;
     }
     
@@ -60,7 +111,7 @@ function validarCampos(){
         contador += 1;
     }
 
-    if(contador == 4){
+    if(contador == 8){
         document.getElementById('formulario').submit();
     }
 
@@ -95,3 +146,24 @@ function validacionGeneral(general){
     // return /^([^0-9\s_.]+)+[a-zA-Z]*((\s?)*[a-zA-Z](\s?)*)*$/g.test(general);
     return /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(general);
 }
+
+function validarProvincia(provincia){
+    let p = eliminarDiacriticos(provincia)
+    const Provincias=["Buenos Aires","Ciudad Autónoma de Buenos Aires","CABA","Catamarca","Chaco","Chubut","Córdoba","Corrientes","Entre Ríos","Formosa",
+    "Jujuy","La Pampa","La Rioja","Mendoza","Misiones","Neuquén","Río Negro","Salta","San Juan","San Luis","Santa Cruz","Santa Fe","Santiago del Estero",
+    "Tierra del Fuego","Tucumán"]
+    Provincias.forEach(function(prov){
+        if(eliminarDiacriticos(prov)===p){
+            return true;
+        }
+    })
+    return false;
+}
+
+
+// Elimina los diacríticos de un texto (ES6)
+//
+function eliminarDiacriticos(texto) {
+    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"");
+}
+

@@ -4,13 +4,26 @@
         include_once("bd.php");
         $conn = conectarBD();
         $nombre = $_POST["Nombre"];
-        $direccion = $_POST["Direccion"];
+        $ciudad = $_POST["Ciudad"];
+        $provincia = $_POST["Provincia"];
+        $calle = $_POST["Calle"];
+        $numero = $_POST["Numero"];
+        $codigo_postal = $_POST["Codigo_Postal"];
         $telefono = $_POST["Telefono"];
         $dni = $_POST["DNI"];
-        $envio = $_POST["Envio"];
+        //$envio = $_POST["Envio"];
         $usuario = $_SESSION["id"];
-        $query = "UPDATE cart SET nombre = '$nombre', direccion = '$direccion', telefono = '$telefono', dni = '$dni', envio = '$envio' WHERE user_id = '$usuario'";
-        consultaSQL($conn,$query);
+        $query = "SELECT id FROM user_adress WHERE user_adress.id_user = $usuario";
+        $result = consultaSQL($conn,$query);
+        // si no existe la direccion la creo y genero la relacion con el usuario
+        // habria que hacer algo en caso de que exista la direccion
+        if($result->num_rows == 0){
+            $query = "INSERT INTO adress(street,st_number,city,province,zip,phone,DNI) VALUES('$calle','$numero','$ciudad','$provincia','$codigo_postal','$telefono','$dni')";
+            $result = consultaSQL($conn,$query);
+            $id = $conn->insert_id;
+            $query = "INSERT INTO user_adress(id_adress,id_user) VALUES($id,$usuario)";
+            consultaSQL($conn,$query);
+        };
         desconectarBD($conn);
         header('Location: CarritoPago.php');
     }
@@ -77,7 +90,7 @@
             <div class="general_Envio">
                 <section class="register">
                     <form id="formulario" method="POST" action="">
-                        <div class="titulo">
+                        <!-- <div class="titulo">
                             <h1><strong>¿Como entregamos tu compra?</strong></h1>
                         </div>
                         <div id="radio" class="Entregas">
@@ -85,7 +98,7 @@
                             <label class="radio-label" for="radio1">Retiro en puntos de entrega</label>
                             <input class="radio-input" name="Envio" value="2" type="radio" id="radio2"/>
                             <label class="radio-label" for="radio2">Envio a domicilio</label>
-                        </div>
+                        </div> -->
                         <h1>Datos de envio</h1>
                         <div class="contenedor">
                             <div class="input_contenedor">
@@ -93,7 +106,24 @@
                                 <p></p>
                             </div>
                             <div class="input_contenedor">
-                                <input id="Direccion" name="Direccion" type="text" placeholder="Direccion">
+                                <input id="Ciudad" name="Ciudad" type="text" placeholder="Ciudad">
+                                <p></p>
+                            </div>
+                            <div class="input_contenedor">
+                                <input id="Provincia" name="Provincia" type="text" placeholder="Provincia">
+                                <p></p>
+                            </div>
+                            <div class="input_contenedor">
+                                <input id="Calle" name="Calle" type="number" placeholder="Calle">
+                                <p></p>
+                            </div>
+                            <div class="input_contenedor">
+                                <input id="Numero" name="Numero" type="number" placeholder="Numero">
+                                <p></p>
+                            </div>
+                            
+                            <div class="input_contenedor">
+                                <input id="Codigo_Postal" name="Codigo_Postal" type="number" placeholder="Codigo_Postal">
                                 <p></p>
                             </div>
                             <div class="input_contenedor">
