@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include_once('bd.php');
 ?>
 <!DOCTYPE php>
 <html lang="en">
@@ -7,9 +8,13 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GUIA DE TALLES</title>
+    <title>MI CUENTA</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/styles_gdt.css">
+    <link rel="stylesheet" type="text/css" href="css/styles-cuenta-direc.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-cuenta.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-wishlist.css">
+            <link rel="stylesheet" type="text/css" href="css/responsive.css">
 </head>
 <body>
     <header>
@@ -54,9 +59,62 @@ session_start();
         </div>
     </header>
 
-    <?php echo ucwords($_SESSION['user']);?>
+   
     
+    <div class="titulo">
+        <h1><strong>MI CUENTA</strong></h1>
+            <?php
+            $conn = conectarBD();
+            // Verificar si el nombre de usuario está almacenado en la sesión
+            if(isset($_SESSION['user'])) {
+                
 
+                // Consulta para obtener el nombre correspondiente al correo electrónico
+                $query = "SELECT user_name FROM user WHERE email = '{$_SESSION['user']}'";
+                // Ejecutar la consulta
+                $resultado = mysqli_query($conn, $query);
+
+                // Verificar si se obtuvieron resultados
+                if (mysqli_num_rows($resultado) > 0) {
+                    // Obtener el nombre de usuario de la primera fila del resultado
+                    $row = mysqli_fetch_assoc($resultado);
+                    $nombreUsuario = $row['user_name'];
+            ?>
+
+            
+                            <h2>ESCRITORIO</h2>
+                        </div>
+
+                        <div class="about-flex">
+
+                            <div class="imagen">
+                                <ul>
+                                    <li><a href="Mi_Cuenta.php">Escritorio</a></li>
+                                    <li><a href="Pedidos.php">Pedidos</a></li>
+                                    <li><a href="Direcciones.php">Dirección</a></li>
+                                    <li><a href="Details.php">Detalles de la cuenta</a></li>
+                                    <li><a href="Wishlist.php">Lista de deseos</a></li>
+                                    <li><a href="logout.php">Salir</a></li>
+                                </ul>
+                            </div>
+                        <div class="content">
+
+                <p>Hola, <?= $nombreUsuario?> <br>
+                (¿no eres <?= $nombreUsuario?>? <span><a href="logout.php">Cerrar sesión</a></span>)<br>
+                Desde el escritorio de tu cuenta puedes ver tus <span><a href="Pedidos.php">pedidos recientes</a></span>, <span><a href="Direcciones.php">gestionar tus direcciones de envío</a></span> y y los <span><a href="Details.php">detalles de tu cuenta</a></span>.</p>
+
+            <?php
+            } else {
+                // Si no está almacenado, mostrar un mensaje de error o redirigir al usuario
+                echo "<a href='login.php'><p>Inicia sesión para ingresar a tu cuenta</p></a>";
+            }
+        }
+            ?>
+    
+            
+            </div>
+
+            </div>
     <footer>
         <div class = "flex-footer">
 

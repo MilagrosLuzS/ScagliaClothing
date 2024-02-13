@@ -1,8 +1,7 @@
-<?php
-    include('bd.php');
-    session_start();
+<?php 
+session_start();
 ?>
-<!DOCTYPE php>
+<!DOCTYPE html>
     <html>  
         <head>
             <meta charset="UTF-8"/>
@@ -10,12 +9,13 @@
             <meta name="description" content="Apasionados del diseño. Elevamos básicos al siguiente nivel, vistiendo distinto.">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <title>About</title>
+            <title>Wishlist</title>
 
             <link rel="stylesheet" type="text/css" href="css/styles.css">
-            <link rel="stylesheet" type="text/css" href="css/styles-about.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-cuenta-direc.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-cuenta.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-wishlist.css">
             <link rel="stylesheet" type="text/css" href="css/responsive.css">
-
         </head>
 
         <body>
@@ -63,27 +63,44 @@
             </header>
 
             <div class="titulo">
-                <h1><strong>ABOUT</strong></h1>
+                <h1><strong>MI CUENTA</strong></h1>
+                <h2>WISHLIST</h2>
             </div>
 
             <div class="about-flex">
 
                 <div class="imagen">
-                    <img class="ramiro" src="Multimedia\Fotos\ramiro.jpg">
-                    <h2>Ramiro Scaglia, <br> fundador.</h2>
+                    <ul>
+                        <li><a href="Mi_Cuenta.php">Escritorio</a></li>
+                        <li><a href="Pedidos.php">Pedidos</a></li>
+                        <li><a href="Direcciones.php">Dirección</a></li>
+                        <li><a href="Details.php">Detalles de la cuenta</a></li>
+                        <li><a href="Wishlist.php">Lista de deseos</a></li>
+                        <li><a href="logout.php">Salir</a></li>
+                    </ul>
                 </div>
-            <div class="content">
-                <h2> Hecho a mano por apasionados del diseño, pensado para apasionados del diseño. <br><br>
-                    
-                    El usuario de Scaglia es muy perceptible a las distintas manifestaciones
-                    artísticas. No es experto, simplemente disfruta contemplandolas,
-                    teniendo en cuenta un común denominador: el color negro.</h2>
-    
-                    <h2><strong>No somos básicos,somos prendas minimalistas con un diseño exclusivo, somos Scaglia Clothing.</strong></h2>
+                <div class="tablas">
+                    <section class="Remeras">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                    <th class="botondis"></th>
+                                    <th class="botondis"></th>
 
-                    <button class="button" onclick="window.location.href='index.php'">COMPRAR AHORA</button>
-            </div>
-
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td><img class="prenda" src="Multimedia\Fotos\bbasic1.jpg"><br>Buzo Basic<br>Color: Negro<br>Talle: 1</td>
+                                <td>$9999</td>
+                                <td>Sí</td>
+                                <td class="agregar"><button>Agregar al carrito</button></td>
+                                <td class="agregar"><button>Eliminar</button></td>
+                            </tr>
+                        </table>
+                    </section>
             </div>
 
 
@@ -151,4 +168,4 @@
                 
             </footer>
         </body>
-</html>
+    </html>

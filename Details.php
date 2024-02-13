@@ -1,8 +1,7 @@
-<?php
-    include('bd.php');
-    session_start();
+<?php 
+session_start();
 ?>
-<!DOCTYPE php>
+<!DOCTYPE html>
     <html>  
         <head>
             <meta charset="UTF-8"/>
@@ -10,12 +9,12 @@
             <meta name="description" content="Apasionados del diseño. Elevamos básicos al siguiente nivel, vistiendo distinto.">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <title>About</title>
+            <title>Detalles de la cuenta</title>
 
             <link rel="stylesheet" type="text/css" href="css/styles.css">
-            <link rel="stylesheet" type="text/css" href="css/styles-about.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-cuenta-direc-a.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-cuenta">
             <link rel="stylesheet" type="text/css" href="css/responsive.css">
-
         </head>
 
         <body>
@@ -63,27 +62,94 @@
             </header>
 
             <div class="titulo">
-                <h1><strong>ABOUT</strong></h1>
+                <h1><strong>MI CUENTA</strong></h1>
+                <h2>DETALLES DE LA CUENTA</h2>
             </div>
 
             <div class="about-flex">
 
                 <div class="imagen">
-                    <img class="ramiro" src="Multimedia\Fotos\ramiro.jpg">
-                    <h2>Ramiro Scaglia, <br> fundador.</h2>
+                    <ul>
+                    <li><a href="Mi_Cuenta.php">Escritorio</a></li>
+                    <li><a href="Pedidos.php">Pedidos</a></li>
+                    <li><a href="Direcciones.php">Dirección</a></li>
+                    <li><a href="Details.php">Detalles de la cuenta</a></li>
+                    <li><a href="Wishlist.php">Lista de deseos</a></li>
+                    <li><a href="logout.php">Salir</a></li>
+                    </ul>
                 </div>
             <div class="content">
-                <h2> Hecho a mano por apasionados del diseño, pensado para apasionados del diseño. <br><br>
+                <section class="flex-dir">
+                <h2>Mis datos</h2>
+                </section>   
+                <?php
+                include_once('bd.php');
+
+                if(isset($_SESSION['user'])) {
+                    // Obtener el ID del producto de la URL
+                    $conn = conectarBD();
+
+                    // Consulta para obtener el nombre correspondiente al correo electrónico
+                $query = "SELECT * FROM user WHERE email = '{$_SESSION['user']}'";
+                // Ejecutar la consulta
+                $resultado = mysqli_query($conn, $query);
+
+                // Verificar si se obtuvieron resultados
+                if (mysqli_num_rows($resultado) > 0) {
+                    // Obtener el nombre de usuario de la primera fila del resultado
+                    $row = mysqli_fetch_assoc($resultado);
                     
-                    El usuario de Scaglia es muy perceptible a las distintas manifestaciones
-                    artísticas. No es experto, simplemente disfruta contemplandolas,
-                    teniendo en cuenta un común denominador: el color negro.</h2>
-    
-                    <h2><strong>No somos básicos,somos prendas minimalistas con un diseño exclusivo, somos Scaglia Clothing.</strong></h2>
+                    ?>
+                    <form  id="formulario" action="#" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                        <div class="input_contenedor">
+                            <h2>Nombre</h2>
+                            <input id="Nombre" value= "<?= $row['user_name'] ?>" type="text" name="Nombre">
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Email</h2>
+                            <a><?= $row['email'] ?></a>
+                        </div>
+                        <section class="submit">
+                            <input value="Actualizar datos" class="button" type="submit" name="Guardar">
+                        </section>
+                        <div class="input_contenedor">
+                            <h2><a href="Cambio_Contraseña.php">Desea cambiar su contraseña?</a></h2>
+                        </div>
+                    </form>
 
-                    <button class="button" onclick="window.location.href='index.php'">COMPRAR AHORA</button>
-            </div>
+                    <?php 
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        // Verifica si se han recibido todos los campos necesarios del formulario
+                        if (isset($_POST['id'], $_POST['Nombre'])) {
+                            $conn = conectarBD();
 
+                            $id_usuario = $_POST['id']; // ID del usuario a actualizar
+                            $nombre = $_POST['Nombre'];
+
+                            $query = "UPDATE user SET 
+                                    user_name = '$nombre' 
+                                    WHERE id = $id_usuario";
+
+                            if (mysqli_query($conn, $query)) {
+                                echo "<script>alert('Usuario actualizado correctamente.'); window.location = 'Details.php';</script>";
+                            } else {
+                                echo "<script>alert('Error al actualizar el usuario: ')".mysqli_error($conn)."; window.location = 'Details.php';</script>";
+                            }
+                            
+                        } else {
+                            echo "No se han recibido todos los campos necesarios del formulario";
+                        }
+                    }
+                        } else {
+                            echo "ID del usuario no proporcionado.";
+                            desconectarBD($conn);
+                        }
+                    }
+
+
+                    ?>
             </div>
 
 
@@ -150,5 +216,6 @@
 
                 
             </footer>
+            <!-- <script src="js/Validacion_Details.js"></script> -->
         </body>
-</html>
+    </html>

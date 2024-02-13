@@ -1,8 +1,8 @@
-<?php
-    include('bd.php');
-    session_start();
+<?php 
+session_start();
+include_once('bd.php');
 ?>
-<!DOCTYPE php>
+<!DOCTYPE html>
     <html>  
         <head>
             <meta charset="UTF-8"/>
@@ -10,12 +10,13 @@
             <meta name="description" content="Apasionados del diseño. Elevamos básicos al siguiente nivel, vistiendo distinto.">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <title>About</title>
+            <title>Pedidos</title>
 
             <link rel="stylesheet" type="text/css" href="css/styles.css">
-            <link rel="stylesheet" type="text/css" href="css/styles-about.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-cuenta.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-cuenta-direc.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-pedidos.css">
             <link rel="stylesheet" type="text/css" href="css/responsive.css">
-
         </head>
 
         <body>
@@ -63,35 +64,140 @@
             </header>
 
             <div class="titulo">
-                <h1><strong>ABOUT</strong></h1>
-            </div>
+                <h1><strong>MI CUENTA</strong></h1>
+                <?php
+                    $conn = conectarBD();
+                    // Verificar si el nombre de usuario está almacenado en la sesión
+                    if(isset($_SESSION['user'])) {
+                        // Consulta para obtener el ID del usuario
+                        $query = "SELECT id FROM user WHERE email = '{$_SESSION['user']}'";
+                        // Ejecutar la consulta
+                        $resultado = mysqli_query($conn, $query);
 
-            <div class="about-flex">
+                        // Verificar si se obtuvieron resultados
+                        if (mysqli_num_rows($resultado) > 0) {
+                            // Obtener el ID de usuario de la primera fila del resultado
+                            $row = mysqli_fetch_assoc($resultado);
+                            $idUsuario = $row['id'];
+                        
+                            // Consulta para obtener las órdenes del usuario
+                            $query_orders = "SELECT * FROM orders WHERE id_user = $idUsuario";
+                            // Ejecutar la consulta
+                            $resultado_orders = mysqli_query($conn, $query_orders);
 
-                <div class="imagen">
-                    <img class="ramiro" src="Multimedia\Fotos\ramiro.jpg">
-                    <h2>Ramiro Scaglia, <br> fundador.</h2>
-                </div>
-            <div class="content">
-                <h2> Hecho a mano por apasionados del diseño, pensado para apasionados del diseño. <br><br>
-                    
-                    El usuario de Scaglia es muy perceptible a las distintas manifestaciones
-                    artísticas. No es experto, simplemente disfruta contemplandolas,
-                    teniendo en cuenta un común denominador: el color negro.</h2>
-    
-                    <h2><strong>No somos básicos,somos prendas minimalistas con un diseño exclusivo, somos Scaglia Clothing.</strong></h2>
+                            if (!$resultado_orders) {
+                                die("Error al ejecutar la consulta: " . mysqli_error($conn));
+                            }
 
-                    <button class="button" onclick="window.location.href='index.php'">COMPRAR AHORA</button>
-            </div>
+                            // Verificar si se obtuvieron órdenes
+                            if (mysqli_num_rows($resultado_orders) > 0) {
+                    ?>
+                                <h2>MIS PEDIDOS</h2>
+                                </div>
 
-            </div>
+                                <div class="about-flex">
+
+                                    <div class="imagen">
+                                        <ul>
+                                            <li><a href="Mi_Cuenta.php">Escritorio</a></li>
+                                            <li><a href="Pedidos.php">Pedidos</a></li>
+                                            <li><a href="Direcciones.php">Dirección</a></li>
+                                            <li><a href="Details.php">Detalles de la cuenta</a></li>
+                                            <li><a href="Wishlist.php">Lista de deseos</a></li>
+                                            <li><a href="logout.php">Salir</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="tablas">
+                                        <section class="Remeras">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Orden</th>
+                                                        <th>Fecha</th>
+                                                        <th>Articulos</th>
+                                                        <th>Total</th>
+                                                        <th>Estado</th>
+                                                        <!-- <th class="botondis"></th> -->
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                    <?php
+                                // Iterar sobre cada orden y mostrarla en una fila de la tabla
+                                while ($row_order = mysqli_fetch_assoc($resultado_orders)) {
+                    ?>
+
+                            <tr>
+                                <td>#<?= $row_order['id'] ?></td>
+                                <td><?= $row_order['date_time'] ?></td>
+                                <?php
+                            // Consulta para obtener los productos asociados a esta orden
+                            $order_id = $row_order['id'];
+
+                            $query_products = "SELECT p.product_name, oi.quantity, p.size
+                            FROM order_items oi
+                            JOIN product p ON oi.id_product = p.id
+                            WHERE oi.id_order = $order_id";
+                            $result_products = mysqli_query($conn, $query_products);
+                            
+                            // Iterar sobre los productos y mostrar cada uno como un elemento de lista
+                            echo('<td>');
+                            while ($product_row = mysqli_fetch_assoc($result_products)) {
+                                echo ''. $product_row['product_name'] . ' X ' . $product_row['quantity'] .  ' (' . $product_row['size'].')'.'<br>';
+                            }
+
+                            echo('</td>');
+                            ?>
+                                <td>$<?= $row_order['total_price'] ?></td>
+
+                                <?php
+                            $order_id = $row_order['id'];
+
+                            $query_envio = "SELECT o.id_status, st.description
+                            FROM orders o
+                            JOIN status st ON o.id_status = st.id";
+                            $result_envio = mysqli_query($conn, $query_envio);
+
+                            if ($result_envio && mysqli_num_rows($result_envio) > 0) {
+                                $envio_row = mysqli_fetch_assoc($result_envio);
+                                echo '<td>' . $envio_row['description'] . '</td>';
+                            } else {
+                                echo '<td>Error al obtener información de estado</td>';
+                            }
+                            
+                            ?>
+                                
+                                <!-- <td class="agregar"><button>Cancelar</button></td> -->
+                            </tr>
+                            
+                    <?php
+                                }
+                    ?>
+                                                </tbody>
+                                            </table>
+                                            
+                                        </section>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                
+                    <?php
+                            } else {
+                                // Si el usuario no tiene órdenes, mostrar un mensaje
+                                // echo "<a href='login.php'><p>Inicia sesión para ingresar a tu cuenta</p></a>";
+                                echo "NO TENES NINGUN PEDIDO REGISTRADO HASTA EL MOMENTO.";
+                            }
+                        }
+                    }
+                    ?>
+                
 
 
             <footer>
                 <div class = "flex-footer">
  
                         <section class="flex-iso">
-                            <a href="index.php"><img src="Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
+                            <a href="index.html"><img src="Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
                         </section>
 
                         <section class="flex-categ">
@@ -151,4 +257,4 @@
                 
             </footer>
         </body>
-</html>
+    </html>

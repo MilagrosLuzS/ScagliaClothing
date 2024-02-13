@@ -1,8 +1,7 @@
-<?php
-    include('bd.php');
-    session_start();
+<?php 
+session_start();
 ?>
-<!DOCTYPE php>
+<!DOCTYPE html>
     <html>  
         <head>
             <meta charset="UTF-8"/>
@@ -10,12 +9,12 @@
             <meta name="description" content="Apasionados del diseño. Elevamos básicos al siguiente nivel, vistiendo distinto.">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <title>About</title>
+            <title>Agregar dirección</title>
 
             <link rel="stylesheet" type="text/css" href="css/styles.css">
-            <link rel="stylesheet" type="text/css" href="css/styles-about.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-cuenta.css">
+            <link rel="stylesheet" type="text/css" href="css/styles-cuenta-direc-a.css">
             <link rel="stylesheet" type="text/css" href="css/responsive.css">
-
         </head>
 
         <body>
@@ -63,27 +62,109 @@
             </header>
 
             <div class="titulo">
-                <h1><strong>ABOUT</strong></h1>
+                <h1><strong>MI CUENTA</strong></h1>
+                <h2>DIRECCIÓN</h2>
             </div>
 
             <div class="about-flex">
 
                 <div class="imagen">
-                    <img class="ramiro" src="Multimedia\Fotos\ramiro.jpg">
-                    <h2>Ramiro Scaglia, <br> fundador.</h2>
+                    <ul>
+                    <li><a href="Mi_Cuenta.php">Escritorio</a></li>
+                    <li><a href="Pedidos.php">Pedidos</a></li>
+                    <li><a href="Direcciones.php">Dirección</a></li>
+                    <li><a href="Details.php">Detalles de la cuenta</a></li>
+                    <li><a href="Wishlist.php">Lista de deseos</a></li>
+                    <li><a href="logout.php">Salir</a></li>
+                    </ul>
                 </div>
             <div class="content">
-                <h2> Hecho a mano por apasionados del diseño, pensado para apasionados del diseño. <br><br>
+                <section class="flex-dir">
+                <h2>Dirección de envío</h2>
+                </section>    
+
+                <section> 
                     
-                    El usuario de Scaglia es muy perceptible a las distintas manifestaciones
-                    artísticas. No es experto, simplemente disfruta contemplandolas,
-                    teniendo en cuenta un común denominador: el color negro.</h2>
-    
-                    <h2><strong>No somos básicos,somos prendas minimalistas con un diseño exclusivo, somos Scaglia Clothing.</strong></h2>
+                    <form  id="formulario" action="#" method="post" enctype="application/x-www-form-urlencoded">
+                        <div class="input_contenedor">
+                            <h2>Nombres</h2>
+                            <input id="Nombre" type="text" name="Nombre" >
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Apellidos</h2>
+                            <input id="Apellidos" type="text" name="Apellidos">
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Email</h2>
+                            <input id="Email" type="email" name="Email" >
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Telefono</h2>
+                            <input id="Telefono" type="text" name="Telefono" >
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Calle</h2>
+                            <input id="Calle" type="text" name="Calle" >
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Altura</h2>
+                            <input id="Altura" type="text" name="Altura" >
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Piso/Depto</h2>
+                            <input id="Piso" type="text" name="Piso" placeholder="Ingrese '-' para omitir">
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Localidad</h2>
+                            <input id="Localidad" type="text" name="Localidad" >
+                            <p></p>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Provincia</h2>
+                            <select name="Provincia">
+                                <option value="BuenosAires">Buenos Aires</option>
+                                <option value="CABA">CABA</option>
+                                <option value="Catamarca">Catamarca</option>
+                                <option value="Chaco">Chaco</option>
+                                <option value="Chubut">Chubut</option>
+                                <option value ="Cordoba">Córdoba</option>
+                                <option value ="Corrientes">Corrientes</option>
+                                <option value ="EntreRios">Entre Ríos</option>
+                                <option value="Formosa">Formosa</option>
+                                <option value ="Jujuy">Jujuy</option>
+                                <option value ="LaPampa">La Pampa</option>
+                                <option value ="LaRioja">La Rioja</option>
+                                <option value ="Mendoza">Mendoza</option>
+                                <option value ="Misiones">Misiones</option>
+                                <option value ="Neuquen">Neuquén</option>
+                                <option value ="RioNegro">Río Negro</option>
+                                <option value ="Salta">Salta</option>
+                                <option value ="SanJuan">San Juan</option>
+                                <option value="SanLuis">San Luis</option>
+                                <option value="SantaCruz">Santa Cruz</option>
+                                <option value ="TDF">Tierra Del Fuego</option>
+                                <option value="Tucuman">Tucuman</option>
+                            </select>
+                        </div>
+                        <div class="input_contenedor">
+                            <h2>Código postal</h2>
+                            <input id ="CodPostal" type="number" name="CodPostal" >
+                            <p></p>
+                        </div>
+                        <div class="submit">
+                            <input value="Guardar dirección" class="button" type="submit" name="Guardar" >
+                        </div>
+                    </form>
 
-                    <button class="button" onclick="window.location.href='index.php'">COMPRAR AHORA</button>
-            </div>
-
+                </section>
+              
             </div>
 
 
@@ -91,17 +172,17 @@
                 <div class = "flex-footer">
  
                         <section class="flex-iso">
-                            <a href="index.php"><img src="Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
+                            <a href="index.html"><img src="Multimedia\Recursos\Version negativo\Recurso 14.png" alt="loading..."></a>
                         </section>
 
                         <section class="flex-categ">
                             <p>CATEGORÍAS</p>
                             <nav>
                             <ul>
-                                <a href="buzos.php"><li>BUZOS</li></a>
-                                <a href="remeras.php"><li>REMERAS</li></a>
-                                <a href="guiadetalles.php"><li>GUÍA DE TALLES</li></a>
-                                <a href="about.php"><li>ABOUT</li></a>
+                                <a href="buzos.html"><li>BUZOS</li></a>
+                                <a href="remeras.html"><li>REMERAS</li></a>
+                                <a href="guiadetalles.html"><li>GUÍA DE TALLES</li></a>
+                                <a href="about.html"><li>ABOUT</li></a>
                             </ul>
                             </nav>
                         </section>
@@ -121,8 +202,8 @@
                             <p>MY SCAGLIA</p>
                             <nav>
                             <ul>
-                                <a href="Login.php"><li>INICIAR SESIÓN</li></a>
-                                <a href="Register.php"><li>REGISTRARME</li></a>
+                                <a href="Login.html"><li>INICIAR SESIÓN</li></a>
+                                <a href="Register.html"><li>REGISTRARME</li></a>
                             </ul>
                             </nav>
                         </section>
@@ -150,5 +231,6 @@
 
                 
             </footer>
+            <script src="js/Validacion_Direccion.js"></script>
         </body>
-</html>
+    </html>
