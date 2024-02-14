@@ -135,7 +135,7 @@ include_once('bd.php');
 
                             $query_products = "SELECT p.product_name, oi.quantity, p.size
                             FROM order_items oi
-                            JOIN product p ON oi.product_id = p.id
+                            JOIN product p ON oi.product_id = p.product_id
                             WHERE oi.id_order = $order_id";
                             $result_products = mysqli_query($conn, $query_products);
                             

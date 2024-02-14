@@ -31,7 +31,7 @@
         $importe = 0;
         $carrito_productos = traer_Productos_Carrito($id_carrito,$conn);
         while($carrito_producto = $carrito_productos->fetch_assoc()){
-            $importe += $carrito_producto["precio"]*$carrito_producto["quantity"];
+            $importe += $carrito_producto["precio"]*$carrito_producto["cantidad"];
         }
         //hago el pedido
         $query = "INSERT INTO orders(id_user,date_time,id_status,total_price,id_adress,id_shipping,cardholder,card,expiration,cvc) 
