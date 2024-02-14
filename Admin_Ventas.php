@@ -64,7 +64,7 @@
     <?php
         include_once('bd.php');
         $conn = conectarBD();
-        $query = "SELECT o.id AS order_id, o.date_time, u.id,u.user_name, o.total_price, i.id_product 
+        $query = "SELECT o.id AS order_id, o.date_time, u.id,u.user_name, o.total_price, i.product_id 
         FROM orders o
         JOIN user u ON o.id_user = u.id
         JOIN order_items i ON i.id_order = o.id 
@@ -96,7 +96,7 @@
 
                             $query_products = "SELECT p.product_name, oi.quantity, p.size
                             FROM order_items oi
-                            JOIN product p ON oi.id_product = p.id
+                            JOIN product p ON oi.product_id = p.id
                             WHERE oi.id_order = $order_id";
                             $result_products = mysqli_query($conn, $query_products);
                             echo '<section class="flex-data">';

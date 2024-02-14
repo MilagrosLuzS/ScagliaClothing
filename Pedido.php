@@ -102,7 +102,9 @@ session_start();
                 $estado_envio=["Recibido","green"];
             }
         ?>
-        <h2 class="header">Resumen del pedido #<?php echo $_GET["id"]; ?></h2>
+        <div class="titulo">
+        <h2 class="header">RESUMEN DEL PEDIDO #<?php echo $_GET["id"]; ?></h2>
+        </div>
                 <div class="resumen section header">
                     <h2 class="header">Gracias por comprar en nuestra tienda</h2>
                     <p style="color:black">Tu numero de pedido es: <?php echo $_GET["id"]; ?></p>
@@ -116,7 +118,7 @@ session_start();
                         foreach ($pedidos_producto as $p) {
                             echo('
                                 <li>
-                                <img src="'.$p["producto_imagen"].'" alt="">
+                                <img width="200" src="'.$p["producto_imagen"].'" alt="">
                                 <div class="info">
                                     <div class="descripcion">
                                         <p class="id">#'.$p["product_id"].'</p>
