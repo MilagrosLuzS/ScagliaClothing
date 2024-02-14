@@ -1,7 +1,7 @@
 <?php
     session_start();
     function traer_Productos_Carrito($id_carrito,$conn){
-        $query = "SELECT product.price as precio,quantity as cantidad FROM cart_products JOIN product ON cart_products.product_id = product.id WHERE cart_id = $id_carrito";
+        $query = "SELECT product.price as precio,quantity as cantidad FROM cart_products JOIN product ON cart_products.product_id = product.product_id WHERE cart_id = $id_carrito GROUP BY product_name";
         $res = consultaSQL($conn,$query);
         if($res->num_rows < 1){
             $res = NULL;
@@ -11,6 +11,7 @@
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         include_once("bd.php");
+        $conn = conectarBD();
         $usuario = $_SESSION["id"];
         // datos de pago
         $titular = $_POST["titular"];
@@ -25,12 +26,12 @@
         //consigo la direccion
         $query = "SELECT id_adress FROM user_adress WHERE id_user = $usuario";
         $result = consultaSQL($conn,$query);
-        $id_direccion = ($result->fetch_assoc())["id"];
+        $id_direccion = ($result->fetch_assoc())["id_adress"];
         //consigo el importe
         $importe = 0;
         $carrito_productos = traer_Productos_Carrito($id_carrito,$conn);
         while($carrito_producto = $carrito_productos->fetch_assoc()){
-            $importe += $carrito_producto["precio"]*$carrito_producto["cantidad"];
+            $importe += $carrito_producto["precio"]*$carrito_producto["quantity"];
         }
         //hago el pedido
         $query = "INSERT INTO orders(id_user,date_time,id_status,total_price,id_adress,id_shipping,cardholder,card,expiration,cvc) 
@@ -38,23 +39,25 @@
         consultaSQL($conn,$query);
         $id_pedido = $conn->insert_id;
         //hago los pedidos de los productos
-        $query = "INSERT INTO order_items(product_id,quantity,id_order,unit_price,total_price) 
-                  SELECT $id_pedido as id_order, cart_products.product_id, cart_products.quantity, (product.price) as unit_price, (product.price*cart_products.quantity) as total_price 
-                  FROM cart_products 
-                  JOIN product ON product.product_id = cart_products.product_id
-                  WHERE cart_id = $id_carrito;";
+        $query = "INSERT INTO order_items(product_id, quantity, id_order, unit_price, total_price, talle) 
+        SELECT cart_products.product_id, cart_products.quantity, $id_pedido as id_order, product.price as unit_price, (product.price * cart_products.quantity) as total_price, cart_products.talle
+        FROM cart_products 
+        JOIN product ON product.product_id = cart_products.product_id
+        WHERE cart_products.cart_id = $id_carrito LIMIT 1;";
         consultaSQL($conn,$query);
         //bajo el stock
         $query = "SELECT * FROM cart_products WHERE cart_id = $id_carrito";
         $result = consultaSQL($conn,$query);
         while($row = $result->fetch_assoc()){
             $id_producto = $row["product_id"];
-            $cantidad = $row["quantity"];
+            $cantidad = $row["cantidad"];
+            $talle = $row["talle"];
             $conn2 = conectarBD();
-            $query2 = "UPDATE product SET stock = (product.stock - ".intval($cantidad).") WHERE product.id = $id_producto";
+            $query2 = "UPDATE product SET stock = (product.stock - ".intval($cantidad).") WHERE product.product_id = $id_producto AND product.size = $talle";
             consultaSQL($conn2,$query2);
             desconectarBD($conn2); 
         }
+
         // elimino el carrito y los productos del carrito
         $query = "DELETE FROM cart_products WHERE cart_id = $id_carrito";
         consultaSQL($conn,$query);
