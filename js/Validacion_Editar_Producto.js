@@ -1,96 +1,109 @@
-window.addEventListener('load',()=>{
-    const form = document.getElementById('formulario');
+function validarCampos(){
+    event.preventDefault();
     const Nombre = document.getElementById('Nombre');
     const Precio = document.getElementById('Precio');
-    const Talle = document.getElementById('Talle');
+    const Talles = document.getElementById('Talle');
+    const Colores = document.getElementById('Colores');
     const Stock = document.getElementById('Stock');
+    const Imagen = document.getElementById('imagen')
+    const Descripcion = document.getElementById('freeform')
+    // Primero guardo los datos ingresados por el usuario
+    const talleValor = Talles.value.trim();
+    const nombreValor = Nombre.value.trim();
+    const precioValor = Precio.value.trim();
+    const stockValor = Stock.value.trim();
+    const ImagenValor = Imagen.files[0];
+    const DescripcionValor = Descripcion.value.trim();
+    contador = 0;
 
-    form.addEventListener('submit',(e)=>{
-        e.preventDefault();
-        validarCampos();
-    })
-
-    function validarCampos(){
-        // Primero guardo los datos ingresados por el usuario
-        const nombreValor = Nombre.value.trim();
-        const precioValor = Precio.value.trim();
-        const talleValor = Talle.value.trim();
-        const stockValor = Stock.value.trim();
-
-        //validacion nombre
-        if(nombreValor===''){
-            validacionFallida(Nombre,'Campo Vacio.')
-        }else{
-            ValidacionCorrecta(Nombre)
-        }
-
-        //validacion Precio
-        if(precioValor===''){
-            validacionFallida(Precio,'Campo Vacio.')
-        }else if(!validacionNumeros(precioValor)){
-            validacionFallida(Precio,'Ingrese solo numeros.')
-        }
-        else{
-            ValidacionCorrecta(Precio);
-        }
-
-
-        //validacion Stock
-
-        if(stockValor===''){
-            validacionFallida(Stock,'Campo Vacio.');
-        }else if(!validacionNumeros(stockValor)){
-            validacionFallida(Stock,'Ingrese solo numeros.');
-        }else{
-            ValidacionCorrecta(Stock);
-        }
-
-        //validacion Talle
-        if(talleValor===''){
-            validacionFallida(Talle,'Campo Vacio.');
-        }else if(!validacionNumeros(talleValor)){
-            validacionFallida(Talle,'Ingrese solo numeros.');
-        }else{
-            ValidacionCorrecta(Talle);
-        }
-
-        //validacion color
-        validarColor();
-
+    //validacion nombre
+    if(nombreValor===''){
+        validacionFallida(Nombre,'Campo Vacio.')
+    }else if(validacionGeneral(nombreValor)){
+        validacionFallida(Nombre,'Ingrese un Nombre valido.')
+    }
+    else{
+        ValidacionCorrecta(Nombre)
+        contador+=1
     }
 
-    function validacionFallida(input,mensaje){
-        const formControl = input.parentElement
-        const aviso = formControl.querySelector('p')
-        aviso.innerText = mensaje
-
-        formControl.className = 'input_contenedor fallida'
+    //validacion Precio
+    if(precioValor===''){
+        validacionFallida(Precio,'Campo Vacio.')
+    }
+    else{
+        ValidacionCorrecta(Precio);
+        contador+=1
     }
 
-    function ValidacionCorrecta(input,mensaje){
-        const formControl = input.parentElement
-        formControl.className = 'input_contenedor correcta'
+    //validar checkbox
+
+
+    //validacion Stock
+
+    if(stockValor===''){
+        validacionFallida(Stock,'Campo Vacio.');
+    }
+    else{
+        ValidacionCorrecta(Stock);
+        contador+=1
     }
 
-    function validacionNumeros(gen){
-        return /^[0-9]+$/.test(gen);
+    //validacion talle
+    
+    if(talleValor===''){
+        validacionFallida(Talles,'Campo Vacio')
+    }else{
+        ValidacionCorrecta(Talles)
+        contador+=1
     }
 
-    function validarColor(){
-        var valid = false;
-        if(document.getElementById("Color1").checked){
-            valid = true;
-        }
-        else if(document.getElementById("Color2").checked){
-            valid = true;
-        }
-        else if(document.getElementById("Color3").checked){
-            valid = true;
-        }
-        if(!valid){
-            alert("Seleccionar colores.");
-            return false;
-        }
+    //validacion color
+
+    if(validarColor()){
+        contador+=1
     }
 
-})
+    //validacion descripcion
+
+    if(DescripcionValor===''){
+        validacionFallida(Descripcion,'Campo Vacio')
+    }else{
+        ValidacionCorrecta(Descripcion)
+        contador+=1
+    }
+
+    if(contador == 6){
+        document.getElementById('formulario').submit();
+    }
+
+}
+
+function validacionFallida(input,mensaje){
+    const formControl = input.parentElement
+    const aviso = formControl.querySelector('p')
+    aviso.innerText = mensaje
+
+    formControl.className = 'input_contenedor fallida'
+}
+
+function ValidacionCorrecta(input,mensaje){
+    const formControl = input.parentElement
+    formControl.className = 'input_contenedor correcta'
+}
+
+function validacionGeneral(general){
+    // return /^([^0-9\s_.]+)+[a-zA-Z]*((\s?)*[a-zA-Z](\s?)*)*$/g.test(general);
+    return /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(general);
+}
+
+function validarColor() {
+    if(document.getElementById("Color1").checked ||
+       document.getElementById("Color2").checked ||
+       document.getElementById("Color3").checked) {
+        return true; // Al menos una opción de color está marcada
+    } else {
+        alert("Seleccionar colores.");
+        return false; // Ninguna opción de color está marcada
+    }
+}

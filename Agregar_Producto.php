@@ -16,6 +16,7 @@
             <link rel="stylesheet" type="text/css" href="css/styles-cuenta.css">
             <link rel="stylesheet" type="text/css" href="css/styles-admin-agregar-prod.css">
             <link rel="stylesheet" type="text/css" href="css/responsive.css">
+            <script src="js/Validacion_Agregar_Producto.js"></script>
         </head>
 
         <body>
@@ -75,9 +76,10 @@
 
                 <section> 
     <form id="formulario" action="#" method="post" enctype="multipart/form-data">
-        <section id="checks">
+        <section class="input_contenedor">
             <h2>Nombre</h2>
             <input id="Nombre" type="text" name="Nombre">
+            <p></p>
         </section>
 
         <section id="checks">
@@ -87,104 +89,109 @@
                 <option value="Buzo">Buzo</option>
                 <option value="Otro">Otro</option>
             </select>
+            <p></p>
         </section>
 
-        <section id="checks">
+        <section class="input_contenedor">
             <h2>Precio</h2>
             <input id="Precio" type="number" name="Precio">
+            <p></p>
         </section>
 
-        <section id="input_contenedor">
+        <section class="input_contenedor">
             <h2>Talle</h2>
             <input id="Talle" type="text" name="Talles[]">
+            <p></p>
         </section>
 
-        <section id="input_contenedor">
+        <section class="input_contenedor">
             <h2>Colores</h2>
-            <label><input type="checkbox" value="Negro" name="Colores[]">Negro</label>
-            <label><input type="checkbox" value="Gris" name="Colores[]">Gris</label>
-            <label><input type="checkbox" value="Blanco" name="Colores[]">Blanco</label>
+            <label><input id="Color1" type="checkbox" value="Negro" name="Color1">Negro</label>
+            <label><input id="Color2" type="checkbox" value="Gris" name="Color2">Gris</label>
+            <label><input id="Color3" type="checkbox" value="Blanco" name="Color3">Blanco</label>
+            <p></p>
         </section>
 
-        <section id="input_contenedor">
+        <section class="input_contenedor">
             <h2>Stock</h2>
             <input id="Stock" type="number" name="Stock">
+            <p></p>
         </section>
 
-        <section id="input_contenedor">
+        <section class="input_contenedor">
             <h2>Descripción</h2>
-            <textarea id="freeform" name="Descripcion" rows="4" cols="50"></textarea>
+            <input id="freeform" name="Descripcion" rows="4" cols="50"></input>
+            <p></p>
         </section>
 
-        <section id="input_contenedor">
+        <section class="input_contenedor">
             <h2>Imagen</h2>
             <input type="file" id="imagen" name="Imagen">
+            <p></p>
         </section>
 
         <br>
 
         <section class="submit">
-            <input value="Guardar producto" class="button" type="submit" name="Guardar">
+            <input value="Guardar producto" onclick="validarCampos()" class="button" type="submit" name="Guardar">
         </section>
     </form>
 </section>
 
 <?php
-include_once('bd.php');
+    include_once('bd.php');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verifica si se han recibido todos los campos necesarios del formulario
-    if (isset($_POST['Nombre'], $_POST['Tipo'], $_POST['Precio'], $_POST['Talles'], $_POST['Colores'], $_POST['Descripcion'], $_FILES['Imagen'])) {
-        $conn = conectarBD();
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Verifica si se han recibido todos los campos necesarios del formulario
+        if (isset($_POST['Nombre'], $_POST['Tipo'], $_POST['Precio'], $_POST['Talles'], $_POST['Colores'], $_POST['Descripcion'], $_FILES['Imagen'])) {
+            $conn = conectarBD();
 
-        $nombre = $_POST['Nombre'];
-        $tipo = $_POST['Tipo'];
-        $precio = $_POST['Precio'];
-        $talles = !empty($_POST['Talles']) ? implode(",", $_POST['Talles']) : ""; //crea string separado por ,
-        $colores = !empty($_POST['Colores']) ? implode(",", $_POST['Colores']) : "";
-        $stock = isset($_POST['Stock']) ? $_POST['Stock'] : 0;
-        $descripcion = $_POST['Descripcion'];
+            $nombre = $_POST['Nombre'];
+            $tipo = $_POST['Tipo'];
+            $precio = $_POST['Precio'];
+            $talles = !empty($_POST['Talles']) ? implode(",", $_POST['Talles']) : ""; //crea string separado por ,
+            $colores = !empty($_POST['Colores']) ? implode(",", $_POST['Colores']) : "";
+            $stock = isset($_POST['Stock']) ? $_POST['Stock'] : 0;
+            $descripcion = $_POST['Descripcion'];
 
-        // Procesar la imagen
-        $imagen_nombre = $_FILES['Imagen']['name'];
-        $imagen_destino = "Multimedia/Fotos_Producto/Fotos_C/" . $imagen_nombre; 
-        move_uploaded_file($_FILES['Imagen']['tmp_name'], $imagen_destino); //mueve la imagen y la guarda en mi carpeta
+            // Procesar la imagen
+            $imagen_nombre = $_FILES['Imagen']['name'];
+            $imagen_destino = "Multimedia/Fotos_Producto/Fotos_C/" . $imagen_nombre; 
+            move_uploaded_file($_FILES['Imagen']['tmp_name'], $imagen_destino); //mueve la imagen y la guarda en mi carpeta
 
-        // Busco el product id
-        $product_id = null;
+            // Busco el product id
+            $product_id = null;
 
-        // Buscar si existe un producto con el mismo nombre
-        $query_search = "SELECT product_id FROM product WHERE product_name = '[$nombre]'";
-        $result_search = mysqli_query($conn, $query_search);
+            // Buscar si existe un producto con el mismo nombre
+            $query_search = "SELECT product_id FROM product WHERE product_name = '[$nombre]'";
+            $result_search = mysqli_query($conn, $query_search);
 
-        if (mysqli_num_rows($result_search) > 0) {
-            // Si existe un producto con el mismo nombre, obtener su product_id
-            $row = mysqli_fetch_assoc($result_search);
-            $product_id = $row['product_id'];
-        } else {
-            // Si no existe un producto con el mismo nombre, encontrar el máximo product_id y sumarle uno
-            $query_max = "SELECT MAX(product_id) AS max_id FROM product";
-            $result_max = mysqli_query($conn, $query_max);
-            $row_max = mysqli_fetch_assoc($result_max);
-            $product_id = $row_max['max_id'] + 1;
-        }
+            if (mysqli_num_rows($result_search) > 0) {
+                // Si existe un producto con el mismo nombre, obtener su product_id
+                $row = mysqli_fetch_assoc($result_search);
+                $product_id = $row['product_id'];
+            } else {
+                // Si no existe un producto con el mismo nombre, encontrar el máximo product_id y sumarle uno
+                $query_max = "SELECT MAX(product_id) AS max_id FROM product";
+                $result_max = mysqli_query($conn, $query_max);
+                $row_max = mysqli_fetch_assoc($result_max);
+                $product_id = $row_max['max_id'] + 1;
+            }
 
-        $query = "INSERT INTO product (product_name, type, color, size, stock, description, img, price, product_id) 
-                  VALUES ('[$nombre]', '$tipo', '[$colores]', '$talles', '$stock', '$descripcion', '$imagen_destino', '$precio', '$product_id')";
+            $query = "INSERT INTO product (product_name, type, color, size, stock, description, img, price, product_id) 
+                    VALUES ('[$nombre]', '$tipo', '[$colores]', '$talles', '$stock', '$descripcion', '$imagen_destino', '$precio', '$product_id')";
+            
+            $query2 = "INSERT INTO product_images (product_id,image) VALUES ('$product_id','$imagen_destino')";
+
         
-        $query2 = "INSERT INTO product_images (product_id,image) VALUES ('$product_id','$imagen_destino')";
-
-    
-        if (mysqli_query($conn, $query) && mysqli_query($conn, $query2)) {
-            echo "<script>alert('Producto agregado correctamente.'); window.location = 'Agregar_Producto.php';</script>";
-        } else {
-            echo "<script>alert('Error al agregar el producto: ".mysqli_error($conn)."'); window.location = 'Agregar_Producto.php';</script>";
-        }
-        
-        desconectarBD($conn);
-    } else {
-        echo "No se han recibido todos los campos necesarios del formulario";
-    }
+            if (mysqli_query($conn, $query) && mysqli_query($conn, $query2)) {
+                echo "<script>alert('Producto agregado correctamente.'); window.location = 'Agregar_Producto.php';</script>";
+            } else {
+                echo "<script>alert('Error al agregar el producto: ".mysqli_error($conn)."'); window.location = 'Agregar_Producto.php';</script>";
+            }
+            
+            desconectarBD($conn);
+        } 
 }
 ?>
    
@@ -251,7 +258,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p>Copyright Scaglia - 2022. Todos los derechos reservados</p>
                 </div>
     
-                <!-- <script src="Validacion_Agregar_Producto.js"></script> -->
+                
                 
             </footer>
         </body>

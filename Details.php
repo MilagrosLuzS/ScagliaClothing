@@ -110,7 +110,7 @@ include('only_client.php');
                             <a><?= $row['email'] ?></a>
                         </div>
                         <section class="submit">
-                            <input value="Actualizar datos" class="button" type="submit" name="Guardar">
+                            <input value="Actualizar datos" class="button" onclick="validarCampos()" type="submit" name="Guardar">
                         </section>
                         <div class="input_contenedor">
                             <h2><a href="Cambio_Contraseña.php">Desea cambiar su contraseña?</a></h2>
@@ -214,6 +214,6 @@ include('only_client.php');
 
                 
             </footer>
-            <!-- <script src="js/Validacion_Details.js"></script> -->
+            <script src="js/Validacion_Details.js"></script>
         </body>
     </html>

@@ -1,46 +1,38 @@
-window.addEventListener('load',()=>{
-    const form = document.getElementById('formulario');
+function validarCampos(){
+    event.preventDefault();
     const nombre = document.getElementById('Nombre');
+    // Primero guardo los datos ingresados por el usuario
+    const nombreValor = nombre.value.trim();
+    //validacion nombre
 
-    form.addEventListener('submit',(e)=>{
-        e.preventDefault();
-        validarCampos();
-    })
-
-    function validarCampos(){
-        // Primero guardo los datos ingresados por el usuario
-        const nombreValor = nombre.value.trim();
-        //validacion nombre
-
-        if(nombreValor === ''){
-            validacionFallida(nombre,'Campo vacio')
-        }
-        else if(!validacionGeneral(nombreValor)){
-            validacionFallida(nombre,'Ingrese un nombre valido')
-        }
-        else{
-            ValidacionCorrecta(nombre)
-        }
-        
+    if(nombreValor === ''){
+        validacionFallida(nombre,'Campo vacio')
     }
-
-    function validacionFallida(input,mensaje){
-        const formControl = input.parentElement
-        const aviso = formControl.querySelector('p')
-        aviso.innerText = mensaje
-
-        formControl.className = 'input_contenedor fallida'
+    else if(!validacionGeneral(nombreValor)){
+        validacionFallida(nombre,'Ingrese un nombre valido')
     }
-
-    function ValidacionCorrecta(input,mensaje){
-        const formControl = input.parentElement
-        formControl.className = 'input_contenedor correcta'
+    else{
+        ValidacionCorrecta(nombre)
+        document.getElementById('formulario').submit();
     }
+}
+
+function validacionFallida(input,mensaje){
+    const formControl = input.parentElement
+    const aviso = formControl.querySelector('p')
+    aviso.innerText = mensaje
+
+    formControl.className = 'input_contenedor fallida'
+}
+
+function ValidacionCorrecta(input,mensaje){
+    const formControl = input.parentElement
+    formControl.className = 'input_contenedor correcta'
+}
 
 
-    function validacionGeneral(general){
-        // return /^([^0-9\s_.]+)+[a-zA-Z]*((\s?)*[a-zA-Z](\s?)*)*$/g.test(general);
-        return /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(general);
-    }
+function validacionGeneral(general){
+    // return /^([^0-9\s_.]+)+[a-zA-Z]*((\s?)*[a-zA-Z](\s?)*)*$/g.test(general);
+    return /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(general);
+}
 
-})

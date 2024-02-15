@@ -99,61 +99,64 @@ if (isset($_GET['id'])) {
     ?>
                 <form id="formulario" action="#" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<?= $id_producto ?>">
-                <section id="checks">
+                <section class="input_contenedor">
                     <h2>Nombre</h2>
                     <input id="Nombre" value="<?= $row['product_name'] ?>" type="text" name="Nombre">
                     <p></p>
                 </section>
 
-                <section id="checks">
+                <section class="input_contenedor">
                     <h2>Tipo de producto</h2>
                     <select id="opcion" name="Tipo" value="<?= $row['type'] ?>">
                     <option value="Remera" <?php if ($row['type'] == 'Remera') echo 'selected'; ?>>Remera</option>
                     <option value="Buzo" <?php if ($row['type'] == 'Buzo') echo 'selected'; ?>>Buzo</option>
                     <option value="Otro" <?php if ($row['type'] == 'Otro') echo 'selected'; ?>>Otro</option>
+                    <p></p>
                 </select>
                     </select>
                 </section>
 
-                <section id="checks">
+                <section class="input_contenedor">
                     <h2>Precio</h2>
                     <input id="Precio" value="<?= $row['price'] ?>" type="number" name="Precio">
                     <p></p>
                 </section>
 
-                <section id="input_contenedor">
+                <section class="input_contenedor">
                     <h2>Talle</h2>
                     <input id="Talle" value="<?= $row['size'] ?>" type="text" name="Talles[]">
+                    <p></p>
                 </section>
 
-                <section id="input_contenedor">
+                <section class="input_contenedor">
                     <h2>Colores</h2>
-                    <label><input type="checkbox" value="Negro" name="Colores[]" <?php if (in_array('[Negro]', $colores_bd)) echo 'checked'; ?>>Negro</label>
-                    <label><input type="checkbox" value="Gris" name="Colores[]" <?php if (in_array('[Gris]', $colores_bd)) echo 'checked'; ?>>Gris</label>
-                    <label><input type="checkbox" value="Blanco" name="Colores[]" <?php if (in_array('[Blanco]', $colores_bd)) echo 'checked'; ?>>Blanco</label>
-                
+                    <label><input id="Color1" type="checkbox" value="Negro" name="Colores[]" <?php if (in_array('[Negro]', $colores_bd)) echo 'checked'; ?>>Negro</label>
+                    <label><input id="Color2" type="checkbox" value="Gris" name="Colores[]" <?php if (in_array('[Gris]', $colores_bd)) echo 'checked'; ?>>Gris</label>
+                    <label><input id="Color3" type="checkbox" value="Blanco" name="Colores[]" <?php if (in_array('[Blanco]', $colores_bd)) echo 'checked'; ?>>Blanco</label>
+                    <p></p>
                 </section>
 
-                <section id="input_contenedor">
+                <section class="input_contenedor">
                     <h2>Stock</h2>
                     <input id="Stock" value="<?= $row['stock'] ?>" type="number" name="Stock">
+                    <p></p>
                 </section>
 
-                <section id="input_contenedor">
+                <section class="input_contenedor">
                     <h2>Descripción</h2>
-                    <textarea id="freeform" placeholder="<?= $row['description'] ?>" name="Descripcion" rows="4" cols="50"></textarea>
+                    <input id="freeform" value="<?= $row['description'] ?>" name="Descripcion" rows="4" cols="50"></input>
+                    <p></p>
                 </section>
-
-                <section id="input_contenedor">
+                <section class="input_contenedor">
                     <h2>Imagen</h2>
                     <input type="file" id="imagen" name="Imagen">
-                    
+                    <p></p>
                 </section>
 
                 <br>
 
                 <section class="submit">
-                    <input value="Actualizar producto" class="button" type="submit" name="Guardar">
+                    <input value="Actualizar producto" onclick=validarCampos() class="button" type="submit" name="Guardar">
                 </section>
             </form>
 
@@ -277,7 +280,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p>Copyright Scaglia - 2022. Todos los derechos reservados</p>
                 </div>
     
-                <!-- <script src="Validacion_Editar_Producto.js"></script> -->
+                <script src="js/Validacion_Editar_Producto.js"></script>
                 
             </footer>
         </body>

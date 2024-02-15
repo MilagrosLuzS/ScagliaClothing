@@ -119,7 +119,7 @@
                         </div>
     
                         <section class="submit">
-                            <input value="Guardar" class="button" type="submit" name="Guardar">
+                            <input value="Guardar" onclick="validarCampos(event,'<?php echo $password_usuario; ?>')" class="button" type="submit" name="Guardar">
                         </section>
                     
                         <?php 
@@ -131,37 +131,15 @@
                             $password_actual = $_POST['PasActual']; // ID del usuario a actualizar
                             $password_nueva = $_POST['PasNueva'];
                             $password_confirm = $_POST['PasConfirm'];
+                            $update_query = "UPDATE user SET password = '$password_nueva' WHERE id = $id_usuario";
+                            consultaSQL($conn,$update_query);
 
-                            if ($password_actual === $password_usuario) {
-                                // Verifica si la nueva contraseña y la confirmación coinciden
-                                if ($password_nueva === $password_confirm) {
-                                    // Encripta la nueva contraseña
-                                   
-                                    // Actualiza la contraseña en la base de datos
-                                    $update_query = "UPDATE user SET password = '$password_nueva' WHERE id = $id_usuario";
-
-                                    if (mysqli_query($conn, $update_query)) {
-                                        echo "<script>alert('Contraseña actualizada correctamente.'); window.location = 'Cambio_contraseña.php';</script>";
-                                    } else {
-                                        echo "<script>alert('Error al actualizar la contraseña: " . mysqli_error($conn) ."'); window.location = 'Cambio_contraseña.php';</script>";
-                                    }
-                                } else {
-                                    echo "<p style=\"color: red;\">La nueva contraseña y la confirmación no coinciden.</p>";
-                                }
-                            } else {
-                                echo "<p style=\"color: red;\">La contraseña actual ingresada no es válida.</p>";
-                            }
                             
-                        } else {
-                            echo "<p style=\"color: red;\">No se han recibido todos los campos necesarios del formulario</p>";
-                        }
+                            }
+                        } 
                     }
-                        } else {
-                            echo "ID del usuario no proporcionado.";
-                            desconectarBD($conn);
-                        }
-                    }
-
+                }
+                    desconectarBD($conn);
                     ?>
 
                </form>        
@@ -231,6 +209,6 @@
 
                 
             </footer>
-            <!-- <script src="js/Validacion_Cambio_Contraseña.js"></script> -->
+            <script src="js/Validacion_Cambio_Contraseña.js"></script>
         </body>
     </html>
