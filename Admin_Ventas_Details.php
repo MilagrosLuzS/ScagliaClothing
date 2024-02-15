@@ -1,3 +1,11 @@
+<?php
+
+    
+    include('only_admin.php');
+    
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,8 +93,8 @@
                                             <th>Comprador</th>
                                             <th>Artículos</th>
                                             <th>Total</th>
-                                            <th>Envío</th>
                                             <th>Estado</th>
+                                            <th>Envío</th>
                                             <th>Contacto</th>
                                         </tr>
                                     </thead>
@@ -122,20 +130,77 @@
                             $order_id = $row['order_id'];
 
                             $query_envio = "SELECT s.description AS shipd, st.description
-                            FROM orders o
-                            JOIN shipping s ON o.id_shipping = s.id
-                            JOIN status st ON o.id_status = st.id";
+                                            FROM orders o
+                                            JOIN shipping s ON o.id_shipping = s.id
+                                            JOIN status st ON o.id_status = st.id";
                             $result_envio = mysqli_query($conn, $query_envio);
 
                             if ($result_envio && mysqli_num_rows($result_envio) > 0) {
                                 $envio_row = mysqli_fetch_assoc($result_envio);
-                                echo '<td>' . $envio_row['shipd'] . '</td>';
-                                echo '<td>' . $envio_row['description'] . '</td>';
-                            } else {
-                                echo '<td>Error al obtener información de envío</td>';
-                                echo '<td>Error al obtener información de estado</td>';
+                                
+                                echo '<td>
+                                <form id="formulario" action="#" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="id_orden" value="'.$order_id.'">
+                                <select name="status" id="opciones">';
+
+                                $query_form = "SELECT description FROM status";
+                                $result_form = mysqli_query($conn, $query_form);
+
+                                if ($result_form && mysqli_num_rows($result_form) > 0) {
+                                    // Iterar sobre los resultados y generar un <option> para cada registro
+                                    while ($row = mysqli_fetch_assoc($result_form)) {
+                                        // Verificar si la opción actual es la que debe estar seleccionada
+                                        $selected = ($row['description'] == $envio_row['description']) ? 'selected' : '';
+                                        echo '<option value="'.$row['description'].'" '.$selected.'>'.$row['description'].'</option>';
+                                    }
+                                    echo '
+                                    <section class="submit">
+                                    <input value="Cambiar" class="button" type="submit" name="Guardar">
+                                    </section></select>
+                                    </form>
+                                    </td>';
+
+
+                                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                        // Verifica si se han recibido todos los campos necesarios del formulario
+                                        if (isset($_POST['id_orden'], $_POST['status'])) {
+                                    
+                                            $orden = $_POST['id_orden']; // Asegúrate de recibir el ID del producto a actualizar
+                                            $status = $_POST['status'];
+                                            
+                                            $query_boton = "SELECT id,description FROM status WHERE description = '$status'";
+                                            $result_boton = mysqli_query($conn, $query_boton);
+
+                                            if ($result_boton && mysqli_num_rows($result_boton) > 0) {
+                                                $envio_row = mysqli_fetch_assoc($result_boton);
+                                            
+                                                $status_id = $envio_row['id'];
+
+                                            }
+
+
+                                            $queryup = "UPDATE orders SET 
+                                                      id_status = '$status_id' 
+                                                      WHERE id = $orden";
+                                    
+                                            if (mysqli_query($conn, $queryup)) {
+                                                echo "<script>alert('Status actualizado correctamente.'); window.location = 'Admin_Ventas_Details.php';</script>";
+                                            } else {
+                                                echo "<script>alert('Error al actualizar el status: ')".mysqli_error($conn)."; window.location = 'Admin_Ventas_Details.php';</script>";
+                                            }
+                                            
+                                        } else {
+                                            echo "No se han recibido todos los campos necesarios del formulario";
+                                        }
+                                    }
+
+                                    echo '<td>' . $envio_row['shipd'] . '</td>';    
+                                 
+                                } else {
+                                    echo '<td>Error al obtener información de envío</td>';
+                                    echo '<td>Error al obtener información de estado</td>';
+                                }
                             }
-                            
                             ?>
                             <td><a href="mailto:<?= $row['email'] ?>?Subject=Scaglia%20Clothing"><p>Contactar</p></a></td>
                                     </tr>

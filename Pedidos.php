@@ -1,6 +1,6 @@
 <?php 
-session_start();
 include_once('bd.php');
+include('only_client.php');
 ?>
 <!DOCTYPE html>
     <html>  
@@ -49,7 +49,7 @@ include_once('bd.php');
                             <?php if (!empty($_SESSION['user'])) { ?>
                                 <a href="Mi_cuenta.php"><li><img src = "Multimedia/iconos/user-24.png"></li></a>
                                 <a href="carrito.php"><li><img src = "Multimedia/iconos/cart-79-24.png"></li></a>
-                                <a href="wishlist.php"><li><img src = "Multimedia/iconos/heart-5-24.png"></li></a>
+                                
                                 <a href="mailto:scagliaclothing@gmail.com?Subject=Consulta%20-%20web"><li><img src = "Multimedia/iconos/chat-4-24.png"></li></a>
                                 <a href="logout.php"><li></li><img src = "Multimedia/iconos/logout-24.png"></a>
                                 
@@ -101,9 +101,7 @@ include_once('bd.php');
                                         <ul>
                                             <li><a href="Mi_Cuenta.php">Escritorio</a></li>
                                             <li><a href="Pedidos.php">Pedidos</a></li>
-                                            <li><a href="Direcciones.php">Dirección</a></li>
                                             <li><a href="Details.php">Detalles de la cuenta</a></li>
-                                            <li><a href="Wishlist.php">Lista de deseos</a></li>
                                             <li><a href="logout.php">Salir</a></li>
                                         </ul>
                                     </div>
@@ -117,7 +115,7 @@ include_once('bd.php');
                                                         <th>Articulos</th>
                                                         <th>Total</th>
                                                         <th>Estado</th>
-                                                        <!-- <th class="botondis"></th> -->
+                                                        <th class="botondis"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -160,6 +158,7 @@ include_once('bd.php');
                             if ($result_envio && mysqli_num_rows($result_envio) > 0) {
                                 $envio_row = mysqli_fetch_assoc($result_envio);
                                 echo '<td>' . $envio_row['description'] . '</td>';
+                                echo '<td><button class="button" onclick="window.location.href=\'Pedido.php?id=' . $row_order['id'] . '\';">Detalle</button></td>';
                             } else {
                                 echo '<td>Error al obtener información de estado</td>';
                             }

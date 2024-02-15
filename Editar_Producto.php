@@ -1,3 +1,8 @@
+<?php
+
+    include('only_admin.php');
+    
+?>
 <!DOCTYPE html>
     <html>  
         <head></head>

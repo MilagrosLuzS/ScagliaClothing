@@ -1,5 +1,5 @@
 <?php 
-session_start();
+include('only_client.php');
 ?>
 <!DOCTYPE html>
     <html>  
@@ -47,7 +47,7 @@ session_start();
                             <?php if (!empty($_SESSION['user'])) { ?>
                                 <a href="Mi_cuenta.php"><li><img src = "Multimedia/iconos/user-24.png"></li></a>
                                 <a href="carrito.php"><li><img src = "Multimedia/iconos/cart-79-24.png"></li></a>
-                                <a href="wishlist.php"><li><img src = "Multimedia/iconos/heart-5-24.png"></li></a>
+                                
                                 <a href="mailto:scagliaclothing@gmail.com?Subject=Consulta%20-%20web"><li><img src = "Multimedia/iconos/chat-4-24.png"></li></a>
                                 <a href="logout.php"><li></li><img src = "Multimedia/iconos/logout-24.png"></a>
                                 
@@ -72,9 +72,7 @@ session_start();
                     <ul>
                     <li><a href="Mi_Cuenta.php">Escritorio</a></li>
                     <li><a href="Pedidos.php">Pedidos</a></li>
-                    <li><a href="Direcciones.php">Dirección</a></li>
                     <li><a href="Details.php">Detalles de la cuenta</a></li>
-                    <li><a href="Wishlist.php">Lista de deseos</a></li>
                     <li><a href="logout.php">Salir</a></li>
                     </ul>
                 </div>

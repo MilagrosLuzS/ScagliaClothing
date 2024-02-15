@@ -45,17 +45,20 @@
                 <section class="icons">
                     <nav>
                     <ul>
-                            <?php if (!empty($_SESSION['user'])) { ?>
-                                <a href="Mi_cuenta.php"><li><img src = "Multimedia/iconos/user-24.png"></li></a>
-                                <a href="carrito.php"><li><img src = "Multimedia/iconos/cart-79-24.png"></li></a>
-                                <a href="wishlist.php"><li><img src = "Multimedia/iconos/heart-5-24.png"></li></a>
-                                <a href="mailto:scagliaclothing@gmail.com?Subject=Consulta%20-%20web"><li><img src = "Multimedia/iconos/chat-4-24.png"></li></a>
-                                <a href="logout.php"><li></li><img src = "Multimedia/iconos/logout-24.png"></a>
-                                
-                            <?php } else { ?>
-                                <a href="login.php"><li><img src = "Multimedia/iconos/user-24.png"></li></li></a>
-                            <?php } ?>
-                        </ul>
+                    <?php if (!empty($_SESSION['user'])) { 
+                        if($_SESSION["id_user_role"] == 2) { ?>
+                            <a href="Mi_cuenta.php"><li><img src="Multimedia/iconos/user-24.png"></li></a>
+                            <a href="carrito.php"><li><img src="Multimedia/iconos/cart-79-24.png"></li></a>
+                            <a href="mailto:scagliaclothing@gmail.com?Subject=Consulta%20-%20web"><li><img src="Multimedia/iconos/chat-4-24.png"></li></a>
+                            <a href="logout.php"><li><img src="Multimedia/iconos/logout-24.png"></li></a>
+                    <?php } else if ($_SESSION["id_user_role"] == 1) { ?>
+                            <a href="Admin_inicio.php"><li><img src="Multimedia/iconos/user-24.png"></li></a>
+                            <a href="logout.php"><li><img src="Multimedia/iconos/logout-24.png"></li></a>
+                    <?php }
+                    } else { ?>
+                        <a href="login.php"><li><img src="Multimedia/iconos/user-24.png"></li></a>
+                    <?php } ?>
+                </ul>
                     </nav>
                 </section>
             </div>

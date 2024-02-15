@@ -1,3 +1,7 @@
+<?php
+    include('only_admin.php');
+?>
+
 <!DOCTYPE html>
     <html>  
         <head></head>
@@ -167,8 +171,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $query = "INSERT INTO product (product_name, type, color, size, stock, description, img, price, product_id) 
                   VALUES ('[$nombre]', '$tipo', '[$colores]', '$talles', '$stock', '$descripcion', '$imagen_destino', '$precio', '$product_id')";
+        
+        $query2 = "INSERT INTO product_images (product_id,image) VALUES ('$product_id','$imagen_destino')";
 
-        if (mysqli_query($conn, $query)) {
+    
+        if (mysqli_query($conn, $query) && mysqli_query($conn, $query2)) {
             echo "<script>alert('Producto agregado correctamente.'); window.location = 'Agregar_Producto.php';</script>";
         } else {
             echo "<script>alert('Error al agregar el producto: ".mysqli_error($conn)."'); window.location = 'Agregar_Producto.php';</script>";

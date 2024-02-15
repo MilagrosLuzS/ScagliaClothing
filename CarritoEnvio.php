@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    include('only_client.php');
     if($_SERVER['REQUEST_METHOD']=="POST"){
         include_once("bd.php");
         $conn = conectarBD();
@@ -74,7 +75,7 @@
                             <?php if (!empty($_SESSION['user'])) { ?>
                                 <a href="Mi_cuenta.php"><li><img src = "Multimedia/iconos/user-24.png"></li></a>
                                 <a href="carrito.php"><li><img src = "Multimedia/iconos/cart-79-24.png"></li></a>
-                                <a href="wishlist.php"><li><img src = "Multimedia/iconos/heart-5-24.png"></li></a>
+                                
                                 <a href="mailto:scagliaclothing@gmail.com?Subject=Consulta%20-%20web"><li><img src = "Multimedia/iconos/chat-4-24.png"></li></a>
                                 <a href="logout.php"><li></li><img src = "Multimedia/iconos/logout-24.png"></a>
                                 

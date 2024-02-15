@@ -1,3 +1,10 @@
+<?php
+
+    
+    include('only_admin.php');
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
