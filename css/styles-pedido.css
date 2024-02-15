@@ -1,0 +1,142 @@
+
+.titulo{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: black;
+    text-transform: capitalize;
+    letter-spacing: 3px;
+    text-align: center;
+    font-size: small;
+}
+
+.about-flex{
+    display:flex;
+    align-items: center;
+}
+
+.ramiro{
+    width: 50%;
+}
+
+.content{
+
+    /* margin-top: 5%; */
+}
+
+.content h2{
+    color: black;
+    letter-spacing: 3px;
+    text-align: left;
+    text-align: center;
+    font-size:medium;
+    text-transform: uppercase;
+}
+
+.content h3{
+    color: black;
+    letter-spacing: 3px;
+    text-align: left;
+    text-align: center;
+    font-size:medium;
+    text-transform: uppercase; 
+    
+}
+
+.imagen img{
+    width: 200px;
+    height: 300px;
+}
+
+.imagen h2{
+    color: black;
+    letter-spacing: 3px;
+    text-align: center;
+    font-size:medium;
+    text-transform: uppercase;
+    margin-bottom: 6%;
+}
+
+.imagen p{
+    color:black;
+    letter-spacing: 3px;
+    text-align: left;
+    font-size:medium;
+    text-decoration: none;
+    text-transform: uppercase;
+    
+}
+
+.button{
+    text-decoration: none;
+    border: none;
+    color: black;
+    font-family: Montserrat;
+    font-size:12px;
+    font-weight: bold;
+    background: rgb(247, 247, 247);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 3px;
+    margin:7px;
+}
+
+.button:hover{
+    color: #99ff33;
+    background-color: rgb(247, 247, 247);
+}
+
+.productos{
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.details{
+    margin-top: 5%;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.header{
+    text-align: center;
+    text-decoration: underline;
+}
+
+.resumen_section_header{
+    text-align: left;
+    margin-left: 20%;
+}
+
+p{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.info-envio{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.seleccionaste{
+    text-align: center;
+    margin-bottom: 1%;
+}
+
+.info-pago{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+#gracias{
+    margin-top: 2%; 
+}
+
+.row{
+    margin-left: 5%;
+    margin-right: 5%;
+}

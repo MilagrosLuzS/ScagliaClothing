@@ -8,12 +8,12 @@ session_start();
         <meta name="description" content="Apasionados del diseño. Elevamos básicos al siguiente nivel, vistiendo distinto.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>PRODUCTOS</title>
+        <title>PEDIDO</title>
 
         <link rel="stylesheet" type="text/css" href="css/styles.css">
         <link rel="stylesheet" type="text/css" href="css/styles-producto.css">
         <link rel="stylesheet" type="text/css" href="css/responsive.css">
-        <script src="js/Producto.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/styles-pedido.css">
     </head>
 
     <body>
@@ -91,53 +91,47 @@ session_start();
             else{
                 header("Location: index.php");
             }
-            $estado_envio = [];
-            if($pedido["estado_actual"]==1){
-                $estado_envio=["Por enviarse","gray"];
-            }
-            else if($pedido["estado_actual"]==2){
-                $estado_envio=["enviado","yellow"];
-            }
-            else{
-                $estado_envio=["Recibido","green"];
-            }
         ?>
-        <div class="titulo">
-        <h2 class="header">RESUMEN DEL PEDIDO #<?php echo $_GET["id"]; ?></h2>
-        </div>
-                <div class="resumen section header">
-                    <h2 class="header">Gracias por comprar en nuestra tienda</h2>
+        <div class="pedidos">
+            <div class="titulo">
+                <h2 class="header">RESUMEN DEL PEDIDO #<?php echo $_GET["id"]; ?></h2>
+                <h2 class="header" id="gracias">GRACIAS POR COMPRAR EN NUESTRA TIENDA</h2>
+            </div>
+            <div class="resumen_section_header">
+                <div class="info-pedido">
                     <p style="color:black">Tu numero de pedido es: <?php echo $_GET["id"]; ?></p>
                     <p class="small" style="color:black">Durante las proximas horas te estaremos contactando via mail para actualizarte el estado del pedido</p>
-                    <p class="small" style="color:black">Estado del pedido: <span class="<?php  echo $aEstado[0] ?>"><?php echo $pedido["estado_actual"] ?></span></p>
+                    <p class="small" style="color:black">Estado del pedido: <?php echo $pedido["estado_actual"] ?></p>
                 </div>
-                <div class="resumen section productos">
-                    <h2 class="header">Productos:</h2>
-                    <ul class="carrito_productos">
-                        <?php
-                        foreach ($pedidos_producto as $p) {
-                            echo('
-                                <li>
-                                <img width="200" src="'.$p["producto_imagen"].'" alt="">
-                                <div class="info">
-                                    <div class="descripcion">
-                                        <p class="id">#'.$p["product_id"].'</p>
-                                        <h3>'.$p["nombre_producto"].'</h3>
-                                        <p class="tags">'.$p["talle"].'</p>
-                                    </div>
-                                    <div class="cantidad">
-                                        <p>Precio unit.: $'.number_format($p["unit_price"], 2).'</p>
-                                        <p>Cantidad: '.strval($p["quantity"]).'</p>
-                                    </div>
+            </div>
+            <h2 class="header">Productos</h2></br>
+            <div class="productos">
+                <?php
+                foreach ($pedidos_producto as $p) {
+                    echo('
+                        <div class="producto">
+                            <div class="imagen">
+                            <img src="'.$p["producto_imagen"].'" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="descripcion">
+                                    <h3>'.$p["nombre_producto"].'</h3>
+                                    <p style="color:black" class="tags">Talle = '.$p["talle"].'</p>
+                                </div>
+                                <div class="cantidad">
+                                    <p style="color:black">Precio unit.: $'.number_format($p["unit_price"], 2).'</p>
+                                    <p style="color:black">Cantidad: '.strval($p["quantity"]).'</p>
                                     <div class="precio_item">
-                                        $'.number_format($p["unit_price"] * $p["quantity"], 2).'
+                                    $'.number_format($p["unit_price"] * $p["quantity"], 2).'
                                     </div>
                                 </div>
-                            </li>'); 
-                        }
-                        ?>
-                    </ul>
-                </div>
+                            </div>
+                        </div>
+                    '); 
+                }
+                ?>
+            </div>
+            <section class="details">
                 <div class="section envio">
                     <h2 class="header">Datos de <?php echo $pedido["id_shipping"] == 1 ? "envio" : "retiro" ?></h2>
                     <p class="seleccionaste" style="color:black">Seleccionaste: <b><?php echo $eleccion?></b></p>
@@ -145,10 +139,11 @@ session_start();
                         <h3>Datos:</h3>
                         <div class="row">
                             <b>Direccion:</b>
-                            <p style="color:black"><?php echo $direccion["street"] ?></p>
-                            <p style="color:black"><?php echo $direccion["st_number"] ?></p>
-                            <p style="color:black"><?php echo $direccion["city"] ?></p>
-                            <p style="color:black"><?php echo $direccion["province"] ?></p>
+                            <?php echo('
+                                <p style="color:black"> Calle '.$direccion["street"].', '.$direccion["st_number"].'</p>
+                                <p style="color"> '.$direccion["city"].', '.$direccion["province"].'</p>
+                            ')
+                            ?>
                         </div>
                         <div class="row">
                             <b>DNI:</b>
@@ -163,12 +158,22 @@ session_start();
                 <div class="section pago">
                     <h2 class="header">Datos de pago</h2>
                     <div class="info-pago">
-                        <p style="color:black">Total: <b>$<?php echo number_format($pedido["total_price"], 2); ?></b> </p>
-                        <p style="color:black">Abonado con la tarjeta terminada en <?php echo substr($pedido["card"], -4) ?> </p>
-                        <p style="color:black">Titular: <?php echo $pedido["cardholder"] ?></p>
+                        <div class="row">
+                            <p style="color:black">Total: <b>$<?php echo number_format($pedido["total_price"], 2); ?></b> </p>
+                        </div>
+                        <div class="row">
+                            <p style="color:black">Abonado con la tarjeta terminada en <?php echo substr($pedido["card"], -4) ?> </p>
+                        </div>
+                        <div class="row">
+                            <p style="color:black">Titular: <?php echo $pedido["cardholder"] ?></p>
+                        </div>
                     </div>
                 </div>
                 </section>
+            </section>   
+            
+        </div>
+        
         <footer>
             <div class = "flex-footer">
 
