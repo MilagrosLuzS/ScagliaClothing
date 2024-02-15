@@ -72,7 +72,6 @@
         JOIN order_items i ON i.id_order = o.id
         JOIN adress a ON o.id_adress = a.id
         GROUP BY o.id";
-        $respuesta = consultaSQL($conn, $query);
         $result = mysqli_query($conn, $query);  
 
         if (mysqli_num_rows($result) > 0) {

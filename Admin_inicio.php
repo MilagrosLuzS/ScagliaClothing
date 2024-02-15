@@ -1,8 +1,7 @@
 <?php
 
-    
     include('only_admin.php');
-    
+
 ?>
 
 
@@ -72,7 +71,6 @@
             include_once('bd.php');
             $conn = conectarBD();
             $query = "SELECT SUM(total_price) AS balance FROM orders";
-            $respuesta = consultaSQL($conn, $query);
             $result = mysqli_query($conn, $query);  
             
             // Inicializar la variable balance

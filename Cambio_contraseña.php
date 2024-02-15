@@ -1,6 +1,5 @@
 <?php
     include('bd.php');
-    session_start();
     include('only_client.php');
 ?>
 <!DOCTYPE html>
@@ -15,8 +14,6 @@
 
             <link rel="stylesheet" type="text/css" href="css/styles.css">
             <link rel="stylesheet" type="text/css" href="css/styles-cuenta-direc-a.css">
-            <link rel="stylesheet" type="text/css" href="css/styles-cuenta">
-            <link rel="stylesheet" type="text/css" href="css/responsive.css">
         </head>
 
         <body>
@@ -76,7 +73,6 @@
                     <li><a href="Pedidos.php">Pedidos</a></li>
                     <li><a href="Direcciones.php">Dirección</a></li>
                     <li><a href="Details.php">Detalles de la cuenta</a></li>
-                    <li><a href="Wishlist.php">Lista de deseos</a></li>
                     <li><a>Salir</a></li>
                     </ul>
                 </div>
@@ -84,7 +80,28 @@
                     <section class="flex-dir">
                         <h2>Cambio de contraseña</h2>
                     </section>
-                    <form  id="formulario" action="#" method="post" enctype="application/x-www-form-urlencoded">
+
+                    <?php
+
+                if(isset($_SESSION['user'])) {
+                    // Obtener el ID del producto de la URL
+                    $conn = conectarBD();
+
+                    // Consulta para obtener el nombre correspondiente al correo electrónico
+                $query = "SELECT * FROM user WHERE email = '{$_SESSION['user']}'";
+                // Ejecutar la consulta
+                $resultado = mysqli_query($conn, $query);
+
+                // Verificar si se obtuvieron resultados
+                if (mysqli_num_rows($resultado) > 0) {
+                    // Obtener el nombre de usuario de la primera fila del resultado
+                    $row = mysqli_fetch_assoc($resultado);
+                    $id_usuario = $row['id'];
+                    $password_usuario = $row['password'];
+                    
+                    ?>
+
+                    <form  id="formulario" action="#" method="post" enctype="multipart/form-data">
                         <div class="input_contenedor">
                             <h2>Actual contraseña</h2>
                             <input id="PasActual" type="password" name="PasActual">
@@ -104,8 +121,50 @@
                         <section class="submit">
                             <input value="Guardar" class="button" type="submit" name="Guardar">
                         </section>
-                    </form>
-                       
+                    
+                        <?php 
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        // Verifica si se han recibido todos los campos necesarios del formulario
+                        if (isset($_POST['PasActual'], $_POST['PasNueva'],$_POST['PasConfirm'])) {
+                            $conn = conectarBD();
+
+                            $password_actual = $_POST['PasActual']; // ID del usuario a actualizar
+                            $password_nueva = $_POST['PasNueva'];
+                            $password_confirm = $_POST['PasConfirm'];
+
+                            if ($password_actual === $password_usuario) {
+                                // Verifica si la nueva contraseña y la confirmación coinciden
+                                if ($password_nueva === $password_confirm) {
+                                    // Encripta la nueva contraseña
+                                   
+                                    // Actualiza la contraseña en la base de datos
+                                    $update_query = "UPDATE user SET password = '$password_nueva' WHERE id = $id_usuario";
+
+                                    if (mysqli_query($conn, $update_query)) {
+                                        echo "<script>alert('Contraseña actualizada correctamente.'); window.location = 'Cambio_contraseña.php';</script>";
+                                    } else {
+                                        echo "<script>alert('Error al actualizar la contraseña: " . mysqli_error($conn) ."'); window.location = 'Cambio_contraseña.php';</script>";
+                                    }
+                                } else {
+                                    echo "<p style=\"color: red;\">La nueva contraseña y la confirmación no coinciden.</p>";
+                                }
+                            } else {
+                                echo "<p style=\"color: red;\">La contraseña actual ingresada no es válida.</p>";
+                            }
+                            
+                        } else {
+                            echo "<p style=\"color: red;\">No se han recibido todos los campos necesarios del formulario</p>";
+                        }
+                    }
+                        } else {
+                            echo "ID del usuario no proporcionado.";
+                            desconectarBD($conn);
+                        }
+                    }
+
+                    ?>
+
+               </form>        
             </div>
 
 
@@ -172,6 +231,6 @@
 
                 
             </footer>
-            <script src="js/Validacion_Cambio_Contraseña.js"></script>
+            <!-- <script src="js/Validacion_Cambio_Contraseña.js"></script> -->
         </body>
     </html>

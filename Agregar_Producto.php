@@ -140,15 +140,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nombre = $_POST['Nombre'];
         $tipo = $_POST['Tipo'];
         $precio = $_POST['Precio'];
-        $talles = !empty($_POST['Talles']) ? implode(",", $_POST['Talles']) : "";
+        $talles = !empty($_POST['Talles']) ? implode(",", $_POST['Talles']) : ""; //crea string separado por ,
         $colores = !empty($_POST['Colores']) ? implode(",", $_POST['Colores']) : "";
         $stock = isset($_POST['Stock']) ? $_POST['Stock'] : 0;
         $descripcion = $_POST['Descripcion'];
 
         // Procesar la imagen
         $imagen_nombre = $_FILES['Imagen']['name'];
-        $imagen_destino = "Multimedia/Fotos_Producto/Fotos_C/" . $imagen_nombre;
-        move_uploaded_file($_FILES['Imagen']['tmp_name'], $imagen_destino);
+        $imagen_destino = "Multimedia/Fotos_Producto/Fotos_C/" . $imagen_nombre; 
+        move_uploaded_file($_FILES['Imagen']['tmp_name'], $imagen_destino); //mueve la imagen y la guarda en mi carpeta
 
         // Busco el product id
         $product_id = null;
@@ -251,7 +251,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p>Copyright Scaglia - 2022. Todos los derechos reservados</p>
                 </div>
     
-                <script src="Validacion_Agregar_Producto.js"></script>
+                <!-- <script src="Validacion_Agregar_Producto.js"></script> -->
                 
             </footer>
         </body>

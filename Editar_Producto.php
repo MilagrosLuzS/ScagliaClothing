@@ -102,6 +102,7 @@ if (isset($_GET['id'])) {
                 <section id="checks">
                     <h2>Nombre</h2>
                     <input id="Nombre" value="<?= $row['product_name'] ?>" type="text" name="Nombre">
+                    <p></p>
                 </section>
 
                 <section id="checks">
@@ -117,6 +118,7 @@ if (isset($_GET['id'])) {
                 <section id="checks">
                     <h2>Precio</h2>
                     <input id="Precio" value="<?= $row['price'] ?>" type="number" name="Precio">
+                    <p></p>
                 </section>
 
                 <section id="input_contenedor">
@@ -201,7 +203,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         
     } else {
-        echo "No se han recibido todos los campos necesarios del formulario";
+        echo "<p style=\"color: red;\"> No se han recibido todos los campos necesarios del formulario</p>";
     }
 }
     } else {
@@ -275,7 +277,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p>Copyright Scaglia - 2022. Todos los derechos reservados</p>
                 </div>
     
-                <script src="Validacion_Agregar_Producto.js"></script>
+                <!-- <script src="Validacion_Editar_Producto.js"></script> -->
                 
             </footer>
         </body>

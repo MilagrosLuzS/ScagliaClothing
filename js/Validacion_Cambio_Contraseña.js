@@ -3,7 +3,6 @@ window.addEventListener('load',()=>{
     const PasActual = document.getElementById('PasActual');
     const PasNueva = document.getElementById('PasNueva');
     const PasConfirm = document.getElementById('PasConfirm');
-    const DNI = document.getElementById('DNI');
 
     form.addEventListener('submit',(e)=>{
         e.preventDefault();
@@ -15,7 +14,6 @@ window.addEventListener('load',()=>{
         const pasActualValor = PasActual.value.trim();
         const PasNuevaValor = PasNueva.value.trim();
         const PasConfirmValor = PasConfirm.value.trim();
-        const DNIValor = DNI.value.trim();
 
         const er = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,18}$/;   
 
@@ -56,16 +54,6 @@ window.addEventListener('load',()=>{
             ValidacionCorrecta(PasConfirm)
         }
 
-        //validacion DNI
-
-        if(DNIValor ===''){
-            validacionFallida(DNI,'Campo Vacio');
-        }else if(!validarDNI(DNIValor)){
-            validacionFallida(DNI,'Ingrese un DNI valido.');
-        }
-        else{
-            ValidacionCorrecta(DNI);
-        }
     }
 
     function validacionFallida(input,mensaje){
@@ -79,20 +67,6 @@ window.addEventListener('load',()=>{
     function ValidacionCorrecta(input,mensaje){
         const formControl = input.parentElement
         formControl.className = 'input_contenedor correcta'
-    }
-
-
-    function validacionGeneral(general){
-        // return /^([^0-9\s_.]+)+[a-zA-Z]*((\s?)*[a-zA-Z](\s?)*)*$/g.test(general);
-        return /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(general);
-    }
-
-    function validacionNumeros(gen){
-        return /^[0-9]+$/.test(gen);
-    }
-
-    function validarDNI(DNI){
-        return (/^[0-9]+([.][0-9]+)?$/).test(DNI);
     }
 
 })

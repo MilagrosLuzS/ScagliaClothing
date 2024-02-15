@@ -76,7 +76,7 @@
         JOIN user u ON o.id_user = u.id
         JOIN order_items i ON i.id_order = o.id 
         GROUP BY o.id";
-        $respuesta = consultaSQL($conn, $query);
+        
         $result = mysqli_query($conn, $query);  
 
         if (mysqli_num_rows($result) > 0) {

@@ -87,7 +87,6 @@
         $query = "SELECT id,product_name,color,size,stock,price,img
         FROM product
         ";
-        $respuesta = consultaSQL($conn, $query);
         $result = mysqli_query($conn, $query);  
 
         if (mysqli_num_rows($result) > 0) {
