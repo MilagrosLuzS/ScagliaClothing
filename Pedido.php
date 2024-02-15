@@ -47,7 +47,6 @@ session_start();
                             <?php if (!empty($_SESSION['user'])) { ?>
                                 <a href="Mi_cuenta.php"><li><img src = "Multimedia/iconos/user-24.png"></li></a>
                                 <a href="carrito.php"><li><img src = "Multimedia/iconos/cart-79-24.png"></li></a>
-                                <a href="wishlist.php"><li><img src = "Multimedia/iconos/heart-5-24.png"></li></a>
                                 <a href="mailto:scagliaclothing@gmail.com?Subject=Consulta%20-%20web"><li><img src = "Multimedia/iconos/chat-4-24.png"></li></a>
                                 <a href="logout.php"><li></li><img src = "Multimedia/iconos/logout-24.png"></a>
                                 
@@ -141,7 +140,7 @@ session_start();
                             <b>Direccion:</b>
                             <?php echo('
                                 <p style="color:black"> Calle '.$direccion["street"].', '.$direccion["st_number"].'</p>
-                                <p style="color"> '.$direccion["city"].', '.$direccion["province"].'</p>
+                                <p style="color:black"> '.$direccion["city"].', '.$direccion["province"].'</p>
                             ')
                             ?>
                         </div>

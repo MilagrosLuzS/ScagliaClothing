@@ -78,7 +78,7 @@
                     $id_producto = $remeras["product_id"];
                     echo(
                         '<section class="remeras">
-                            <a><img src="'.$img.'" /></a>
+                            <a href="Producto.php?id='.$id_producto.'"><img src="'.$img.'" /></a>
                             <div class="nombre_precio">
                                 <h2><a>'.$nombre.'</a></h2>
                                 <h3>$'.$precio.'</h3>

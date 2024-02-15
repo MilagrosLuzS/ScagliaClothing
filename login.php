@@ -93,7 +93,7 @@ include_once('guest.php');
                                 }
                             }
                         } else {
-                            print("Los datos ingresados son incorrectos.");
+                            echo("Los datos ingresados son incorrectos.");
                         }
                         desconectarBD($conn);
                     }

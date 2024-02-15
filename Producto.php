@@ -75,8 +75,10 @@ session_start();
             $query = "SELECT * FROM product WHERE product.product_id = $id_producto";
             $result = consultaSQL($conn,$query);
             $arr = array();
+            $colores = array();
             $producto = $result->fetch_assoc();
             $arr[]=$producto["size"];
+            $colores[]=$producto["color"];
 
             //imagenes
             $query_img = "SELECT image FROM product_images WHERE product_images.product_id = $id_producto";
@@ -112,6 +114,9 @@ session_start();
             ');
             while($producto = mysqli_fetch_assoc($result)){
                 $arr[]=$producto["size"];
+                if(!in_array($producto["color"],$colores)){
+                    $colores[]=$producto["color"];
+                }
             };
             //armo un array que permite al administrador agregar mas talles 
             echo('    
@@ -119,8 +124,13 @@ session_start();
                     <form class="descrip">
                         <h3>COLOR</h3>
                         <section class="color">
-                        <input class="color-input" name="color" value="negro" type="radio" id="color1"/>
-                        <label class="color-label" for="color1">NEGRO</label>
+                ');
+            foreach($colores as $color){
+                echo('<input class="color-input" name="color" value="'.$color.'" type="radio" id="'.$color.'"/>
+                <label class="color-label" for="'.$color.'">'.$color.'</label>');
+            }
+                        
+            echo('
                         </section>
                         <h3>TALLE</h3>
                         <section class="radio">
@@ -133,7 +143,7 @@ session_start();
                         </section>
                         <p class="guia"><a href="guia_de_talles.php">GUÍA DE TALLES</a></p>
             ');
-            if(!empty($_SESSION['user'])){
+            if(!(empty($_SESSION['user'])) || $_SESSION["id_user"]==2){
                 
                 echo('
                                 <section class="flex-botones">

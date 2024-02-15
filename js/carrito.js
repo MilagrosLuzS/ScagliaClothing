@@ -10,7 +10,7 @@ function eliminarProductoCarrito(cart_id_product){
             let productos = document.getElementById("productos");
             let productoEliminado = document.getElementById("carrito_producto_"+cart_id_product);
             productos.removeChild(productoEliminado);
-            if(productos.children.lenght == 0){
+            if(productos.children.length == 0){
                 window.location.href = "Carrito.php";
             }
             else{

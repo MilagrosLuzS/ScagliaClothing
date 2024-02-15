@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include('only_client.php');
     function traer_Productos_Carrito($id_carrito,$conn){
         $query = "SELECT product.price as precio,quantity as cantidad FROM cart_products JOIN product ON cart_products.product_id = product.product_id WHERE cart_id = $id_carrito GROUP BY product_name";

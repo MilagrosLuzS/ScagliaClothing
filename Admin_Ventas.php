@@ -104,7 +104,7 @@
                             $query_products = "SELECT p.product_name, oi.quantity, p.size
                             FROM order_items oi
                             JOIN product p ON oi.product_id = p.product_id
-                            WHERE oi.id_order = $order_id";
+                            WHERE oi.id_order = $order_id AND p.size = oi.talle";
                             $result_products = mysqli_query($conn, $query_products);
                             echo '<section class="flex-data">';
                             echo '<h3>Items: </h3>';

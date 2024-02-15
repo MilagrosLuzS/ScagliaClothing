@@ -1,7 +1,6 @@
 function validarCampos(){
     event.preventDefault();
     const form = document.getElementById('formulario');
-    const nombre = document.getElementById('Nombre');
     const ciudad = document.getElementById('Ciudad');
     const provincia = document.getElementById('Provincia');
     const calle = document.getElementById('Calle');
@@ -11,7 +10,6 @@ function validarCampos(){
     const documento = document.getElementById('DNI');
     let contador = 0;
     // Primero guardo los datos ingresados por el usuario
-    const nombreValor = nombre.value.trim();
     const ciudadValor = ciudad.value.trim();
     const provinciaValor = provincia.value.trim();
     const calleValor = calle.value.trim();
@@ -20,17 +18,6 @@ function validarCampos(){
     const telefonoValor = telefono.value.trim();
     const documentoValor = documento.value.trim();
 
-    //validacion nombre
-
-    if(nombreValor === ''){
-        validacionFallida(nombre,'Campo vacio')
-    }else if(!validacionGeneral(nombreValor)){
-        validacionFallida(nombre,'nombre y/o apellido no valido.')
-    }
-    else{
-        ValidacionCorrecta(nombre)
-        contador += 1;
-    }
 
     //validacion Ciudad
 
@@ -111,7 +98,7 @@ function validarCampos(){
         contador += 1;
     }
 
-    if(contador == 8){
+    if(contador == 7){
         document.getElementById('formulario').submit();
     }
 
