@@ -18,7 +18,7 @@ function agregarProducto(){
     data.append("quantity",cantidad);
     talle = obtenerTalle();
     while(talle==null){
-        mostrarAlertaTalle();
+        alert("INGRESE UN TALLE")
         talle = obtenerTalle();
     }
     data.append("talle",talle);
@@ -56,9 +56,8 @@ function menos(){
 
 function mostrarAlerta(){
     let alerta = document.getElementById("alerta");
-    console.log("alerta")
     alerta.classList.remove("alerta-AC");
-    setTimeout(()=>{alerta.classList.add("alerta-AC")},6000)
+    setTimeout(()=>{alerta.classList.add("alerta-AC")}, 4000)
 }
 
 function actualizarCantidad(){

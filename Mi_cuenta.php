@@ -100,7 +100,7 @@ include('only_client.php');
 
                 <p>Hola, <?= $nombreUsuario?> <br>
                 (¿no eres <?= $nombreUsuario?>? <span><a href="logout.php">Cerrar sesión</a></span>)<br>
-                Desde el escritorio de tu cuenta puedes ver tus <span><a href="Pedidos.php">pedidos recientes</a></span>, <span><a href="Direcciones.php">gestionar tus direcciones de envío</a></span> y y los <span><a href="Details.php">detalles de tu cuenta</a></span>.</p>
+                Desde el escritorio de tu cuenta puedes ver tus <span><a href="Pedidos.php">pedidos recientes</a></span>.</p>
 
             <?php
             } else {

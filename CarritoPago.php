@@ -23,6 +23,7 @@
         $result = consultaSQL($conn,$query);
         $carrito = $result->fetch_assoc();
         $id_carrito = $carrito["id"];
+        $envio = $carrito["envio"];
         //consigo la direccion
         $query = "SELECT id_adress FROM user_adress WHERE id_user = $usuario";
         $result = consultaSQL($conn,$query);
@@ -35,7 +36,7 @@
         }
         //hago el pedido
         $query = "INSERT INTO orders(id_user,date_time,id_status,total_price,id_adress,id_shipping,cardholder,card,expiration,cvc) 
-        VALUES($usuario,CURRENT_TIMESTAMP,1,$importe,$id_direccion,2,'$titular','$tarjeta','$expiracion',$cvc)";
+        VALUES($usuario,CURRENT_TIMESTAMP,1,$importe,$id_direccion,$envio,'$titular','$tarjeta','$expiracion',$cvc)";
         consultaSQL($conn,$query);
         $id_pedido = $conn->insert_id;
         //hago los pedidos de los productos

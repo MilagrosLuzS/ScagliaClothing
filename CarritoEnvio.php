@@ -94,6 +94,8 @@ include('only_client.php');
                     $id = $conn->insert_id;
                     $query = "INSERT INTO user_adress(id_adress,id_user) VALUES($id,$usuario)";
                     consultaSQL($conn,$query);
+                    $query = "UPDATE cart SET envio = $envio WHERE cart.user_id = $usuario";
+                    consultaSQL($conn,$query);
                     desconectarBD($conn);
                     header('Location: CarritoPago.php');
                 }

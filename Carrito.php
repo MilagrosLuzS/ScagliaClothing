@@ -50,7 +50,6 @@
             }
             if($carrito){
                 $id_carrito = $carrito["id"];
-                echo($id_carrito);
                 //una vez que tengo el carrito me fijo si ya existe el mismo producto con mismo talle
                 $query = "SELECT id FROM cart_products WHERE cart_id = $id_carrito AND product_id = $id_producto AND talle = $talle";
                 $result = consultaSQL($conn,$query);
@@ -192,62 +191,6 @@
                         echo('</div>
                         </div>');
                     ?>
-                    <!-- <section class="pedido">
-                        <div class="producto_user">
-                            <img src="Multimedia/Fotos/bbasic1.jpg"/>
-                            <div class="data_product">
-                                <h3>Buzo Basic 1</h3>
-                                <h4>$9999</h4>
-                            </div>
-                        </div>
-                        <div class="subtotal">
-                            <h3>Subtotal</h3>
-                            <h4>$9999</h4>
-                        </div>
-                        <div class="envio">
-                            <div>
-                                <input name="envio" type="radio" value="Domicilio"/>Envio a domicilio
-                            </div>
-                            <div>
-                                <input name="envio" type="radio" value="Sucursal"/>Envio a sucurcial
-                            </div>
-                        </div>
-                        
-                    </section>
-                    <section class="pedido">
-                        <div class="producto_user">
-                            <img src="Multimedia/Fotos_Producto/alta1.jpg"/>
-                            <div class="data_product">
-                                <h3>Buzo Basic 2</h3>
-                                <h4>$9999</h4>
-                            </div>
-                        </div>
-                        <div class="subtotal">
-                            <h3>Subtotal</h3>
-                            <h4>$9999</h4>
-                        </div>
-                        <div class="envio">
-                            <div>
-                                <input name="envio" type="radio" value="Domicilio"/>Envio a domicilio
-                            </div>
-                            <div>
-                                <input name="envio" type="radio" value="Sucursal"/>Envio a sucurcial
-                            </div>
-                        </div>
-                    </section> 
-                    
-                </div>
-            </div>
-            <div class="fijo">
-                    <div class="total">
-                                <h3>Total</h3>
-                                <h4>$9999</h4>
-                    </div>
-                    <div class="submit">
-                        <a href="#"><input type="submit" value="Finalizar Compra" class="button"></a>
-                    </div>
-                </div>
-                            -->
             <footer>
                 <div class = "flex-footer">
  
@@ -311,6 +254,5 @@
 
                 
             </footer>
-            <script src="js/Validacion_CheckOut.js"></script>
         </body>
     </html>

@@ -76,7 +76,7 @@ session_start();
             $result = consultaSQL($conn,$query);
             $direccion = $result->fetch_assoc();
             if($pedido && $pedido["id_user"] == $_SESSION["id"]){
-                $eleccion = $pedido["id_shipping"] == 1 ? "Envio a domicilio" : "Retiro en local";
+                $eleccion = $pedido["id_shipping"] == 1 ?  "Retiro en Sucursales" : "Envio a domicilio";
                 // traigo los productos del pedido
                 $query = "SELECT order_items.*,product.product_name as nombre_producto, product.size as talle,
                         (SELECT image FROM product_images WHERE product_images.product_id = order_items.product_id LIMIT 1) as producto_imagen
@@ -132,7 +132,7 @@ session_start();
             </div>
             <section class="details">
                 <div class="section envio">
-                    <h2 class="header">Datos de <?php echo $pedido["id_shipping"] == 1 ? "envio" : "retiro" ?></h2>
+                    <h2 class="header">Datos de <?php echo $pedido["id_shipping"] == 1 ? "retiro" : "envio" ?></h2>
                     <p class="seleccionaste" style="color:black">Seleccionaste: <b><?php echo $eleccion?></b></p>
                     <div class="info-envio">
                         <h3>Datos:</h3>

@@ -149,7 +149,7 @@
             $nombre = $_POST['Nombre'];
             $tipo = $_POST['Tipo'];
             $precio = $_POST['Precio'];
-            $talles = !empty($_POST['Talles']) ? implode(",", $_POST['Talles']) : ""; //crea string separado por ,
+            $talles = $_POST['Talles']; 
             $colores = !empty($_POST['Colores']) ? implode(",", $_POST['Colores']) : "";
             $stock = isset($_POST['Stock']) ? $_POST['Stock'] : 0;
             $descripcion = $_POST['Descripcion'];

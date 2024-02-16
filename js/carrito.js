@@ -2,7 +2,7 @@ function eliminarProductoCarrito(cart_id_product){
     var data = new FormData();
     data.append("id_eliminar",cart_id_product);
     var xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
+    //xhr.withCredentials = true;
 
     xhr.open("POST","Carrito.php");
     xhr.addEventListener("readystatechange",function(){
