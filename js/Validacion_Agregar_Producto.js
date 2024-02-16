@@ -1,4 +1,4 @@
-function validarCampos(){
+function validarCampos(event){
     event.preventDefault();
     const Nombre = document.getElementById('Nombre');
     const Precio = document.getElementById('Precio');
@@ -19,9 +19,10 @@ function validarCampos(){
     //validacion nombre
     if(nombreValor===''){
         validacionFallida(Nombre,'Campo Vacio.')
-    }else if(validacionGeneral(nombreValor)){
-        validacionFallida(Nombre,'Ingrese un Nombre valido.')
     }
+    // else if(validacionGeneral(nombreValor)){
+    //     validacionFallida(Nombre,'Ingrese un Nombre valido.')
+    // }
     else{
         ValidacionCorrecta(Nombre)
         contador+=1

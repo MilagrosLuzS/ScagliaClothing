@@ -1,35 +1,25 @@
-var cont = 0;
-const back = document.getElementById('atras');
-const img = document.getElementById('imagen');
-const foward = document.getElementById('adelante');
-
-function carrousel(contenedor){
-    contenedor.addEventListener('click',e =>{
-        let tgt = e.target;
-        if(tgt == back){
-            if(cont>0){
-                img.src = contenido[cont-1];
-                cont--;
-            }
-            else{
-                img.src = contenido[contenido.length - 1];
-                cont = contenido.length - 1;
-            }
+cont = 0;
+function cambiarImagen(direccion) {
+    var img = document.getElementById('imagen');
+    if(direccion == -1){
+        if(cont>0){
+            img.src = contenido[cont-1];
+            cont--;
         }
-        else if(tgt == foward){
-            if(cont < contenido.length - 1){
-                img.src = contenido[cont + 1];
-                cont++;
-            }
-            else{
-                img.src = contenido[0];
-                cont = 0;
-            }
+        else{
+            img.src = contenido[cont.length-1];
+            cont = contenido.length -1;
         }
-    });
+    }
+    else{
+        if(cont < contenido.length - 1){
+            img.src = contenido[cont + 1];
+            cont++;
+        }
+        else{
+            img.src = contenido[0];
+            cont = 0;
+        }
+    }
+    
 }
-
-document.addEventListener("DOMContentLoaded",() =>{
-    let contenedor = document.querySelector('.imagenes');
-    carrousel(contenedor);
-});

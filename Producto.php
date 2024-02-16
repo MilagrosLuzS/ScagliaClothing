@@ -89,19 +89,21 @@ session_start();
             }
             //convierto el array en un objeto de js para poder usarlo en js
             $imagenes_json = json_encode($imagenes);
+            
             echo('
+                <script src="js/Carrousel.js"></script>
+                <script> var contenido = '.$imagenes_json.'; </script>
                 <div class="flex-prenda">
                 <div class="imagenes">
-                    <div class="boton" id="atras">
+                    <div class="boton" onclick="cambiarImagen(-1)" id="atras">
                         &#60
                     </div>
                     <img id="imagen" src="'.$imagenes[0].'">
-                    <div class="boton" id="adelante">
+                    <div class="boton" onclick="cambiarImagen(1)" id="adelante">
                         &#62
                     </div>
                 </div>
-                <script> var contenido = '.$imagenes_json.'; </script>
-                <script src="js/Carrousel.js"></script>
+                
                 <div class="info">
                 <section class="titulo">
                     <h1><strong>'.$producto["product_name"].'</strong></h1>

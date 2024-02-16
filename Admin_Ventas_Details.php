@@ -128,10 +128,10 @@
                             <?php
                             $order_id = $row['order_id'];
 
-                            $query_envio = "SELECT s.description AS shipd, st.description
+                            $query_envio = "SELECT o.id ,s.description AS shipd, st.description
                                             FROM orders o
                                             JOIN shipping s ON o.id_shipping = s.id
-                                            JOIN status st ON o.id_status = st.id";
+                                            JOIN status st ON o.id_status = st.id WHERE o.id = $order_id";
                             $result_envio = mysqli_query($conn, $query_envio);
 
                             if ($result_envio && mysqli_num_rows($result_envio) > 0) {

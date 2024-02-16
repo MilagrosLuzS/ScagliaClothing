@@ -51,7 +51,7 @@
         $result = consultaSQL($conn,$query);
         while($row = $result->fetch_assoc()){
             $id_producto = $row["product_id"];
-            $cantidad = $row["cantidad"];
+            $cantidad = $row["quantity"];
             $talle = $row["talle"];
             $conn2 = conectarBD();
             $query2 = "UPDATE product SET stock = (product.stock - ".intval($cantidad).") WHERE product.product_id = $id_producto AND product.size = $talle";
