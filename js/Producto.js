@@ -17,9 +17,9 @@ function agregarProducto(){
     data.append("id_product",id_producto);
     data.append("quantity",cantidad);
     talle = obtenerTalle();
-    while(talle==null){
-        alert("INGRESE UN TALLE")
-        talle = obtenerTalle();
+    if(talle==null){
+        window.alert("INGRESE UN TALLE");
+        return;
     }
     data.append("talle",talle);
 

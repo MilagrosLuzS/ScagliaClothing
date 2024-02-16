@@ -99,7 +99,7 @@ session_start();
             <div class="resumen_section_header">
                 <div class="info-pedido">
                     <p style="color:black">Tu numero de pedido es: <?php echo $_GET["id"]; ?></p>
-                    <p class="small" style="color:black">Durante las proximas horas te estaremos contactando via mail para actualizarte el estado del pedido</p>
+                    <p class="small" style="color:black">Durante las proximas horas te estaremos contactando via mail para actualizarte el estado del pedido junto con la sucursal mas cercana si corresponde.</p>
                     <p class="small" style="color:black">Estado del pedido: <?php echo $pedido["estado_actual"] ?></p>
                 </div>
             </div>

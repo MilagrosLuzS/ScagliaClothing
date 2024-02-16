@@ -143,7 +143,7 @@ session_start();
                         </section>
                         <p class="guia"><a href="guia_de_talles.php">GUÍA DE TALLES</a></p>
             ');
-            if(!(empty($_SESSION['user'])) || $_SESSION["id_user"]==2){
+            if(!(empty($_SESSION['user'])) && $_SESSION["id_user_role"]==2){
                 
                 echo('
                                 <section class="flex-botones">
