@@ -34,9 +34,9 @@ function validarCampos(){
     if(provinciaValor === ''){
         validacionFallida(provincia,'Campo vacio')
     }
-    // else if(!validarProvincia(provinciaValor)){
-    //     validacionFallida(provincia,'Provincia invalida')
-    // }
+    else if(!validarProvincia(provinciaValor)){
+        validacionFallida(provincia,'Provincia invalida')
+    }
     else{
         ValidacionCorrecta(provincia)
         contador += 1;
@@ -44,7 +44,7 @@ function validarCampos(){
 
     //validacion Calle
 
-       if(calleValor === ''){
+    if(calleValor === ''){
         validacionFallida(calle,'Campo vacio')
     }
     else{
@@ -66,12 +66,18 @@ function validarCampos(){
 
        if(codigo_postalValor === ''){
         validacionFallida(codigo_postal,'Campo vacio')
+    }else if(!estaEnRango(codigo_postalValor)){
+        validacionFallida(codigo_postal,'Codigo Postal invalido')
     }
     else{
         ValidacionCorrecta(codigo_postal)
         contador += 1;
     }
     
+    function estaEnRango(numero) {
+        return numero >= 1000 && numero <= 9999;
+    }
+
     //validacion telefono argentino   
 
     if(telefonoValor===''){
@@ -134,23 +140,19 @@ function validacionGeneral(general){
     return /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(general);
 }
 
-function validarProvincia(provincia){
-    let p = eliminarDiacriticos(provincia)
-    const Provincias=["Buenos Aires","Ciudad Autónoma de Buenos Aires","CABA","Catamarca","Chaco","Chubut","Córdoba","Corrientes","Entre Ríos","Formosa",
-    "Jujuy","La Pampa","La Rioja","Mendoza","Misiones","Neuquén","Río Negro","Salta","San Juan","San Luis","Santa Cruz","Santa Fe","Santiago del Estero",
-    "Tierra del Fuego","Tucumán"]
-    Provincias.forEach(function(prov){
-        if(eliminarDiacriticos(prov)===p){
-            return true;
-        }
-    })
-    return false;
-}
-
-
-// Elimina los diacríticos de un texto (ES6)
-//
 function eliminarDiacriticos(texto) {
-    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"");
-}
+    return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+  
+  function validarProvincia(provincia) {
+    let p = eliminarDiacriticos(provincia).toLowerCase();
+    const Provincias = ["Buenos Aires", "Ciudad Autónoma de Buenos Aires", "CABA", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", "Entre Ríos", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", "Neuquén", "Río Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Santiago del Estero", "Tierra del Fuego", "Tucumán"];
+  
+    for (let i = 0; i < Provincias.length; i++) {
+      if (eliminarDiacriticos(Provincias[i]).toLowerCase() === p) {
+        return true;
+      }
+    }
+    return false;
+  }
 

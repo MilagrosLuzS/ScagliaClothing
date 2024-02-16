@@ -42,9 +42,9 @@ function validarCampos(){
     if(ExpiracionValor===''){
         validacionFallida(Expiracion,'Campo vacio')
     }
-    // else if(!validarFechaExpiracion(ExpiracionValor)){
-    //     validacionFallida(Expiracion,'Fecha de expiracion no valida.')
-    // }
+    else if(!validarFechaExpiracion(ExpiracionValor)){
+        validacionFallida(Expiracion,'Fecha de expiracion no valida.')
+    }
     else{
         ValidacionCorrecta(Expiracion);
         contador += 1;
@@ -91,22 +91,29 @@ function validarTarjetaCredito(numeroTarjeta) {
     return regexTarjeta.test(numeroTarjeta);
 }
 
-// function validarFechaExpiracion(fechaExpiracion) {
-//     // Expresión regular para validar el formato de la fecha de expiración (MM/YY)
-//     var regexFecha = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
-//     // Obtener el año actual
-//     var añoActual = new Date().getFullYear().toString().substr(-2);
-//     // Obtener el mes actual
-//     var mesActual = new Date().getMonth() + 1;
-//     // Si el mes actual tiene un solo dígito, agregar un cero al principio
-//     if (mesActual < 10) {
-//         mesActual = '0' + mesActual;
-//     }
-//     // Unir el mes y el año actual en el mismo formato que la fecha de expiración
-//     var fechaActual = mesActual + '/' + añoActual;
-//     // Si la fecha de expiración es igual o mayor a la fecha actual, devuelve true
-//     return regexFecha.test(fechaExpiracion) && fechaExpiracion >= fechaActual;
-// }
+function validarFechaExpiracion(fechaExpiracion) {
+    // Expresión regular para validar el formato de la fecha de expiración (MM/YY)
+    var regexFecha = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+    // Obtener el año actual
+    var añoActual = new Date().getFullYear().toString().substr(-2);
+    añoActual = parseInt(añoActual)
+    // Obtener el mes actual
+    var mesActual = new Date().getMonth() + 1; 
+    var flag = 0;
+    var arr = fechaExpiracion.split('/')
+    var mes = parseInt(arr[0])
+    var año = parseInt(arr[1])
+
+    if(año>añoActual){
+        flag = 1;
+    }
+    else if(año == añoActual){
+        if(mes>=mesActual && mes<12){
+            flag = 1
+        }
+    }
+    return regexFecha.test(fechaExpiracion) && flag;
+}
 
 function validacionFallida(input,mensaje){
     const formControl = input.parentElement
