@@ -23,19 +23,23 @@ function agregarProducto(){
     }
     data.append("talle",talle);
 
-    var xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-
-    xhr.addEventListener("readystatechange",function(){
-        if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
-            mostrarAlerta()
-        }
-    });
-
-    xhr.open("POST","Carrito.php");
-
-    xhr.send(data);
-
+    //creo el objeto ajax
+    if(window.XMLHttpRequest){
+        var xhr = new XMLHttpRequest();
+    }
+    else if(window.ActiveXObject){
+        var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    //xhr.withCredentials = true;
+    if(xhr){
+        xhr.open("POST","Carrito.php",true);
+        xhr.addEventListener("readystatechange",function(){
+            if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+                mostrarAlerta()
+            }
+        });
+        xhr.send(data);
+    }
 }   
 
 function mas(){
